@@ -1,0 +1,47 @@
+@use '../../app/styles/variables' as *;
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 72px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  backdrop-filter: saturate(140%) blur(8px);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-header__logo {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+  color: var(--color-brand);
+  text-decoration: none;
+}
+
+.site-header__nav {
+  display: flex;
+  gap: 14px;
+  .nav-link {
+    text-decoration: none;
+    color: var(--color-text);
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: background 0.15s ease-in-out;
+    &:hover {
+      background: var(--color-hover);
+    }
+    &.is-active {
+      color: var(--color-brand);
+      background: var(--color-hover);
+    }
+  }
+}
