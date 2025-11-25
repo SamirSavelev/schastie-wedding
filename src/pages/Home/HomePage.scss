@@ -1,9 +1,114 @@
-.page__title {
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 800;
-  margin-bottom: 12px;
-}
-.page__lead {
-  font-size: clamp(16px, 2.2vw, 18px);
-  color: var(--color-text-muted);
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  &__hero {
+    position: relative;
+    height: 900px;
+    width: 100%;
+    background: url('../../assets/hero.png');
+    background-attachment: scroll;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  &__hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    z-index: 1;
+
+    & h1 {
+      font-size: 50px;
+      color: white;
+    }
+
+    & p {
+      font-size: 23px;
+      color: white;
+      font-weight: 400;
+    }
+  }
+
+  &__cta-button {
+    margin-top: 32px;
+    appearance: none;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    padding: 18px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 160ms ease, color 160ms ease,
+      box-shadow 160ms ease, transform 120ms ease;
+    will-change: transform, box-shadow, background-color;
+    user-select: none;
+
+    backdrop-filter: saturate(140%) blur(2px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      background: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      transform: translateY(0);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6),
+        0 8px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__cta-button {
+      padding: 12px 22px;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+    }
+    &__hero-content h1 {
+      font-size: 38px;
+      text-align: center;
+    }
+    &__hero-content p {
+      font-size: 18px;
+      text-align: center;
+    }
+  }
 }

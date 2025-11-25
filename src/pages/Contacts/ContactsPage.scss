@@ -1,7 +1,186 @@
 .contacts {
-  margin-top: 10px;
-  color: var(--color-text-muted);
-  font-style: normal;
-  display: grid;
-  gap: 6px;
+  padding: 40px 0 64px;
+  width: 100%;
+  font-family: var(--font-body);
+
+  &__title {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  &__lead {
+    text-align: center;
+    font-size: 18px;
+    color: var(--color-text-muted);
+    max-width: 720px;
+    margin: 0 auto 40px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  &__card {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  &__subtitle {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__label {
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+
+  &__input,
+  &__textarea {
+    font-size: 15px;
+    padding: 12px 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--color-text);
+    outline: none;
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease,
+      background 0.2s ease;
+
+    &:hover {
+      border-color: color-mix(in srgb, var(--color-brand) 35%, #ccc);
+      background: #fdfdfd;
+    }
+
+    &:focus {
+      border-color: var(--color-brand);
+      box-shadow: 0 0 0 2px
+        color-mix(in srgb, var(--color-brand) 25%, transparent);
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #b7b7b7;
+    }
+  }
+
+  &__textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  &__submit {
+    align-self: start;
+    border: 1.5px solid var(--color-brand);
+    background: transparent;
+    color: var(--color-brand);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 10px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: color-mix(in srgb, var(--color-brand) 12%, transparent);
+    }
+
+    &:active {
+      background: color-mix(in srgb, var(--color-brand) 18%, transparent);
+      transform: translateY(1px);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item-title {
+    font-weight: 600;
+    margin-right: 6px;
+  }
+
+  &__link {
+    color: var(--color-text);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+    transition: color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      color: var(--color-brand);
+      border-color: var(--color-brand);
+    }
+  }
+
+  &__dot {
+    color: #bbb;
+    margin: 0 4px;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  &__social {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    transition: transform 0.15s ease;
+
+    img {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+
+    &:hover {
+      transform: scale(1.08);
+    }
+
+    &:active {
+      transform: scale(0.96);
+    }
+  }
 }

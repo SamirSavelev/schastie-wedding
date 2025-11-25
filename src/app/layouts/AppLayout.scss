@@ -1,15 +1,18 @@
 @use '../styles/variables' as *;
 
 .app {
-  --header-height: 72px;
   min-height: 100dvh;
   display: grid;
-  grid-template-rows: var(--header-height) 1fr auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr auto;
+
   background: var(--color-bg);
   color: var(--color-text);
-}
 
-.app__content {
-  padding-top: 16px;
-  padding-bottom: 24px;
+  &__content {
+    min-height: 0;
+    display: block;
+    margin-inline: auto;
+    width: 100%;
+  }
 }

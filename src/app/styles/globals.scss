@@ -14,21 +14,3 @@ body {
 #root {
   min-height: 100%;
 }
-
-.page {
-  margin-inline: auto;
-  width: 100%;
-  max-width: var(--container-max);
-  padding-inline: 16px;
-  padding-top: 8px;
-}
-
-.page__title {
-  font-size: clamp(26px, 4vw, 36px);
-  font-weight: 800;
-  margin-bottom: 10px;
-}
-.page__lead {
-  font-size: clamp(15px, 2vw, 18px);
-  color: var(--color-text-muted);
-}
