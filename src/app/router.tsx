@@ -4,9 +4,9 @@ import { HomePage } from '@pages/Home/HomePage';
 import { ServicesPage } from '@pages/Services/ServicesPage';
 import { PortfolioPage } from '@pages/Portfolio/PortfolioPage';
 import { BlogPage } from '@pages/Blog/BlogPage';
-import { BookPage } from '@pages/Book/BookPage';
 import { AboutPage } from '@pages/About/AboutPage';
 import { ContactsPage } from '@pages/Contacts/ContactsPage';
+import { ArticleOrg } from '@pages/Articles';
 
 export const router = createBrowserRouter([
   {
@@ -17,9 +17,20 @@ export const router = createBrowserRouter([
       { path: 'services', element: <ServicesPage /> },
       { path: 'portfolio', element: <PortfolioPage /> },
       { path: 'blog', element: <BlogPage /> },
-      { path: 'book', element: <BookPage /> }, // «Книга»
       { path: 'about', element: <AboutPage /> },
       { path: 'contacts', element: <ContactsPage /> },
+      {
+        path: 'blog/svadebnyy-organizator-i-koordinator',
+        element: <ArticleOrg />,
+      },
+      {
+        path: 'blog/svadebnyy-organizator-i-koordinator',
+        element: <ArticleOrg />,
+      },
+      {
+        path: '/portfolio/mikhail-i-vera',
+        element: <div>Mikhail i Vera Page</div>,
+      },
     ],
   },
 ]);

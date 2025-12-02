@@ -1,112 +1,145 @@
 @use '../../app/styles/variables' as *;
 
-.topbar {
-  display: flex;
-  align-items: center;
-
-  height: var(--header-top-height);
-  background: var(--color-surface);
-  padding: var(--header-top-padding) 0px;
-
-  &__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-
-    @media (max-width: 720px) {
-      flex-wrap: wrap;
-      row-gap: 6px;
-    }
-  }
-
-  &__logo {
-    font-weight: 800;
-    font-size: 20px;
-    letter-spacing: 0.2px;
-    color: var(--color-brand);
-    text-decoration: none;
-  }
-
-  &__logo-image {
-    height: calc(var(--header-top-height) - 2 * var(--header-top-padding));
-  }
-
-  &__contacts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-
-    @media (max-width: 720px) {
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .contact-link {
-      font-size: 36px;
-      line-height: 100%;
-      font-weight: 100;
-      text-decoration: none;
-      color: var(--color-text);
-      white-space: nowrap;
-      text-decoration-line: none;
-    }
-
-    .contact-text {
-      color: var(--color-text-muted);
-      white-space: nowrap;
-      font-size: 13px;
-      line-height: 120%;
-      font-weight: 500;
-    }
-
-    .dot {
-      color: var(--color-border);
-    }
-  }
-}
-
-.navbar {
+.header {
   position: sticky;
   top: 0;
   z-index: 1000;
 
-  height: var(--header-nav-height, 56px);
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
+  height: var(--header-height);
   display: flex;
   align-items: center;
 
-  backdrop-filter: saturate(140%) blur(8px);
+  background: transparent;
 
-  &__inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 22px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+    color 0.25s ease, box-shadow 0.25s ease;
+
+  font-family: var(--font-helvetica);
+
+  &__dark {
+    color: var(--white-color-text);
+  }
+
+  &__light {
+    color: var(--black-color-text);
   }
 }
 
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.topbar__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.topbar__logo-image {
+  height: calc(var(--header-height) - 2 * var(--header-top-padding));
+  display: block;
+}
+
+.navbar__inner {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.topbar__contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.contact-link {
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 400;
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+/* Ссылки меню */
 .nav-link {
   text-decoration: none;
-  color: var(--color-text);
-  padding: 12px 24px;
-  border-radius: 8px;
-  transition: background 0.15s ease-in-out;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
   white-space: nowrap;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 14px;
-  transition: all 0.4s ease;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 16px;
+  letter-spacing: 0.04em;
 
-  &:hover {
-    color: var(--color-brand);
+  position: relative;
+  transition: color 0.2s ease;
+}
+.nav-link {
+  font-weight: 500;
+}
+.nav-link:hover {
+  color: var(--color-brand);
+}
+
+.nav-link.is-active {
+  color: var(--color-brand);
+}
+
+.header--scrolled {
+  background: rgba(0, 0, 0, 0.82);
+  border-bottom-color: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Адаптив */
+@media (max-width: 960px) {
+  .header__inner {
+    gap: 20px;
   }
 
-  &.is-active {
-    color: var(--color-brand);
+  .navbar__inner {
+    gap: 20px;
+  }
+
+  .contact-link {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 720px) {
+  .header {
+    height: 64px;
+  }
+
+  .topbar__contacts {
+    display: none;
+  }
+
+  .navbar__inner {
+    justify-content: flex-end;
+    gap: 16px;
+  }
+
+  .topbar__logo-image {
+    height: 32px;
   }
 }

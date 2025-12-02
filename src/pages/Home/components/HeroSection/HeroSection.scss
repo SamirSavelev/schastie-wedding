@@ -1,0 +1,228 @@
+.home-hero {
+  position: relative;
+  width: 100%;
+
+  margin-top: calc(
+    -1 * (var(--header-top-height) + var(--header-nav-height, 60px))
+  );
+  padding-top: calc(var(--header-top-height) + var(--header-nav-height, 60px));
+
+  min-height: calc(100vh + var(--header-top-height));
+
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+
+  overflow: hidden;
+  color: #ffffff;
+
+  &__slideshow {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  &__slide {
+    position: absolute;
+    inset: 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 1.4s ease, transform 8s ease;
+  }
+
+  &__slide--active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      120deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.6) 40%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+    flex: 1 1 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__content {
+    max-width: 520px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+
+    text-transform: none;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    span {
+      color: #ffffff;
+    }
+  }
+
+  &__divider {
+    width: 120px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  &__typed-line {
+    min-height: 24px;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    color: rgba(255, 255, 255, 0.9);
+
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  &__typed-text {
+    white-space: nowrap;
+  }
+
+  &__typed-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    margin-left: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    animation: home-hero-typed-cursor-blink 1s steps(2, start) infinite;
+  }
+
+  &__cta-button {
+    margin-top: 32px;
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: transparent;
+    color: #ffffff;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 160ms ease, color 160ms ease,
+      box-shadow 160ms ease, transform 120ms ease, border-color 160ms ease;
+    will-change: transform, box-shadow, background-color, border-color;
+    user-select: none;
+
+    backdrop-filter: saturate(140%) blur(3px);
+    font-family: var(--font-helvetica);
+  }
+
+  &__cta-button:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+    transform: translateY(-1px);
+  }
+
+  &__cta-button:active {
+    background: rgba(255, 255, 255, 0.23);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    transform: translateY(0);
+  }
+
+  &__cta-button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9),
+      0 8px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  &__cta-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  @media (max-width: 960px) {
+    &__inner {
+      align-items: flex-end;
+    }
+
+    &__content {
+      max-width: 100%;
+      padding-bottom: 64px;
+    }
+
+    &__title {
+      font-size: 32px;
+      letter-spacing: 0.1em;
+    }
+
+    &__typed-line {
+      white-space: normal;
+    }
+  }
+
+  @media (max-width: 600px) {
+    &__content {
+      gap: 20px;
+    }
+
+    &__title {
+      font-size: 26px;
+      letter-spacing: 0.08em;
+    }
+
+    &__cta-button {
+      padding: 14px 24px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+    }
+  }
+}
+
+@keyframes home-hero-typed-cursor-blink {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

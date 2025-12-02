@@ -1,1 +1,55 @@
-/* задел под список статей */
+.page--blog {
+  padding-bottom: 120px;
+}
+
+/* Вступительный блок под шапкой */
+.page__intro {
+  margin: 80px auto 48px;
+  text-align: center;
+  max-width: 720px;
+}
+
+.page__title {
+  margin: 0 0 16px;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.page__lead {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #6b6b6b;
+}
+
+/* Грид статей */
+.blog-list {
+  margin-top: 120px;
+}
+
+.blog-list__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+
+  /* важное поведение: карточки в строке одной высоты,
+     длинный заголовок увеличивает высоту всей строки */
+  align-items: stretch;
+}
+
+/* Адаптив: 2 колонки и 1 колонка */
+@media (max-width: 1024px) {
+  .blog-list__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-list__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page__intro {
+    margin: 56px auto 32px;
+  }
+}

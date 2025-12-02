@@ -1,1 +1,60 @@
-/* задел под грид галереи */
+/* src/pages/Portfolio/PortfolioPage.scss */
+
+.page--portfolio {
+  padding-bottom: 120px;
+}
+
+.portfolio-head {
+  padding: 80px 0 40px;
+  padding-top: 120px;
+}
+
+.portfolio-head__title {
+  font-size: 46px;
+  line-height: 1.4;
+  font-weight: 500;
+  text-align: center;
+}
+
+.portfolio-head__text {
+  margin: 0 0 16px;
+  font-size: 22px;
+  line-height: 1.7;
+  color: #4a4a4a;
+}
+
+.portfolio-head__text--ps {
+  font-size: 17px;
+  color: #6a6a6a;
+}
+
+.portfolio-list {
+  margin-top: 24px;
+}
+
+/* адаптив */
+
+@media (max-width: 960px) {
+  .portfolio-head {
+    padding: 64px 0 32px;
+  }
+
+  .portfolio-head__title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 720px) {
+  .portfolio-head {
+    padding: 48px 0 24px;
+  }
+
+  .portfolio-head__title {
+    font-size: 24px;
+    letter-spacing: 0.12em;
+  }
+
+  .portfolio-head__text {
+    font-size: 15px;
+  }
+}

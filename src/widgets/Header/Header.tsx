@@ -1,59 +1,59 @@
-import { useEffect, useRef, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Container } from '@shared/ui/Container/Container';
-import { navigationLinks } from './constants';
 import logo from '@assets/logo.png';
+
+import { darkHeaderPages } from '@shared/constants/darkHeaderPages';
 import '@widgets/Header/Header.scss';
+import { navigationLinks } from '@shared/constants/navigationLinks';
 
 export const Header = () => {
-  const topbarRef = useRef<HTMLDivElement | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { pathname } = useLocation();
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    const el = topbarRef.current;
-    if (!el) return;
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30);
+    };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsScrolled(!entry.isIntersecting),
-      { threshold: 0 }
-    );
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
-    observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  return (
-    <>
-      <div className="topbar" role="banner" ref={topbarRef}>
-        <Container>
-          <div className="topbar__inner">
-            <a
-              href="/"
-              className="topbar__logo"
-              aria-label="Свадебное агентство «Счастье»"
-            >
-              <img
-                src={logo}
-                className="topbar__logo-image"
-                alt="Свадебное агентство «Счастье»"
-              />
-            </a>
-            <div className="topbar__contacts">
-              <a className="contact-link" href="tel:+79372899055">
-                +7&nbsp;(937)&nbsp;289-90-55
-              </a>
-              <span className="contact-text">Свадебное агентство г.Казань</span>
-            </div>
-          </div>
-        </Container>
-      </div>
+  useEffect(() => {
+    if (darkHeaderPages.includes(pathname)) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  }, [pathname]);
 
-      <div
-        className={`navbar${isScrolled ? ' navbar--scrolled' : ''}`}
-        role="navigation"
-        aria-label="Главная навигация"
-      >
-        <Container>
+  return (
+    <header
+      className={`header${
+        isScrolled ? ' header--scrolled' : ''
+      } header__${theme}`}
+      role="banner"
+    >
+      <Container>
+        <div className="header__inner">
+          <a
+            href="/"
+            className="topbar__logo"
+            aria-label="Свадебное агентство «Счастье»"
+          >
+            <img
+              src={logo}
+              className="topbar__logo-image"
+              alt="Свадебное агентство «Счастье»"
+            />
+          </a>
+
           <div className="navbar__inner">
             {navigationLinks.map(({ to, label, end }) => (
               <NavLink
@@ -68,8 +68,15 @@ export const Header = () => {
               </NavLink>
             ))}
           </div>
-        </Container>
-      </div>
-    </>
+
+          <div className="topbar__contacts">
+            <a className="contact-link" href="tel:+79372899055">
+              +7&nbsp;(937)&nbsp;289-90-55
+            </a>
+            <span className="contact-text">Свадебное агентство г.Казань</span>
+          </div>
+        </div>
+      </Container>
+    </header>
   );
 };
