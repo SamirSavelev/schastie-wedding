@@ -1,0 +1,72 @@
+// Layout
+$container-max: 1200px;
+
+// Цвета:
+$color-white: #ffffff;
+$color-black: #111111;
+$color-surface: rgba(255, 255, 255, 0.8);
+$color-border: #ececec;
+$color-hover: #f6f6f6;
+$color-red: #b91c1c;
+$color-green: #15803d;
+
+$color-text: #1a1a1a;
+$color-text-muted: #6b7280;
+$color-brand: #d19fae;
+
+$header-height: 72px;
+$footer-height: 72px;
+
+$header-top-height: 60px;
+$header-top-padding: 12px;
+$header-nav-height: 56px;
+
+// Шрифты
+$font-body: 'Cormorant Garamond', serif;
+$font-helvetica: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+
+// Breakpoints
+$bp-lg: 1200px;
+$bp-md: 960px;
+$bp-sm: 600px;
+
+:root {
+  --container-max: #{$container-max};
+
+  --color-bg: #{$color-white};
+  --color-surface: #{$color-surface};
+  --color-border: #{$color-border};
+  --color-hover: #{$color-hover};
+
+  --color-text: #{$color-text};
+  --color-text-muted: #{$color-text-muted};
+  --color-brand: #{$color-brand};
+  --white-color-text: #{$color-white};
+  --black-color-text: #{$color-text};
+
+  --header-height: #{$header-height};
+  --footer-height: #{$footer-height};
+
+  --header-top-height: #{$header-top-height};
+  --header-top-padding: #{$header-top-padding};
+  --header-nav-height: #{$header-nav-height};
+
+  --font-body: #{$font-body};
+  --font-helvetica: #{$font-helvetica};
+}
+
+// @media (max-width: $bp-md) {
+//   :root {
+//     --container-max: 100%;
+//     --header-top-height: 52px;
+//     --header-nav-height: 52px;
+//   }
+// }
+
+// @media (max-width: $bp-sm) {
+//   :root {
+//     --header-top-height: 48px;
+//     --header-nav-height: 48px;
+//     --header-top-padding: 8px;
+//   }
+// }

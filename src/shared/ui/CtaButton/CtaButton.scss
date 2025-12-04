@@ -1,0 +1,46 @@
+.cta-button {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+  color: #ffffff;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease,
+    box-shadow 160ms ease, transform 120ms ease, border-color 160ms ease;
+  will-change: transform, box-shadow, background-color, border-color;
+  user-select: none;
+  backdrop-filter: saturate(140%) blur(3px);
+  font-family: var(--font-helvetica);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    background: rgba(255, 255, 255, 0.23);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9),
+      0 8px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}

@@ -1,14 +1,13 @@
 @use './reset.scss';
-@use './variables.scss';
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-body);
-  background: var(--color-bg);
-  color: var(--color-text);
+  font-family: $font-body;
+  background: $color-white;
+  color: $color-text;
 }
 
 #root {

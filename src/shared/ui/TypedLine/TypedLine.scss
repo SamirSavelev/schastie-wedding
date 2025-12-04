@@ -1,0 +1,48 @@
+.typed-line {
+  min-height: 24px;
+  font-size: 20px;
+  line-height: 1.4;
+  text-transform: none;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  &__text {
+    white-space: nowrap;
+    font-size: 24px;
+    line-height: 1.4;
+    height: calc(24px * 1.4);
+  }
+
+  &__cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.4em;
+    margin-left: 4px;
+    background: rgba(255, 255, 255, 0.9);
+    animation: typed-line-cursor-blink 1s steps(2, start) infinite;
+  }
+
+  @media (max-width: 960px) {
+    white-space: normal;
+
+    &__text {
+      white-space: normal;
+    }
+  }
+}
+
+@keyframes typed-line-cursor-blink {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

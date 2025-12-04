@@ -1,0 +1,133 @@
+/* src/pages/Services/components/ChatSection/ServicesChatSection.scss */
+
+.services-chat {
+  width: 100%;
+  padding: 80px 0 96px;
+  background-image: url('../../../../assets/services/chat.webp');
+  font-family: var(--font-body);
+  color: #2f2f2f;
+
+  &__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__row {
+    display: flex;
+
+    &--left {
+      justify-content: flex-start;
+    }
+
+    &--right {
+      justify-content: flex-end;
+    }
+  }
+
+  &__bubble {
+    max-width: 640px;
+    padding: 20px 22px 22px;
+    border-radius: 22px;
+    background: #f7f4ec;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &--left {
+      border-top-left-radius: 6px;
+    }
+
+    &--right {
+      border-top-right-radius: 6px;
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+
+    &--right {
+      justify-content: flex-end;
+    }
+  }
+
+  &__author {
+    font-size: 22px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.75);
+
+    &--accent {
+      color: rgba(0, 0, 0, 0.95);
+      font-weight: 600;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-family: var(--font-helvetica);
+    font-size: 18px;
+    line-height: 1.7;
+
+    &--intro {
+      margin-bottom: 6px;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__list-item {
+    font-family: var(--font-helvetica);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* Адаптив */
+
+  @media (max-width: 768px) {
+    padding: 60px 0 72px;
+
+    &__inner {
+      gap: 20px;
+    }
+
+    &__bubble {
+      padding: 16px 16px 18px;
+      border-radius: 18px;
+
+      &--left {
+        border-top-left-radius: 6px;
+      }
+
+      &--right {
+        border-top-right-radius: 6px;
+      }
+    }
+
+    &__text,
+    &__list-item {
+      font-size: 14px;
+      line-height: 1.65;
+    }
+  }
+
+  @media (max-width: 520px) {
+    &__bubble {
+      max-width: 100%;
+    }
+  }
+}

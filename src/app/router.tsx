@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { AppLayout } from '@app/layouts/AppLayout';
-import { HomePage } from '@pages/Home/HomePage';
+import { HomePage } from '@pages';
 import { ServicesPage } from '@pages/Services/ServicesPage';
 import { PortfolioPage } from '@pages/Portfolio/PortfolioPage';
 import { BlogPage } from '@pages/Blog/BlogPage';

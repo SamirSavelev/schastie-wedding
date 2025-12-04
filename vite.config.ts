@@ -15,4 +15,12 @@ export default defineConfig({
       '@assets': path.resolve(__dirname, 'src/assets'),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        loadPaths: ['src'],
+        additionalData: '@use "app/styles/variables" as *;\n',
+      },
+    },
+  },
 });

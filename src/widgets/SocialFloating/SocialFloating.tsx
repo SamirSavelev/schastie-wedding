@@ -1,80 +1,29 @@
-// src/widgets/SocialFloating/SocialFloating.tsx
 import { useEffect, useState } from 'react';
-import './SocialFloating.scss';
-import InstagramIcon from '@assets/icons/instagram.svg';
-import TelegramIcon from '@assets/icons/telegram.svg';
-import VkIcon from '@assets/icons/vk.svg';
-import WhatsappIcon from '@assets/icons/whatsapp.svg';
-import PhoneIcon from '@assets/icons/phone.svg';
+import { NETWORKS } from '@shared/constants';
 import messageIcon from '@assets/icons/message.svg';
 import closeIcon from '@assets/icons/close.svg';
+
+import './SocialFloating.scss';
+
 export const SocialFloating = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(0);
 
-  const networks = [
-    {
-      key: 'phone',
-      classSuffix: 'phone',
-      label: 'Позвонить',
-      Icon: PhoneIcon,
-      onClick: () => {
-        console.log('Позвонить');
-      },
-    },
-    {
-      key: 'whatsapp',
-      classSuffix: 'whatsapp',
-      label: 'Написать в WhatsApp',
-      Icon: WhatsappIcon,
-      onClick: () => {
-        console.log('Написать в WhatsApp');
-      },
-    },
-    {
-      key: 'telegram',
-      classSuffix: 'telegram',
-      label: 'Написать в Telegram',
-      Icon: TelegramIcon,
-      onClick: () => {
-        console.log('Написать в Telegram');
-      },
-    },
-    {
-      key: 'vk',
-      classSuffix: 'vk',
-      label: 'Написать во ВКонтакте',
-      Icon: VkIcon,
-      onClick: () => {
-        console.log('Написать во ВКонтакте');
-      },
-    },
-    {
-      key: 'instagram',
-      classSuffix: 'instagram',
-      label: 'Написать в Instagram',
-      Icon: InstagramIcon,
-      onClick: () => {
-        console.log('Написать в Instagram');
-      },
-    },
-  ] as const;
-
   useEffect(() => {
-    const total = networks.length;
+    const total = NETWORKS.length;
     const timeouts: number[] = [];
     const step = 90;
 
     if (isOpen) {
       for (let i = 0; i <= total; i += 1) {
-        const timeout = window.setTimeout(() => {
+        const timeout = setTimeout(() => {
           setVisibleCount(i);
         }, i * step);
         timeouts.push(timeout);
       }
     } else {
       for (let i = 0; i <= total; i += 1) {
-        const timeout = window.setTimeout(() => {
+        const timeout = setTimeout(() => {
           setVisibleCount(total - i);
         }, i * step);
         timeouts.push(timeout);
@@ -82,40 +31,34 @@ export const SocialFloating = () => {
     }
 
     return () => {
-      timeouts.forEach((id) => window.clearTimeout(id));
+      timeouts.forEach((id) => clearTimeout(id));
     };
-  }, [isOpen, networks.length]);
+  }, [isOpen]);
 
-  const handleToggle = () => {
-    setIsOpen((prev) => !prev);
-  };
+  const handleToggle = () => setIsOpen((prev) => !prev);
 
   return (
     <div
       className={`socials-floating${isOpen ? ' socials-floating--open' : ''}`}
     >
       <div className="socials-floating__row">
-        {networks.map(({ key, classSuffix, label, Icon, onClick }, index) => {
-          const isVisible = index < visibleCount;
-
-          return (
-            <button
-              key={key}
-              type="button"
-              className={
-                `socials-floating__item socials-floating__item--${classSuffix}` +
-                (isVisible ? ' socials-floating__item--visible' : '')
-              }
-              aria-label={label}
-              onClick={onClick}
-            >
-              <span className="socials-floating__item-icon">
-                <img src={Icon} alt={label} />
-              </span>
-              <span className="socials-floating__item-tooltip">{label}</span>
-            </button>
-          );
-        })}
+        {NETWORKS.map(({ key, classSuffix, label, Icon, onClick }, index) => (
+          <button
+            key={key}
+            type="button"
+            className={
+              `socials-floating__item socials-floating__item--${classSuffix}` +
+              (index < visibleCount ? ' socials-floating__item--visible' : '')
+            }
+            aria-label={label}
+            onClick={onClick}
+          >
+            <span className="socials-floating__item-icon">
+              <img src={Icon} alt={label} />
+            </span>
+            <span className="socials-floating__item-tooltip">{label}</span>
+          </button>
+        ))}
       </div>
 
       <button
