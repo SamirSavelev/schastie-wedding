@@ -8,43 +8,52 @@ import {
 
 import './PortfolioSection.scss';
 import { Button } from '@shared/ui/Button/Button';
+import { Text } from '@shared/ui';
 
-export const PortfolioSection = () => {
-  return (
-    <section className="home-portfolio">
-      <Container>
-        <header className="home-portfolio__header">
-          <h2 className="home-portfolio__title">{HOME_PORTFOLIO_TITLE}</h2>
-          <p className="home-portfolio__subtitle">{HOME_PORTFOLIO_SUBTITLE}</p>
-        </header>
+export const PortfolioSection = () => (
+  <section className="home-portfolio">
+    <Container>
+      <header className="home-portfolio__header">
+        <Text variant="h3" textTransform="uppercase" align="center">
+          {HOME_PORTFOLIO_TITLE}
+        </Text>
+        <Text variant="body1" font="helvetica" weight="light" align="center">
+          {HOME_PORTFOLIO_SUBTITLE}
+        </Text>
+      </header>
+      <div className="home-portfolio__grid">
+        {HOME_PORTFOLIO_ITEMS.map(({ linkId, id, title, tagline, image }) => (
+          <Link
+            key={id}
+            to={`/portfolio/${linkId}`}
+            className="home-portfolio__card"
+          >
+            <div className="home-portfolio__image-wrapper">
+              <img
+                src={image}
+                alt={title}
+                className="home-portfolio__image"
+                loading="lazy"
+              />
+            </div>
+            <div className="home-portfolio__info">
+              <Text variant="subtitle" textTransform="uppercase">
+                {title}
+              </Text>
+              <div className="home-portfolio__underline" />
+              <Text variant="body1" font="helvetica" weight="light">
+                {tagline}
+              </Text>
+            </div>
+          </Link>
+        ))}
+      </div>
 
-        <div className="home-portfolio__grid">
-          {HOME_PORTFOLIO_ITEMS.map((item) => (
-            <Link key={item.id} to={item.link} className="home-portfolio__card">
-              <div className="home-portfolio__image-wrapper">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="home-portfolio__image"
-                  loading="lazy"
-                />
-              </div>
-
-              <div className="home-portfolio__info">
-                <h3 className="home-portfolio__names">{item.title}</h3>
-                <div className="home-portfolio__underline" />
-                <p className="home-portfolio__tagline">{item.tagline}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <div className="home-portfolio__actions">
-          <Button as="link" to="/portfolio" variant="outline" size="md">
-            Смотреть все свадьбы
-          </Button>
-        </div>
-      </Container>
-    </section>
-  );
-};
+      <div className="home-portfolio__actions">
+        <Button as="link" to="/portfolio" variant="outline" size="lg">
+          Смотреть все свадьбы
+        </Button>
+      </div>
+    </Container>
+  </section>
+);

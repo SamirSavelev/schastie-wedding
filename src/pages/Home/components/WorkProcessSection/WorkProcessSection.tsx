@@ -6,65 +6,74 @@ import {
 } from '@shared/constants';
 
 import './WorkProcessSection.scss';
+import { Text } from '@shared/ui';
 
-export const WorkProcessSection = () => {
-  return (
-    <section className="how-we-work" aria-labelledby="how-we-work-title">
-      <Container>
-        <header className="how-we-work__header">
-          <h2 id="how-we-work-title" className="how-we-work__title">
-            {HOME_WORK_TITLE}
-          </h2>
-          <p className="how-we-work__subtitle">{HOME_WORK_SUBTITLE}</p>
-        </header>
+export const WorkProcessSection = () => (
+  <section className="how-we-work" aria-labelledby="how-we-work-title">
+    <Container>
+      <header className="how-we-work__header">
+        <Text variant="h3" align="center" textTransform="uppercase">
+          {HOME_WORK_TITLE}
+        </Text>
+        <Text variant="subtitle" align="center" font="helvetica">
+          {HOME_WORK_SUBTITLE}
+        </Text>
+      </header>
 
-        <div className="how-we-work__timeline">
-          {HOME_WORK_STEPS.map((step, index) => {
-            const isLeft = index % 2 === 0;
+      <div className="how-we-work__timeline">
+        {HOME_WORK_STEPS.map(({ id, title, text }, index) => {
+          const isLeft = index % 2 === 0;
+          return (
+            <div
+              key={id}
+              className={`how-we-work__row how-we-work__row--${
+                isLeft ? 'left' : 'right'
+              }`}
+            >
+              <div className="how-we-work__col how-we-work__col--left">
+                {isLeft && (
+                  <article className="how-we-work__card">
+                    <Text
+                      variant="subtitle"
+                      textTransform="uppercase"
+                      weight="semibold"
+                      align="right"
+                    >
+                      {title}
+                    </Text>
 
-            return (
-              <div
-                key={step.id}
-                className={`how-we-work__row how-we-work__row--${
-                  isLeft ? 'left' : 'right'
-                }`}
-              >
-                <div className="how-we-work__col how-we-work__col--left">
-                  {isLeft && (
-                    <article className="how-we-work__card">
-                      <h3 className="how-we-work__card-title">
-                        {/* <span className="how-we-work__card-number">
-                          {stepNumber}.
-                        </span>{' '} */}
-                        {step.title}
-                      </h3>
-                      <p className="how-we-work__card-text">{step.text}</p>
-                    </article>
-                  )}
-                </div>
-
-                <div className="how-we-work__col how-we-work__col--center">
-                  <div className="how-we-work__marker" />
-                </div>
-
-                <div className="how-we-work__col how-we-work__col--right">
-                  {!isLeft && (
-                    <article className="how-we-work__card">
-                      <h3 className="how-we-work__card-title">
-                        {/* <span className="how-we-work__card-number">
-                          {stepNumber}.
-                        </span>{' '} */}
-                        {step.title}
-                      </h3>
-                      <p className="how-we-work__card-text">{step.text}</p>
-                    </article>
-                  )}
-                </div>
+                    <Text variant="body2" font="helvetica" align="right">
+                      {text}
+                    </Text>
+                  </article>
+                )}
               </div>
-            );
-          })}
-        </div>
-      </Container>
-    </section>
-  );
-};
+
+              <div className="how-we-work__col how-we-work__col--center">
+                <div className="how-we-work__marker" />
+              </div>
+
+              <div className="how-we-work__col how-we-work__col--right">
+                {!isLeft && (
+                  <article className="how-we-work__card">
+                    <Text
+                      variant="subtitle"
+                      textTransform="uppercase"
+                      weight="semibold"
+                      align="left"
+                    >
+                      {title}
+                    </Text>
+                    <Text variant="body2" font="helvetica" align="left">
+                      {text}
+                    </Text>
+                  </article>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Container>
+  </section>
+);

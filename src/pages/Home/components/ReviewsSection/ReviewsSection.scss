@@ -1,33 +1,11 @@
 .home-reviews {
   width: 100%;
-  padding: 96px 0 110px;
-  background: #ffffff;
-  color: #3b3b3b;
-  font-family: var(--font-body);
+  padding: 60px 0 60px;
 
   &__header {
     text-align: center;
     margin-bottom: 56px;
   }
-
-  &__title {
-    font-family: var(--font-body);
-    margin: 0 0 12px;
-    font-size: 46px;
-    line-height: 1.4;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-
-  &__subtitle {
-    margin: 0;
-    font-family: var(--font-helvetica);
-    font-size: 18px;
-    line-height: 1.7;
-    color: #555555;
-  }
-
-  /* Слайдер */
 
   &__slider {
     position: relative;
@@ -99,23 +77,6 @@
     justify-content: space-between;
   }
 
-  &__quote {
-    margin: 0 0 18px;
-    font-family: var(--font-helvetica);
-    font-size: 20px;
-    line-height: 1.7;
-    color: #555555;
-  }
-
-  &__couple {
-    font-family: var(--font-body);
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
-  /* точки-пагинация */
-
   &__dots {
     display: flex;
     justify-content: center;
@@ -142,110 +103,5 @@
   &__buttons {
     display: flex;
     justify-content: center;
-  }
-
-  &__all-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 260px;
-    padding: 14px 34px;
-    border-radius: 999px;
-    border: 1px solid #222222;
-    background: transparent;
-    color: #222222;
-    font-family: var(--font-helvetica);
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.18s ease, color 0.18s ease,
-      box-shadow 0.18s ease, transform 0.12s ease;
-
-    &:hover {
-      background: #222222;
-      color: #ffffff;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
-      transform: translateY(-1px);
-    }
-
-    &:active {
-      transform: translateY(0);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-  }
-
-  /* адаптив */
-
-  @media (max-width: 1024px) {
-    padding: 80px 0 96px;
-
-    &__slide {
-      gap: 28px;
-    }
-
-    &__photo-wrap {
-      width: 220px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    &__slider {
-      grid-template-columns: minmax(0, 1fr);
-      row-gap: 20px;
-    }
-
-    &__arrow {
-      order: 3;
-      margin: 0 auto;
-    }
-
-    &__arrow--prev {
-      grid-row: 3;
-    }
-
-    &__arrow--next {
-      grid-row: 4;
-    }
-
-    &__slide {
-      grid-template-columns: minmax(0, 1fr);
-      text-align: left;
-    }
-
-    &__photo-wrap {
-      width: 260px;
-      margin: 0 auto;
-    }
-
-    &__content {
-      max-width: 100%;
-    }
-  }
-
-  @media (max-width: 600px) {
-    padding: 72px 0 84px;
-
-    &__title {
-      font-size: 24px;
-      letter-spacing: 0.16em;
-    }
-
-    &__subtitle {
-      font-size: 14px;
-    }
-
-    &__quote {
-      font-size: 15px;
-    }
-
-    &__all-button {
-      min-width: 220px;
-      padding: 12px 24px;
-      font-size: 12px;
-      letter-spacing: 0.16em;
-    }
   }
 }

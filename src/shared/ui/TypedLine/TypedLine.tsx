@@ -9,6 +9,7 @@ import {
 
 import './TypedLine.scss';
 import { Text } from '../Text';
+import type { TextColor } from '../Text/Text';
 
 interface Props {
   phrases: string[];
@@ -17,6 +18,7 @@ interface Props {
   pauseBeforeDelete?: number;
   pauseBeforeNext?: number;
   className?: string;
+  color?: TextColor;
 }
 
 export const TypedLine = ({
@@ -26,6 +28,7 @@ export const TypedLine = ({
   pauseBeforeDelete = PAUSE_BEFORE_DELETE,
   pauseBeforeNext = PAUSE_BEFORE_NEXT,
   className,
+  color = 'black',
 }: Props) => {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
@@ -82,12 +85,15 @@ export const TypedLine = ({
       aria-live="polite"
     >
       <span className="typed-line__text">
-        <Text variant="subtitle" color="white" font="helvetica" weight="light">
+        <Text variant="subtitle" color={color} font="helvetica" weight="light">
           {displayedText}
         </Text>
       </span>
 
-      <span className="typed-line__cursor" aria-hidden="true" />
+      <span
+        className={`typed-line__cursor typed-line__cursor--${color}`}
+        aria-hidden="true"
+      />
     </div>
   );
 };

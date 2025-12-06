@@ -1,6 +1,3 @@
-import { Container } from '@shared/ui/Container/Container';
-import { Slideshow } from '@shared/ui/Slideshow/Slideshow';
-import { TypedLine } from '@shared/ui/TypedLine/TypedLine';
 import {
   HOME_HERO_IMAGES,
   HOME_HERO_PHRASES,
@@ -8,7 +5,7 @@ import {
   HOME_HERO_SLIDE_CHANGE_INTERVAL,
 } from '@shared/constants';
 
-import { CtaButton, Text } from '@shared/ui';
+import { Container, CtaButton, Slideshow, Text, TypedLine } from '@shared/ui';
 import './HeroSection.scss';
 
 export const HeroSection = () => (
@@ -38,7 +35,7 @@ export const HeroSection = () => (
 
           <div className="home-hero__divider" />
 
-          <TypedLine phrases={HOME_HERO_PHRASES} />
+          <TypedLine phrases={HOME_HERO_PHRASES} color="white" />
 
           <div className="home-hero__cta">
             <CtaButton />

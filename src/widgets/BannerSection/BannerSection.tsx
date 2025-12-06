@@ -1,6 +1,10 @@
 import { useState } from 'react';
-import { Container } from '@shared/ui/Container/Container';
-import { TypedLine } from '@shared/ui/TypedLine/TypedLine';
+
+import InstagramIcon from '@assets/icons/instagram.svg';
+import TelegramIcon from '@assets/icons/telegram.svg';
+import VkIcon from '@assets/icons/vk.svg';
+import WhatsappIcon from '@assets/icons/whatsapp.svg';
+
 import {
   HOME_BANNER_EMAIL,
   HOME_BANNER_EMAIL_LINK,
@@ -12,10 +16,7 @@ import {
   HOME_BANNER_TYPED_PHRASES,
 } from '@shared/constants';
 
-import InstagramIcon from '@assets/icons/instagram.svg';
-import TelegramIcon from '@assets/icons/telegram.svg';
-import VkIcon from '@assets/icons/vk.svg';
-import WhatsappIcon from '@assets/icons/whatsapp.svg';
+import { Button, Container, Text, TextField, TypedLine } from '@shared/ui';
 
 import './BannerSection.scss';
 
@@ -45,23 +46,30 @@ export const BannerSection = () => {
       <Container>
         <div className="home-banner__grid">
           <div className="home-banner__left">
-            <h2 id="home-banner-title" className="home-banner__title">
+            <Text
+              variant="h3"
+              className="home-banner__title"
+              color="black"
+              weight="regular"
+              textTransform="uppercase"
+            >
               {HOME_BANNER_TITLE_LINES.map((line) => (
                 <span key={line}>{line}</span>
               ))}
-            </h2>
+            </Text>
 
-            <TypedLine
-              phrases={HOME_BANNER_TYPED_PHRASES}
-              className="home-banner__typed-line"
-            />
+            <TypedLine phrases={HOME_BANNER_TYPED_PHRASES} />
 
-            <a href={PHONE_LINK} className="home-banner__phone">
-              {HOME_BANNER_PHONE}
+            <a href={PHONE_LINK}>
+              <Text variant="h3" weight="light" font="helvetica">
+                {HOME_BANNER_PHONE}
+              </Text>
             </a>
 
-            <a href={HOME_BANNER_EMAIL_LINK} className="home-banner__email">
-              {HOME_BANNER_EMAIL}
+            <a href={HOME_BANNER_EMAIL_LINK}>
+              <Text variant="subtitle" weight="light" font="helvetica">
+                {HOME_BANNER_EMAIL}
+              </Text>
             </a>
 
             <div className="home-banner__socials" aria-label="Социальные сети">
@@ -96,70 +104,51 @@ export const BannerSection = () => {
             </div>
           </div>
 
-          {/* Правая колонка – форма */}
           <div className="home-banner__right">
-            <h3 className="home-banner__form-title">
-              {HOME_BANNER_FORM_TITLE}
-            </h3>
-
+            <Text variant="subtitle">{HOME_BANNER_FORM_TITLE}</Text>
             <form
               className="home-banner__form"
               onSubmit={handleSubmit}
               noValidate
             >
-              <label className="home-banner__field">
-                <span className="home-banner__field-label">Как вас зовут?</span>
-                <input
-                  className="home-banner__input"
-                  type="text"
-                  name="name"
-                  placeholder="Как вас зовут?*"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  autoComplete="name"
-                  required
-                />
-              </label>
+              <TextField
+                label="Имя"
+                placeholder="Как вас зовут?"
+                type="text"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                autoComplete="name"
+                required
+              />
 
-              <label className="home-banner__field">
-                <span className="home-banner__field-label">
-                  Ваш номер телефона
-                </span>
-                <input
-                  className="home-banner__input"
-                  type="tel"
-                  name="phone"
-                  placeholder="Ваш номер телефона*"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  autoComplete="tel"
-                  required
-                />
-              </label>
+              <TextField
+                label="Телефон"
+                placeholder="Введите номер телефона"
+                type="tel"
+                name="phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                autoComplete="tel"
+                required
+              />
 
-              <label className="home-banner__field">
-                <span className="home-banner__field-label">Ваш Email</span>
-                <input
-                  className="home-banner__input"
-                  type="email"
-                  name="email"
-                  placeholder="Ваш Email*"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  autoComplete="email"
-                  required
-                />
-              </label>
+              <TextField
+                label="Email"
+                placeholder="Введите адрес электронной почты"
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                autoComplete="email"
+                required
+              />
 
-              <p className="home-banner__required-note">
-                * — поле, обязательное для заполнения
-              </p>
-
-              <button className="home-banner__submit" type="submit">
+              <Button variant="primary" type="submit" size="lg">
                 ОТПРАВИТЬ
-              </button>
+              </Button>
 
-              <p className="home-banner__policy">{HOME_BANNER_POLICY_TEXT}</p>
+              <Text variant="caption">{HOME_BANNER_POLICY_TEXT}</Text>
             </form>
           </div>
         </div>

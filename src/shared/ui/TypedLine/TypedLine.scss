@@ -19,15 +19,14 @@
     width: 2px;
     height: 1.4em;
     margin-left: 4px;
-    background: rgba(255, 255, 255, 0.9);
     animation: typed-line-cursor-blink 1s steps(2, start) infinite;
-  }
 
-  @media (max-width: 960px) {
-    white-space: normal;
+    &--white {
+      background: $color-white;
+    }
 
-    &__text {
-      white-space: normal;
+    &--black {
+      background-color: $color-black;
     }
   }
 }

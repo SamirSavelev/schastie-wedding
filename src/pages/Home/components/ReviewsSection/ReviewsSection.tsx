@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Container } from '@shared/ui/Container/Container';
 import {
   HOME_REVIEWS_ITEMS,
@@ -8,33 +7,35 @@ import {
 } from '@shared/constants';
 
 import './ReviewsSection.scss';
+import { Text } from '@shared/ui';
+import { Button } from '@shared/ui/Button/Button';
 
 export const ReviewsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const total = HOME_REVIEWS_ITEMS.length;
-  const activeReview = HOME_REVIEWS_ITEMS[activeIndex];
+  const { image, couple, quote } = HOME_REVIEWS_ITEMS[activeIndex];
 
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + total) % total);
-  };
+  const handlePrev = () => setActiveIndex((prev) => (prev - 1 + total) % total);
 
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % total);
-  };
+  const handleNext = () => setActiveIndex((prev) => (prev + 1) % total);
 
-  const handleDotClick = (index: number) => {
-    setActiveIndex(index);
-  };
-
+  const handleDotClick = (index: number) => setActiveIndex(index);
   return (
     <section className="home-reviews" aria-labelledby="home-reviews-title">
       <Container>
         <header className="home-reviews__header">
-          <h2 id="home-reviews-title" className="home-reviews__title">
+          <Text
+            variant="h3"
+            color="black"
+            textTransform="uppercase"
+            align="center"
+          >
             {HOME_REVIEWS_TITLE}
-          </h2>
-          <p className="home-reviews__subtitle">{HOME_REVIEWS_SUBTITLE}</p>
+          </Text>
+          <Text variant="body1" font="helvetica" weight="light" align="center">
+            {HOME_REVIEWS_SUBTITLE}
+          </Text>
         </header>
 
         <div className="home-reviews__slider">
@@ -46,19 +47,18 @@ export const ReviewsSection = () => {
           >
             ‹
           </button>
-
           <article className="home-reviews__slide">
             <div className="home-reviews__photo-wrap">
-              <img
-                className="home-reviews__photo"
-                src={activeReview.image}
-                alt={activeReview.couple}
-              />
+              <img className="home-reviews__photo" src={image} alt={couple} />
             </div>
 
             <div className="home-reviews__content">
-              <p className="home-reviews__quote">{activeReview.quote}</p>
-              <p className="home-reviews__couple">{activeReview.couple}</p>
+              <Text variant="body1" font="helvetica" weight="light">
+                {quote}
+              </Text>
+              <Text variant="body1" textTransform="uppercase" weight="bold">
+                {couple}
+              </Text>
             </div>
           </article>
 
@@ -71,7 +71,6 @@ export const ReviewsSection = () => {
             ›
           </button>
         </div>
-
         <div className="home-reviews__dots" aria-hidden="true">
           {HOME_REVIEWS_ITEMS.map((item, index) => (
             <button
@@ -87,9 +86,9 @@ export const ReviewsSection = () => {
         </div>
 
         <div className="home-reviews__buttons">
-          <Link to="/reviews" className="home-reviews__all-button">
+          <Button as="link" to="/reviews" variant="outline" size="lg">
             Читать все отзывы
-          </Link>
+          </Button>
         </div>
       </Container>
     </section>
