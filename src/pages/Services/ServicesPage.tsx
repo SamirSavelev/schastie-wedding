@@ -7,6 +7,7 @@ import {
   ServicesPricesSection,
   ServicesGuaranteesSection,
   ImageMarquee,
+  ServicesMagicSection,
 } from './components';
 
 export const ServicesPage = () => (
@@ -21,6 +22,7 @@ export const ServicesPage = () => (
     <ServicesChatSection />
     <ServicesPricesSection />
     <ServicesGuaranteesSection />
+    <ServicesMagicSection />
     <ImageMarquee />
     <BannerSection />
   </>
