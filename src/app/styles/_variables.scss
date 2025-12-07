@@ -29,6 +29,7 @@ $font-helvetica: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif
 $bp-lg: 1200px;
 $bp-md: 960px;
 $bp-sm: 600px;
+$bp-xs: 400px;
 
 :root {
   --container-max: #{$container-max};
@@ -53,20 +54,17 @@ $bp-sm: 600px;
 
   --font-body: #{$font-body};
   --font-helvetica: #{$font-helvetica};
+
+  @media (max-width: 900px) {
+    --container-max: 100%;
+    --header-height: 60px;
+    --footer-height: 60px;
+  }
+
+  @media (max-width: 700px) {
+  }
+
+  /* Самые маленькие (360–400px) */
+  @media (max-width: $bp-xs) {
+  }
 }
-
-// @media (max-width: $bp-md) {
-//   :root {
-//     --container-max: 100%;
-//     --header-top-height: 52px;
-//     --header-nav-height: 52px;
-//   }
-// }
-
-// @media (max-width: $bp-sm) {
-//   :root {
-//     --header-top-height: 48px;
-//     --header-nav-height: 48px;
-//     --header-top-padding: 8px;
-//   }
-// }
