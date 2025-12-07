@@ -1,0 +1,1 @@
+export { PortfolioWedding } from './PortfolioWedding';

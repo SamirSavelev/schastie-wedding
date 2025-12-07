@@ -1,0 +1,1 @@
+export { ServicesPricesSection } from './ServicesPricesSection';

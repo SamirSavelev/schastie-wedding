@@ -1,19 +1,10 @@
-import { Link } from 'react-router-dom';
+import type { FC } from 'react';
+import type { PortfolioWedding } from '@shared/constants';
+import { Button, Text } from '@shared/ui';
 import './WeddingPreview.scss';
 
-interface WeddingPreviewProps {
-  imageUrl: string;
-  coupleName: string;
-  concept: string;
-  placeTitle: string;
-  placeSubtitle: string;
-  guests: string;
-  team: string;
-  budget: string;
-  to: string;
-}
-
-export const WeddingPreview = ({
+export const WeddingPreview: FC<PortfolioWedding> = ({
+  id,
   imageUrl,
   coupleName,
   concept,
@@ -22,8 +13,36 @@ export const WeddingPreview = ({
   guests,
   team,
   budget,
-  to,
-}: WeddingPreviewProps) => {
+}) => {
+  const INFO = [
+    {
+      id: 1,
+      label: 'Место проведения',
+      value: (
+        <>
+          {placeTitle}
+          <br />
+          {placeSubtitle}
+        </>
+      ),
+    },
+    {
+      id: 2,
+      label: 'Количество гостей',
+      value: <>{guests}</>,
+    },
+    {
+      id: 3,
+      label: 'Команда',
+      value: <>{team}</>,
+    },
+    {
+      id: 4,
+      label: 'Бюджет',
+      value: <>{budget}</>,
+    },
+  ];
+
   return (
     <section className="wedding-preview">
       <div className="wedding-preview__image-wrapper">
@@ -35,55 +54,33 @@ export const WeddingPreview = ({
       </div>
 
       <div className="wedding-preview__content">
-        <h2 className="wedding-preview__title">{coupleName}</h2>
-        <p className="wedding-preview__concept">{concept}</p>
+        <Text
+          variant="h3"
+          textTransform="uppercase"
+          className="wedding-preview__title"
+        >
+          {coupleName}
+        </Text>
+        <Text variant="subtitle" className="wedding-preview__concept">
+          {concept}
+        </Text>
 
         <div className="wedding-preview__info-grid">
-          <div className="wedding-preview__info-item">
-            <div className="wedding-preview__icon" aria-hidden="true" />
-            <div className="wedding-preview__info-text">
-              <div className="wedding-preview__info-label">
-                Место проведения
-              </div>
-              <div className="wedding-preview__info-value">
-                {placeTitle}
-                <br />
-                {placeSubtitle}
+          {INFO.map(({ label, value, id }) => (
+            <div key={id} className="wedding-preview__info-item">
+              <div className="wedding-preview__icon" aria-hidden="true" />
+              <div className="wedding-preview__info-text">
+                <Text>{label}</Text>
+                <Text weight="bold">{value}</Text>
               </div>
             </div>
-          </div>
-
-          <div className="wedding-preview__info-item">
-            <div className="wedding-preview__icon" aria-hidden="true" />
-            <div className="wedding-preview__info-text">
-              <div className="wedding-preview__info-label">
-                Количество гостей
-              </div>
-              <div className="wedding-preview__info-value">{guests}</div>
-            </div>
-          </div>
-
-          <div className="wedding-preview__info-item">
-            <div className="wedding-preview__icon" aria-hidden="true" />
-            <div className="wedding-preview__info-text">
-              <div className="wedding-preview__info-label">Команда</div>
-              <div className="wedding-preview__info-value">{team}</div>
-            </div>
-          </div>
-
-          <div className="wedding-preview__info-item">
-            <div className="wedding-preview__icon" aria-hidden="true" />
-            <div className="wedding-preview__info-text">
-              <div className="wedding-preview__info-label">Бюджет</div>
-              <div className="wedding-preview__info-value">{budget}</div>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="wedding-preview__actions">
-          <Link to={to} className="wedding-preview__button">
+          <Button as="link" to={`/portfolio/${id}`} variant="black">
             Смотреть свадьбу
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

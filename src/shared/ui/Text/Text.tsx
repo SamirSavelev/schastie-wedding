@@ -16,7 +16,7 @@ export type TextVariant =
 
 export type TextFont = 'body' | 'helvetica';
 
-export type TextColor = 'white' | 'black';
+export type TextColor = 'white' | 'black' | 'pink';
 
 export type TextWeight = 'light' | 'regular' | 'medium' | 'semibold' | 'bold';
 

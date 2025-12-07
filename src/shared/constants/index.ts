@@ -8,6 +8,16 @@ import TelegramIcon from '@assets/icons/telegram.svg';
 import VkIcon from '@assets/icons/vk.svg';
 import WhatsappIcon from '@assets/icons/whatsapp.svg';
 import PhoneIcon from '@assets/icons/phone.svg';
+import coupleMV from '@assets/portfolio/-269.jpg.webp';
+import coupleAS from '@assets/portfolio/0209.jpg.webp';
+import coupleDN from '@assets/portfolio/123A5147.jpg.webp';
+import articleImage1 from '@assets/blog/articles/article-1.webp';
+import articleImage2 from '@assets/blog/articles/article-2.webp';
+import articleImage3 from '@assets/blog/articles/article-3.webp';
+import articleImage4 from '@assets/blog/articles/article-4.webp';
+import articleImage5 from '@assets/blog/articles/article-5.webp';
+import articleImage6 from '@assets/blog/articles/article-6.webp';
+import type { WeddingId } from '@pages/PortfolioWedding/constants';
 
 // ССЫЛКИ НА СВЯЗЬ
 export const PHONE_LINK = 'tel:+79372899055'; // телефонный номер для звонка
@@ -372,8 +382,6 @@ export const SERVICES_CHAT_ORGANIZER_LIST: string[] = [
   'Координация на весь период свадебного дня, а также при необходимости в течение всего свадебного уикенда.',
 ];
 
-// src/shared/constants/index.ts
-
 export const SERVICES_PRICES_TITLE = 'Сколько стоит свадьба?';
 
 export const SERVICES_PRICES_LEAD =
@@ -387,9 +395,21 @@ export interface ServicesPriceItem {
   vip: string;
   comment: string;
 }
+type ServicesPricesColumnId = 'name' | 'medium' | 'pro' | 'vip' | 'comment';
 
+interface ServicesPricesColumn {
+  id: ServicesPricesColumnId;
+  label: string;
+}
+
+export const SERVICES_PRICES_COLUMNS: ServicesPricesColumn[] = [
+  { id: 'name', label: 'Услуга' },
+  { id: 'medium', label: 'Medium' },
+  { id: 'pro', label: 'Pro' },
+  { id: 'vip', label: 'Vip' },
+  { id: 'comment', label: 'Комментарии' },
+];
 export const SERVICES_PRICES_ITEMS: ServicesPriceItem[] = [
-  // Базовые услуги
   {
     id: 'banquet',
     name: 'Банкет',
@@ -473,8 +493,6 @@ export const SERVICES_PRICES_ITEMS: ServicesPriceItem[] = [
     vip: '300 000',
     comment: 'Цена зависит от артистов и продолжительности номеров.',
   },
-
-  // Танец, торт, полиграфия, оформление
   {
     id: 'wedding-dance',
     name: 'Свадебный танец',
@@ -562,8 +580,6 @@ export const SERVICES_PRICES_ITEMS: ServicesPriceItem[] = [
     vip: '15 000',
     comment: 'Цена зависит от видов цветов, их сезонности и формы букета.',
   },
-
-  // Техника
   {
     id: 'sound',
     name: 'Техническое оснащение: звуковое оборудование',
@@ -620,9 +636,8 @@ export const SERVICES_PRICES_ITEMS: ServicesPriceItem[] = [
   },
 ];
 
-// src/shared/constants/index.ts
-
-// ... существующие импорты/константы
+export const SERVICE_TABLE_POST_NOTE =
+  'Все указанные суммы являются ориентировочными и помогают сформировать общее представление о бюджете. Точные стоимости рассчитываются индивидуально после первой встречи и согласования концепции свадьбы.';
 
 export const SERVICES_MAGIC_TITLE =
   'Работа организатора — это магия и немного чисел';
@@ -702,3 +717,312 @@ export const NETWORKS = [
     },
   },
 ];
+
+export interface ServicesGuaranteeItem {
+  id: string;
+  title: string;
+  description: string;
+  note: string;
+}
+
+export const SERVICES_GUARANTEES_TITLE = 'Мы даём гарантии!';
+
+export const SERVICES_GUARANTEES_ITEMS: ServicesGuaranteeItem[] = [
+  {
+    id: 'success',
+    title: 'Гарантия успеха',
+    description:
+      'Если большинство гостей скажут, что им не нравится пребывание на вашей свадьбе, мы вернём вам деньги за организацию свадьбы.',
+    note: '* Возврат денежных средств возможен при составлении жалоб от 50% гостей в день вашей свадьбы.',
+  },
+  {
+    id: 'organizer',
+    title: 'Гарантия организатора',
+    description:
+      'Если ваш персональный свадебный организатор не выполнит условия договора на оказание услуг, мы возьмём на себя все оставшиеся расходы по вашей свадьбе.',
+    note: '* Нарушение должно касаться одного из пунктов акта выполненных работ, который является приложением к договору.',
+  },
+  {
+    id: 'money-back',
+    title: 'Гарантия возврата денег',
+    description:
+      'Если вам не понравится ваша свадьба, мы вернём вам деньги и уедем с мероприятия со всей своей командой.',
+    note: `* Жалобы на работу всей команды должны быть зафиксированы на бумаге с подписями молодожёнов и их родителей.`,
+  },
+];
+
+export const IMAGE_MARQUEE_VIEWER_ARIA_LABEL =
+  'Просмотр фотографий в полноэкранном режиме';
+
+export const IMAGE_MARQUEE_VIEWER_CLOSE_LABEL = 'Закрыть просмотр';
+
+export const IMAGE_MARQUEE_VIEWER_PREV_LABEL = 'Предыдущее фото';
+
+export const IMAGE_MARQUEE_VIEWER_NEXT_LABEL = 'Следующее фото';
+
+export const MARQUEE_IMAGES = [
+  { id: '1', src: heroImage1, alt: 'Свадьба 1' },
+  { id: '2', src: heroImage2, alt: 'Свадьба 2' },
+  { id: '3', src: heroImage3, alt: 'Свадьба 3' },
+  { id: '4', src: heroImage4, alt: 'Свадьба 4' },
+  { id: '5', src: heroImage1, alt: 'Свадьба 5' },
+  { id: '6', src: heroImage2, alt: 'Свадьба 6' },
+  { id: '7', src: heroImage3, alt: 'Свадьба 7' },
+  { id: '8', src: heroImage4, alt: 'Свадьба 8' },
+  { id: '9', src: heroImage1, alt: 'Свадьба 9' },
+  { id: '10', src: heroImage2, alt: 'Свадьба 10' },
+  { id: '11', src: heroImage3, alt: 'Свадьба 11' },
+  { id: '12', src: heroImage4, alt: 'Свадьба 12' },
+  { id: '13', src: heroImage1, alt: 'Свадьба 13' },
+  { id: '14', src: heroImage2, alt: 'Свадьба 14' },
+  { id: '15', src: heroImage3, alt: 'Свадьба 15' },
+  { id: '16', src: heroImage4, alt: 'Свадьба 16' },
+  { id: '17', src: heroImage1, alt: 'Свадьба 17' },
+  { id: '18', src: heroImage2, alt: 'Свадьба 18' },
+  { id: '19', src: heroImage3, alt: 'Свадьба 19' },
+  { id: '20', src: heroImage4, alt: 'Свадьба 20' },
+];
+
+export interface PortfolioWedding {
+  id: WeddingId;
+  imageUrl: string;
+  coupleName: string;
+  concept: string;
+  placeTitle: string;
+  placeSubtitle: string;
+  guests: string;
+  team: string;
+  budget: string;
+}
+export const PORTFOLIO_WEDDINGS_PREVIEWS: Array<PortfolioWedding> = [
+  {
+    id: 'mihail-i-vera',
+    imageUrl: coupleMV,
+    coupleName: 'Михаил и Вера',
+    concept: 'Концепция «Я тебя найду везде»',
+    placeTitle: 'Загородная площадка',
+    placeSubtitle: 'Hide',
+    guests: '101 человек',
+    team: '63 специалиста',
+    budget: '> 4 млн. руб.',
+  },
+  {
+    id: 'aleksandr-i-elizaveta',
+    imageUrl: coupleAS,
+    coupleName: 'Алексей и Софья',
+    concept: 'Концепция «Город в огнях»',
+    placeTitle: 'Панорамный ресторан',
+    placeSubtitle: 'Терраса на крыше',
+    guests: '80 человек',
+    team: '48 специалистов',
+    budget: '≈ 3 млн. руб.',
+  },
+  {
+    id: 'yan-i-natalya',
+    imageUrl: coupleDN,
+    coupleName: 'Дмитрий и Наталья',
+    concept: 'Концепция «Сад мечты»',
+    placeTitle: 'Усадьба за городом',
+    placeSubtitle: 'Теплая оранжерея',
+    guests: '65 человек',
+    team: '37 специалистов',
+    budget: '≈ 2,5 млн. руб.',
+  },
+];
+
+export const PORTFOLIO_DETAILS =
+  'Наше портфолио — не просто статичная галерея. Мы рассказываем о наших свадьбах в виде подробных кейсов: увлекательные истории любви, уникальные концепции, эскизы декора, комментарии от свадебных специалистов, фото и видео-экстейджи и многое другое. Приятного просмотра!';
+
+export interface ArticlePreview {
+  id: number;
+  title: string;
+  imageUrl: string;
+  to: string;
+}
+export const ARTICLES_PREVIEWS: Array<ArticlePreview> = [
+  {
+    id: 1,
+    title: 'СВАДЕБНЫЙ ОРГАНИЗАТОР И КООРДИНАТОР. В ЧЕМ ОТЛИЧИЯ?',
+    imageUrl: articleImage1,
+    to: '/blog/svadebnyy-organizator-i-koordinator',
+  },
+  {
+    id: 2,
+    title: 'БАНКЕТ ИЛИ ФУРШЕТ. ЧТО ВЫБРАТЬ?',
+    imageUrl: articleImage2,
+    to: '/blog/banket-ili-furshet',
+  },
+  {
+    id: 3,
+    title: 'СВАДЬБА В РЕСТОРАНЕ «ВОДА»',
+    imageUrl: articleImage3,
+    to: '/blog/svadba-v-restorane-voda',
+  },
+  {
+    id: 4,
+    title: 'БЕЛАЯ СВАДЬБА',
+    imageUrl: articleImage4,
+    to: '/blog/belaya-svadba',
+  },
+  {
+    id: 5,
+    title: 'СВАДЬБА НА СВИЯЖСКИХ ХОЛМАХ',
+    imageUrl: articleImage5,
+    to: '/blog/svadba-na-sviyazhskih-holmah',
+  },
+  {
+    id: 6,
+    title: 'КАК ВЫБРАТЬ СТИЛЬ СВАДЬБЫ',
+    imageUrl: articleImage6,
+    to: '/blog/kak-vybrat-stil-svadby',
+  },
+];
+
+// --- REVIEWS PAGE (СТРАНИЦА ОТЗЫВОВ) ---
+
+export interface ReviewGalleryImage {
+  id: string;
+  src: string;
+  alt?: string;
+}
+
+export interface ReviewItemFull {
+  id: string;
+  couple: string;
+  weddingDate: string;
+  mainImage: string;
+  review: string;
+  gallery: ReviewGalleryImage[];
+}
+
+export const REVIEWS_PAGE_TITLE = 'Отзывы';
+export const REVIEWS_PAGE_SUBTITLE =
+  'Истории наших пар, слова благодарности и детали свадебных дней.';
+
+export const REVIEWS_PAGE_BOTTOM_TEXT = 'Истории наших пар';
+
+export const REVIEWS_VIEWER_ARIA_LABEL = 'Просмотр фотографий со свадьбы';
+export const REVIEWS_VIEWER_CLOSE_LABEL = 'Закрыть просмотр';
+export const REVIEWS_VIEWER_PREV_LABEL = 'Предыдущее фото';
+export const REVIEWS_VIEWER_NEXT_LABEL = 'Следующее фото';
+
+export const REVIEWS_ITEMS: ReviewItemFull[] = [
+  {
+    id: 'viktor-anna',
+    couple: 'Виктор и Анна',
+    weddingDate: '12 августа 2023 года',
+    mainImage: heroImage1,
+    review:
+      'Ксюша и команда «Счастье Wedding» сняли с нас 90% забот. Организация, атмосфера, подрядчики — всё было продумано до мелочей. В день свадьбы мы просто наслаждались праздником, не думая ни о тайминге, ни о сценарии. Этот день мы до сих пор вспоминаем с улыбкой.',
+    gallery: [
+      {
+        id: 'viktor-anna-1',
+        src: heroImage1,
+        alt: 'Виктор и Анна — выездная церемония',
+      },
+      {
+        id: 'viktor-anna-2',
+        src: heroImage2,
+        alt: 'Виктор и Анна — первый танец',
+      },
+      {
+        id: 'viktor-anna-3',
+        src: heroImage3,
+        alt: 'Виктор и Анна — детали декора',
+      },
+    ],
+  },
+  {
+    id: 'ivan-anna',
+    couple: 'Иван и Анна',
+    weddingDate: '27 мая 2022 года',
+    mainImage: heroImage2,
+    review:
+      'Мы мечтали о тёплой, камерной свадьбе без лишнего пафоса. Команда «Счастье Wedding» предложила концепцию, в которую мы влюбились с первого же эскиза. В день свадьбы всё шло настолько спокойно и гармонично, что мы просто жили моментом и наслаждались каждым кадром.',
+    gallery: [
+      {
+        id: 'ivan-anna-1',
+        src: heroImage2,
+        alt: 'Иван и Анна — утро невесты',
+      },
+      {
+        id: 'ivan-anna-2',
+        src: heroImage3,
+        alt: 'Иван и Анна — церемония',
+      },
+      {
+        id: 'ivan-anna-3',
+        src: heroImage4,
+        alt: 'Иван и Анна — ужин с гостями',
+      },
+    ],
+  },
+  {
+    id: 'dmitry-elena',
+    couple: 'Дмитрий и Елена',
+    weddingDate: '3 июня 2021 года',
+    mainImage: heroImage3,
+    review:
+      'Особенно поразила работа с деталями: от пригласительных до плана рассадки всё было про нас. Отдельное спасибо за выездную регистрацию — гости и смеялись, и плакали. Этот день стал по-настоящему семейным событием, а не просто красивым мероприятием.',
+    gallery: [
+      {
+        id: 'dmitry-elena-1',
+        src: heroImage3,
+        alt: 'Дмитрий и Елена — клятвы у арки',
+      },
+      {
+        id: 'dmitry-elena-2',
+        src: heroImage1,
+        alt: 'Дмитрий и Елена — прогулка',
+      },
+      {
+        id: 'dmitry-elena-3',
+        src: heroImage4,
+        alt: 'Дмитрий и Елена — праздничный зал',
+      },
+    ],
+  },
+  {
+    id: 'kirill-olga',
+    couple: 'Кирилл и Ольга',
+    weddingDate: '18 сентября 2020 года',
+    mainImage: heroImage4,
+    review:
+      'Мы готовились к свадьбе всего два месяца и думали, что это невозможно. Но «Счастье Wedding» доказали обратное. Чёткий план, понятная смета, адекватные сроки — ни одной накладки в день свадьбы. Всё прошло именно так, как мы хотели, и даже лучше.',
+    gallery: [
+      {
+        id: 'kirill-olga-1',
+        src: heroImage4,
+        alt: 'Кирилл и Ольга — выездная церемония',
+      },
+      {
+        id: 'kirill-olga-2',
+        src: heroImage2,
+        alt: 'Кирилл и Ольга — банкет',
+      },
+      {
+        id: 'kirill-olga-3',
+        src: heroImage1,
+        alt: 'Кирилл и Ольга — детали декора',
+      },
+    ],
+  },
+];
+
+export const ABOUT_TITLE = 'О нас';
+
+export const ABOUT_LEAD =
+  'Команда «Счастье Wedding» — опытные организаторы, дизайнеры и координаторы.';
+
+export const ABOUT_MISSION =
+  'Каждый человек приходит в этот мир со своей миссией. Высшее и нескончаемое счастье — это понять, зачем ты был рождён.';
+
+export const ABOUT_PERSON_ELENA_NAME = 'Тихонова Елена';
+export const ABOUT_PERSON_ELENA_ROLE = 'Организатор';
+export const ABOUT_PERSON_ELENA_QUOTE =
+  '«Что для меня “Счастье”? Это не просто любимая работа — это удовольствие делать людей вокруг чуточку счастливее, радовать и удивлять. Ежедневно нас окружает красота и любовь, настоящие и искренние чувства двух сердец, которые бьются в унисон. Команда профессионалов, с которой не первый год работает “Счастье” — это люди, горящие идеей, вдохновлённые творчеством. И для меня большая удача — быть в этом мире, создавать сказку для вас!»';
+
+export const ABOUT_PERSON_LYUDMILA_NAME = 'Соснова Людмила';
+export const ABOUT_PERSON_LYUDMILA_ROLE = 'Организатор';
+export const ABOUT_PERSON_LYUDMILA_QUOTE =
+  '«Много ли нужно человеку для полного счастья? Одна лишь любовь может сделать человека безмерно счастливым — это точно. С самого детства я верила в это волшебное чувство и, повзрослев, убедилась, что нет прекраснее влюблённых глаз. Занимаясь любимым делом, я каждый день не только чувствую любовь, я её вижу, прикасаюсь к ней, и самым счастливым для меня всегда остаётся знакомство с новой историей любви, воплощение которой доверяют нашей команде. Профессионализм, красота и любовь — залог моего счастья.»';

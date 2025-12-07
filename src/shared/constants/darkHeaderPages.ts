@@ -4,4 +4,6 @@ export const darkHeaderPages = [
   '/blog/svadebnyy-organizator-i-koordinator',
   '/portfolio',
   '/services',
+  '/reviews',
+  '/about',
 ];

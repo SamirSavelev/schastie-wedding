@@ -1,126 +1,94 @@
-@use '../../app/styles/variables' as *;
-
 .wedding-preview {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   gap: 60px;
   align-items: center;
-
   padding: 80px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 
-  @media (max-width: 960px) {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 40px;
-    padding: 56px 0;
+  &__image-wrapper {
+    border-radius: 24px;
+    overflow: hidden;
   }
-}
 
-.wedding-preview__image-wrapper {
-  border-radius: 24px;
-  overflow: hidden;
-}
-
-.wedding-preview__image {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.wedding-preview__content {
-  color: #323232;
-}
-
-.wedding-preview__title {
-  margin: 0 0 16px;
-  font-size: 34px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.wedding-preview__concept {
-  margin: 0 0 32px;
-  font-size: 22px;
-  line-height: 1.6;
-}
-
-.wedding-preview__info-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px 40px;
-  margin-bottom: 40px;
-
-  @media (max-width: 720px) {
-    grid-template-columns: minmax(0, 1fr);
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
-}
 
-.wedding-preview__info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.wedding-preview__icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 999px;
-  border: 1px solid #bdbdbd;
-  position: relative;
-  margin-top: 2px;
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 4px;
-    top: 4px;
-    width: 10px;
-    height: 6px;
-    border-left: 1px solid #bdbdbd;
-    border-bottom: 1px solid #bdbdbd;
-    transform: rotate(-45deg);
+  &__title {
+    margin: 0 0 16px;
   }
-}
 
-.wedding-preview__info-text {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
+  &__concept {
+    margin: 0 0 32px;
+  }
 
-.wedding-preview__info-label {
-  font-size: 18px;
-  text-transform: none;
-}
+  &__info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 40px;
+    margin-bottom: 40px;
+  }
 
-.wedding-preview__info-value {
-  font-size: 18px;
-  color: #555555;
-}
+  &__info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
 
-.wedding-preview__actions {
-  margin-top: 12px;
-}
+  &__icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    border: 1px solid #bdbdbd;
+    position: relative;
+    margin-top: 2px;
 
-.wedding-preview__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 40px;
-  border-radius: 0;
-  border: 1px solid #2f2f2f;
-  background: transparent;
-  color: #2f2f2f;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 4px;
+      width: 10px;
+      height: 6px;
+      border-left: 1px solid #bdbdbd;
+      border-bottom: 1px solid #bdbdbd;
+      transform: rotate(-45deg);
+    }
+  }
 
-  &:hover {
-    background: #2f2f2f;
-    color: #ffffff;
+  &__info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__actions {
+    margin-top: 12px;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 40px;
+    border-radius: 0;
+    border: 1px solid #2f2f2f;
+    background: transparent;
+    color: #2f2f2f;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background: #2f2f2f;
+      color: #ffffff;
+    }
   }
 }

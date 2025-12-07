@@ -1,41 +1,43 @@
+import type { FC } from 'react';
+import { CtaButton, Text } from '@shared/ui';
+
 import './PageHeader.scss';
 
 interface Props {
   backgroundImage: string;
   title: string;
   bottomText: string;
-  onCtaClick?: () => void;
 }
 
-export const PageHeader = ({
+export const PageHeader: FC<Props> = ({
   backgroundImage,
   title,
   bottomText,
-  onCtaClick,
-}: Props) => {
-  return (
-    <div
-      className="page-header"
-      role="banner"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
-      <div className="page-header__overlay" />
+}) => (
+  <div
+    className="page-header"
+    role="banner"
+    style={{ backgroundImage: `url(${backgroundImage})` }}
+  >
+    <div className="page-header__overlay" />
 
-      <div className="page-header__content">
-        <h1 className="page-header__title">{title}</h1>
+    <div className="page-header__content">
+      <Text variant="h1" color="white" textTransform="uppercase">
+        {title}
+      </Text>
 
-        <button
-          className="page-header__cta-button"
-          type="button"
-          onClick={onCtaClick}
-        >
-          Записаться на встречу
-        </button>
-      </div>
-
-      <div className="page-header__circle">
-        <span className="page-header__circle-text">{bottomText}</span>
-      </div>
+      <CtaButton />
     </div>
-  );
-};
+
+    <div className="page-header__circle">
+      <Text
+        variant="body1"
+        color="black"
+        textTransform="uppercase"
+        align="center"
+      >
+        {bottomText}
+      </Text>
+    </div>
+  </div>
+);

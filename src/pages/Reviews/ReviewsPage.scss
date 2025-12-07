@@ -1,0 +1,26 @@
+.page--reviews {
+}
+
+.reviews {
+  padding: 120px 0 120px;
+
+  &__intro {
+    max-width: 760px;
+    margin: 0 auto 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    letter-spacing: 0.18em;
+  }
+
+  &__subtitle {
+    color: #6a6a6a;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+}

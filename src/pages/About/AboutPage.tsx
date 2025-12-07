@@ -1,75 +1,127 @@
-import { Container } from '@shared/ui/Container/Container';
 import elena from '@assets/team/elena.png';
 import lyudmila from '@assets/team/lyudmila.png';
 import './AboutPage.scss';
 
+import headerImage from '@assets/we/header.jpg';
+import {
+  ABOUT_TITLE,
+  ABOUT_LEAD,
+  ABOUT_MISSION,
+  ABOUT_PERSON_ELENA_NAME,
+  ABOUT_PERSON_ELENA_ROLE,
+  ABOUT_PERSON_ELENA_QUOTE,
+  ABOUT_PERSON_LYUDMILA_NAME,
+  ABOUT_PERSON_LYUDMILA_ROLE,
+  ABOUT_PERSON_LYUDMILA_QUOTE,
+} from '@shared/constants';
+import { PageHeader } from '@widgets';
+import { Container, Text } from '@shared/ui';
+
 export const AboutPage = () => (
-  <section className="about">
-    <Container>
-      <h1 className="about__title">О нас</h1>
-      <p className="about__lead">
-        Команда «Счастья» — опытные организаторы, дизайнеры и координаторы.
-      </p>
+  <>
+    <div className="about__header">
+      <PageHeader
+        backgroundImage={headerImage}
+        title={ABOUT_TITLE}
+        bottomText="Философия агентства «Счастье»"
+      />
+    </div>
 
-      <div className="about__mission">
-        Каждый человек приходит в этот мир со своей миссией. Высшее и
-        нескончаемое счастье – это понять, зачем ты был рожден.
-      </div>
-
+    <Container className="content">
+      <Text
+        className="about__lead"
+        variant="body2"
+        font="helvetica"
+        align="center"
+      >
+        {ABOUT_LEAD}
+      </Text>
+      <Text
+        className="about__mission"
+        variant="body1"
+        font="helvetica"
+        align="center"
+        weight="light"
+      >
+        {ABOUT_MISSION}
+      </Text>
       <div className="about__team">
-        {/* Елена */}
         <article className="person">
           <div className="person__media">
             <div className="person__photo">
               <img
                 src={elena}
-                alt="Тихонова Елена — Организатор"
+                alt={`${ABOUT_PERSON_ELENA_NAME} — ${ABOUT_PERSON_ELENA_ROLE}`}
                 loading="lazy"
               />
             </div>
           </div>
           <div className="person__content">
-            <h3 className="person__name">Тихонова Елена</h3>
-            <p className="person__role">Организатор</p>
-            <blockquote className="person__quote">
-              «Что для меня «Счастье»? Это не просто любимая работа — это
-              удовольствие делать людей вокруг чуточку счастливее, радовать и
-              удивлять. Ежедневно нас окружает красота и любовь, настоящие и
-              искренние чувства двух сердец, которые бьются в унисон. Команда
-              профессионалов, с которой не первый год работает «Счастье» — это
-              люди, горящие идеей, вдохновленные творчеством. И для меня большая
-              удача — быть в этом мире, создавать сказку для вас!»
-            </blockquote>
+            <Text
+              className="person__name"
+              variant="body1"
+              font="body"
+              weight="semibold"
+            >
+              {ABOUT_PERSON_ELENA_NAME}
+            </Text>
+            <Text
+              className="person__role"
+              variant="body3"
+              font="helvetica"
+              weight="medium"
+            >
+              {ABOUT_PERSON_ELENA_ROLE}
+            </Text>
+            <Text
+              className="person__quote"
+              variant="body2"
+              font="helvetica"
+              weight="regular"
+            >
+              {ABOUT_PERSON_ELENA_QUOTE}
+            </Text>
           </div>
         </article>
 
-        {/* Людмила (зеркально) */}
         <article className="person person--reverse">
           <div className="person__media">
             <div className="person__photo">
               <img
                 src={lyudmila}
-                alt="Соснова Людмила — Организатор"
+                alt={`${ABOUT_PERSON_LYUDMILA_NAME} — ${ABOUT_PERSON_LYUDMILA_ROLE}`}
                 loading="lazy"
               />
             </div>
           </div>
           <div className="person__content">
-            <h3 className="person__name">Соснова Людмила</h3>
-            <p className="person__role">Организатор</p>
-            <blockquote className="person__quote">
-              «Много ли нужно человеку для полного счастья? Одна лишь любовь
-              может сделать человека безмерно счастливым — это точно. С самого
-              детства я верила в это волшебное чувство и, повзрослев, убедилась,
-              что нет прекраснее влюбленных глаз. Занимаясь любимым делом, я
-              каждый день не только чувствую любовь, я её вижу, прикасаюсь к
-              ней, и самым счастливым для меня всегда остаётся знакомство с
-              новой историей любви, воплощение которой доверяют нашей команде.
-              Профессионализм, красота и любовь — залог моего счастья.»
-            </blockquote>
+            <Text
+              className="person__name"
+              variant="body1"
+              font="body"
+              weight="semibold"
+            >
+              {ABOUT_PERSON_LYUDMILA_NAME}
+            </Text>
+            <Text
+              className="person__role"
+              variant="body3"
+              font="helvetica"
+              weight="medium"
+            >
+              {ABOUT_PERSON_LYUDMILA_ROLE}
+            </Text>
+            <Text
+              className="person__quote"
+              variant="body2"
+              font="helvetica"
+              weight="regular"
+            >
+              {ABOUT_PERSON_LYUDMILA_QUOTE}
+            </Text>
           </div>
         </article>
       </div>
     </Container>
-  </section>
+  </>
 );

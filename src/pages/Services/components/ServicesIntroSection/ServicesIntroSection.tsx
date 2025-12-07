@@ -1,5 +1,4 @@
-// src/pages/Services/components/IntroSection/ServicesIntroSection.tsx
-import { Container } from '@shared/ui/Container/Container';
+import { Container, Text } from '@shared/ui';
 import {
   SERVICES_INTRO_TITLE,
   SERVICES_INTRO_MAIN_TEXT,
@@ -13,46 +12,67 @@ import {
 
 import './ServicesIntroSection.scss';
 
-export const ServicesIntroSection = () => {
-  return (
-    <section className="services-intro" aria-labelledby="services-intro-title">
-      <Container>
-        <div className="services-intro__grid">
-          {/* Основной текст слева */}
-          <div className="services-intro__main">
-            <h2 id="services-intro-title" className="services-intro__title">
-              {SERVICES_INTRO_TITLE}
-            </h2>
+export const ServicesIntroSection = () => (
+  <section className="services-intro" aria-labelledby="services-intro-title">
+    <Container>
+      <div className="services-intro__grid">
+        <div className="services-intro__main">
+          <Text variant="h3" textTransform="uppercase" align="center">
+            {SERVICES_INTRO_TITLE}
+          </Text>
+          <Text variant="body1" font="helvetica" weight="light" align="center">
+            {SERVICES_INTRO_MAIN_TEXT}
+          </Text>
 
-            <p className="services-intro__text">{SERVICES_INTRO_MAIN_TEXT}</p>
+          <Text
+            variant="body1"
+            font="helvetica"
+            weight="regular"
+            align="center"
+          >
+            {SERVICES_INTRO_BUDGET_PREFIX}
+            <strong>{SERVICES_INTRO_BUDGET_VALUE}</strong>.
+          </Text>
+        </div>
 
-            <p className="services-intro__text services-intro__text--accent">
-              {SERVICES_INTRO_BUDGET_PREFIX}
-              <strong>{SERVICES_INTRO_BUDGET_VALUE}</strong>.
-            </p>
+        <aside
+          className="services-intro__aside"
+          aria-label="Агентское вознаграждение"
+        >
+          <div className="services-intro__badge">
+            <Text
+              variant="body1"
+              align="center"
+              textTransform="uppercase"
+              weight="medium"
+            >
+              {SERVICES_INTRO_BADGE_CAPTION}
+            </Text>
+            <Text
+              variant="h3"
+              align="center"
+              textTransform="lowercase"
+              weight="medium"
+            >
+              {SERVICES_INTRO_BADGE_PERCENT}
+            </Text>
+
+            <Text variant="body1" align="center" weight="light">
+              {SERVICES_INTRO_BADGE_SUB}
+            </Text>
           </div>
 
-          {/* Блок про агентское вознаграждение справа */}
-          <aside
-            className="services-intro__aside"
-            aria-label="Агентское вознаграждение"
+          <Text
+            variant="body1"
+            font="helvetica"
+            align="center"
+            weight="light"
+            className="services-intro__note"
           >
-            <div className="services-intro__badge">
-              <p className="services-intro__badge-caption">
-                {SERVICES_INTRO_BADGE_CAPTION}
-              </p>
-              <p className="services-intro__badge-percent">
-                {SERVICES_INTRO_BADGE_PERCENT}
-              </p>
-              <p className="services-intro__badge-sub">
-                {SERVICES_INTRO_BADGE_SUB}
-              </p>
-            </div>
-
-            <p className="services-intro__note">{SERVICES_INTRO_NOTE}</p>
-          </aside>
-        </div>
-      </Container>
-    </section>
-  );
-};
+            {SERVICES_INTRO_NOTE}
+          </Text>
+        </aside>
+      </div>
+    </Container>
+  </section>
+);

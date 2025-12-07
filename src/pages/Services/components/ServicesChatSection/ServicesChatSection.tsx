@@ -1,5 +1,4 @@
-// src/pages/Services/components/ChatSection/ServicesChatSection.tsx
-import { Container } from '@shared/ui/Container/Container';
+import { Container, Text } from '@shared/ui';
 import {
   SERVICES_CHAT_BRIDE_NAME,
   SERVICES_CHAT_BRIDE_MESSAGE,
@@ -10,49 +9,45 @@ import {
 
 import './ServicesChatSection.scss';
 
-export const ServicesChatSection = () => {
-  return (
-    <section className="services-chat" aria-label="Переписка с агентством">
-      <Container>
-        <div className="services-chat__inner">
-          {/* Сообщение невесты (слева) */}
-          <div className="services-chat__row services-chat__row--left">
-            <div className="services-chat__bubble services-chat__bubble--left">
-              <div className="services-chat__meta">
-                <span className="services-chat__author">
-                  {SERVICES_CHAT_BRIDE_NAME}
-                </span>
-              </div>
-              <p className="services-chat__text">
-                {SERVICES_CHAT_BRIDE_MESSAGE}
-              </p>
+export const ServicesChatSection = () => (
+  <section className="services-chat" aria-label="Переписка с агентством">
+    <Container>
+      <div className="services-chat__inner">
+        <div className="services-chat__row services-chat__row--left">
+          <div className="services-chat__bubble services-chat__bubble--left">
+            <div className="services-chat__meta">
+              <Text textTransform="uppercase">{SERVICES_CHAT_BRIDE_NAME}</Text>
             </div>
-          </div>
-
-          {/* Сообщение организатора (справа) */}
-          <div className="services-chat__row services-chat__row--right">
-            <div className="services-chat__bubble services-chat__bubble--right">
-              <div className="services-chat__meta services-chat__meta--right">
-                <span className="services-chat__author services-chat__author--accent">
-                  {SERVICES_CHAT_ORGANIZER_NAME}
-                </span>
-              </div>
-
-              <p className="services-chat__text services-chat__text--intro">
-                {SERVICES_CHAT_ORGANIZER_INTRO}
-              </p>
-
-              <ul className="services-chat__list">
-                {SERVICES_CHAT_ORGANIZER_LIST.map((item) => (
-                  <li key={item} className="services-chat__list-item">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <Text font="helvetica" weight="regular">
+              {SERVICES_CHAT_BRIDE_MESSAGE}
+            </Text>
           </div>
         </div>
-      </Container>
-    </section>
-  );
-};
+
+        <div className="services-chat__row services-chat__row--right">
+          <div className="services-chat__bubble services-chat__bubble--right">
+            <div className="services-chat__meta services-chat__meta--right">
+              <Text textTransform="uppercase">
+                {SERVICES_CHAT_ORGANIZER_NAME}
+              </Text>
+            </div>
+
+            <Text font="helvetica" weight="regular">
+              {SERVICES_CHAT_ORGANIZER_INTRO}
+            </Text>
+
+            <ul className="services-chat__list">
+              {SERVICES_CHAT_ORGANIZER_LIST.map((item) => (
+                <li key={item}>
+                  <Text variant="body2" font="helvetica" weight="regular">
+                    {item}
+                  </Text>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+);

@@ -1,162 +1,106 @@
-.page--article-org {
-  // background: #f5f1e8;
-}
-
 .article-org {
-  padding: 96px 0 140px;
-  // background: #f5f1e8;
-  color: #3b3b3b;
-}
+  padding: 90px 0 120px;
 
-.article-org__section {
-  margin-bottom: 72px;
-}
+  &__section {
+    margin-bottom: 72px;
 
-.article-org__section--bottom {
-  margin-bottom: 0;
-}
+    &--bottom {
+      margin-bottom: 0;
+    }
 
-.article-org__section--text {
-  text-align: left;
-}
-
-.article-org__title {
-  margin: 0 0 40px;
-  text-align: center;
-  font-size: 46px;
-  line-height: 1.4;
-  font-weight: 500;
-  // text-transform: uppercase;
-}
-
-.article-org__subtitle {
-  margin: 0 0 28px;
-  text-align: center;
-  font-size: 34px;
-  font-weight: 500;
-}
-
-.article-org__paragraph {
-  max-width: 860px;
-  margin: 0 auto 18px;
-  font-size: 18px;
-  line-height: 1.7;
-  font-family: var(--font-helvetica);
-}
-
-.article-org__two-columns {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 40px;
-  margin-top: 32px;
-}
-
-.article-org__two-columns--lists {
-  align-items: flex-start;
-}
-
-.article-org__column {
-  max-width: 520px;
-}
-
-.article-org__role-title {
-  margin: 0 0 16px;
-  font-size: 24px;
-}
-
-/* списки */
-.article-org__list {
-  margin: 0;
-  padding-left: 18px;
-  font-size: 15px;
-  line-height: 1.6;
-  font-family: var(--font-helvetica);
-}
-
-.article-org__list li + li {
-  margin-top: 6px;
-}
-
-/* одиночное изображение */
-.article-org__section--image {
-  text-align: center;
-}
-
-.article-org__figure {
-  margin: 0 auto;
-  max-width: 980px;
-  border-radius: 32px;
-  overflow: hidden;
-}
-
-.article-org__image {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-/* галерея */
-.article-org__section--gallery {
-  margin-top: 24px;
-}
-
-.article-org__gallery {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.article-org__gallery-image {
-  display: block;
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-/* адаптив */
-@media (max-width: 1024px) {
-  .article-org {
-    padding: 72px 0 100px;
+    &--text {
+      text-align: left;
+    }
   }
 
-  .article-org__title {
-    font-size: 28px;
+  &__title {
+    margin: 0 0 40px;
+    text-align: center;
+    font-size: 46px;
+    line-height: 1.4;
+    font-weight: 500;
   }
 
-  .article-org__two-columns {
-    grid-template-columns: minmax(0, 1fr);
+  &__subtitle {
+    margin: 0 0 28px;
+    text-align: center;
+    font-size: 34px;
+    font-weight: 500;
   }
 
-  .article-org__column {
-    max-width: none;
-  }
-
-  .article-org__gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 720px) {
-  .article-org {
-    padding: 56px 0 80px;
-  }
-
-  .article-org__subtitle {
+  &__paragraph {
+    max-width: 860px;
+    margin: 0 auto 18px;
     font-size: 18px;
-    letter-spacing: 0.16em;
+    line-height: 1.7;
+    font-family: var(--font-helvetica);
   }
 
-  .article-org__paragraph {
+  &__two-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
+    margin-top: 32px;
+
+    &--lists {
+      align-items: flex-start;
+    }
+  }
+
+  &__column {
+    max-width: 520px;
+  }
+
+  &__role-title {
+    margin: 0 0 16px;
+    font-size: 24px;
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: 18px;
     font-size: 15px;
+    line-height: 1.6;
+    font-family: var(--font-helvetica);
   }
 
-  .article-org__gallery {
-    grid-template-columns: minmax(0, 1fr);
+  &__list li + li {
+    margin-top: 6px;
   }
 
-  .article-org__gallery-image {
-    height: 220px;
+  &__section--image {
+    text-align: center;
+  }
+
+  &__figure {
+    margin: 0 auto;
+    max-width: 980px;
+    border-radius: 32px;
+    overflow: hidden;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  &__section--gallery {
+    margin-top: 24px;
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  &__gallery-image {
+    display: block;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 20px;
   }
 }

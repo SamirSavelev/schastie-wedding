@@ -60,25 +60,9 @@
       color: $color-black;
     }
 
-    // &-muted {
-    //   color: $color-text-muted;
-    // }
-
-    // &-light {
-    //   color: $white-color-text;
-    // }
-
-    // &-accent {
-    //   color: $color-brand;
-    // }
-
-    // &-danger {
-    //   color: $color-red;
-    // }
-
-    // &-success {
-    //   color: $color-green;
-    // }
+    &-pink {
+      color: $color-brand;
+    }
   }
 
   &--weight {

@@ -1,1 +1,1 @@
-export { ArticleOrg } from './ArticleOrg/ArticleOrg';
+export { ArticleOrg } from './ArticleOrg';

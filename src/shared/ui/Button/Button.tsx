@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import './Button.scss';
 
-export type ButtonVariant = 'primary' | 'outline' | 'ghost';
+export type ButtonVariant = 'primary' | 'outline' | 'ghost' | 'black';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface ButtonBaseProps {
@@ -15,18 +15,12 @@ interface ButtonBaseProps {
   fullWidth?: boolean;
 }
 
-/**
- * Вариант как <button>
- */
 type ButtonAsButtonProps = ButtonBaseProps &
   ButtonHTMLAttributes<HTMLButtonElement> & {
     as?: 'button';
     to?: never;
   };
 
-/**
- * Вариант как <Link>
- */
 type ButtonAsLinkProps = ButtonBaseProps &
   Omit<ComponentProps<typeof Link>, 'to'> & {
     as: 'link';
