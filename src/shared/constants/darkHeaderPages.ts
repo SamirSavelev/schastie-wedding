@@ -1,9 +1,1 @@
-export const darkHeaderPages = [
-  '/',
-  '/blog',
-  '/blog/svadebnyy-organizator-i-koordinator',
-  '/portfolio',
-  '/services',
-  '/reviews',
-  '/about',
-];
+export const whiteHeaderPages = ['/contacts'];

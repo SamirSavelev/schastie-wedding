@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { Container } from '@shared/ui/Container/Container';
 import logo from '@assets/logo.png';
 
-import { darkHeaderPages } from '@shared/constants/darkHeaderPages';
+import { whiteHeaderPages } from '@shared/constants/darkHeaderPages';
 import '@widgets/Header/Header.scss';
 import { navigationLinks } from '@shared/constants/navigationLinks';
 
@@ -26,7 +26,7 @@ export const Header = () => {
   }, []);
 
   useEffect(() => {
-    if (darkHeaderPages.includes(pathname)) {
+    if (!whiteHeaderPages.includes(pathname)) {
       setTheme('dark');
     } else {
       setTheme('light');
