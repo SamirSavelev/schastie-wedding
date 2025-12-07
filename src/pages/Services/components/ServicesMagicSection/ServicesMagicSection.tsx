@@ -10,11 +10,10 @@ import {
   SERVICES_MAGIC_SPECIALISTS_STATS,
   SERVICES_MAGIC_COUPLE_STATS,
   SERVICES_MAGIC_TITLE,
+  SERVICES_MAGIC_SUBTITLE,
 } from '@shared/constants';
 import { Container, Text } from '@shared/ui';
 
-export const SERVICES_MAGIC_SUBTITLE =
-  '* — наведите на точку, чтобы создать идеальную свадьбу';
 interface ServicesMagicSectionProps {
   circleRadius?: number;
   farDistance?: number;
@@ -234,10 +233,28 @@ export const ServicesMagicSection: FC<ServicesMagicSectionProps> = ({
                 aria-pressed={isActive}
                 aria-label="Активировать пересечение окружностей"
               >
-                <circle r={2} className="services-magic__center-dot" />
+                <circle
+                  r={2}
+                  className={classNames('services-magic__center-dot', {
+                    'services-magic__center-dot--active': isActive,
+                  })}
+                />
                 <circle r={12} className="services-magic__center-hit-area" />
               </g>
             </svg>
+
+            <div
+              className={classNames('services-magic__hint', {
+                'services-magic__hint--hidden': isActive,
+              })}
+            >
+              <div className="services-magic__hint-bubble">
+                <span className="services-magic__hint-text">
+                  {SERVICES_MAGIC_SUBTITLE}
+                </span>
+              </div>
+              <div className="services-magic__hint-arrow" />
+            </div>
           </div>
         </section>
       </Container>

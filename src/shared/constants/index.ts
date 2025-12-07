@@ -643,7 +643,7 @@ export const SERVICES_MAGIC_TITLE =
   'Работа организатора — это магия и немного чисел';
 
 export const SERVICES_MAGIC_SUBTITLE =
-  '* — наведите на точку, чтобы создать идеальную свадьбу';
+  'наведите на точку, чтобы создать идеальную свадьбу';
 
 export const SERVICES_MAGIC_ORGANIZER_TITLE = 'Свадебный организатор';
 export const SERVICES_MAGIC_SPECIALISTS_TITLE = 'Свадебные специалисты';
