@@ -9,6 +9,7 @@ import {
 import './PortfolioSection.scss';
 import { Button } from '@shared/ui/Button/Button';
 import { Text } from '@shared/ui';
+import classNames from 'classnames';
 
 export const PortfolioSection = () => (
   <section className="home-portfolio">
@@ -32,8 +33,17 @@ export const PortfolioSection = () => (
               <img
                 src={image}
                 alt={title}
-                className="home-portfolio__image"
+                className={classNames('home-portfolio__image', {
+                  'home-portfolio__image--dark': id === 3,
+                })}
                 loading="lazy"
+              />
+
+              <div
+                className={classNames('home-portfolio__image-overlay', {
+                  'home-portfolio__image-overlay--active': id === 3,
+                })}
+                aria-hidden="true"
               />
             </div>
             <div className="home-portfolio__info">

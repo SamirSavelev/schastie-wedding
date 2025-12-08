@@ -1,6 +1,6 @@
 import { Container } from '@shared/ui/Container/Container';
 import {
-  HOME_NUMBERS_BACKGROUND,
+  BG_1,
   HOME_NUMBERS_ITEMS,
   HOME_NUMBERS_TITLE,
 } from '@shared/constants';
@@ -13,7 +13,7 @@ export const NumbersSection = () => (
     <Container>
       <div
         className="home-numbers__hero"
-        style={{ backgroundImage: `url(${HOME_NUMBERS_BACKGROUND})` }}
+        style={{ backgroundImage: `url(${BG_1})` }}
       >
         <div className="home-numbers__overlay" aria-hidden="true" />
         <div className="home-numbers__inner">

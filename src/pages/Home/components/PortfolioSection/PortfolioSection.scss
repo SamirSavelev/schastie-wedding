@@ -53,6 +53,15 @@
     transition: transform 0.35s ease-out;
   }
 
+  &__image-overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: block;
+  }
+
   &__info {
     padding-top: 18px;
   }

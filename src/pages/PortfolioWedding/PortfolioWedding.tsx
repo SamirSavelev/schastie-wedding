@@ -6,6 +6,7 @@ import { ImageGridViewer } from '@shared/ui/ImageGridViewer/ImageGridViewer';
 
 import { getWeddingById } from './constants';
 import './PortfolioWedding.scss';
+import { BannerSection } from '@widgets';
 
 export const PortfolioWedding = () => {
   const { id } = useParams<{ id: string }>();
@@ -37,6 +38,7 @@ export const PortfolioWedding = () => {
           </div>
         </Container>
       </div>
+      <BannerSection />
     </section>
   );
 };

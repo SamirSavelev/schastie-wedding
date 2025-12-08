@@ -14,11 +14,13 @@ import { Text } from '@shared/ui';
 
 export const PortfolioPage = () => (
   <>
-    <PageHeader
-      backgroundImage={headerImage}
-      title={HOME_PORTFOLIO_TITLE}
-      bottomText="Полезные статьи о свадьбах и подготовке"
-    />
+    <div className="portfolio-header">
+      <PageHeader
+        backgroundImage={headerImage}
+        title={HOME_PORTFOLIO_TITLE}
+        bottomText="Полезные статьи о свадьбах и подготовке"
+      />
+    </div>
 
     <Container>
       <div className="portfolio-head">

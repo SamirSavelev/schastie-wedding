@@ -1,6 +1,6 @@
 import { BannerSection, PageHeader } from '@widgets';
 import headerImage from '@assets/services/header.jpg';
-
+import './ServicesPage.scss';
 import {
   ServicesIntroSection,
   ServicesChatSection,
@@ -12,11 +12,13 @@ import {
 
 export const ServicesPage = () => (
   <>
-    <PageHeader
-      backgroundImage={headerImage}
-      title="Услуги"
-      bottomText="Бюджеты"
-    />
+    <div className="ServicesPage">
+      <PageHeader
+        backgroundImage={headerImage}
+        title="Услуги"
+        bottomText="Бюджеты"
+      />
+    </div>
 
     <ServicesIntroSection />
     <ServicesChatSection />

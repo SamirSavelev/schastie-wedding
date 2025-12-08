@@ -1,7 +1,8 @@
 import { Container } from '@shared/ui/Container/Container';
 import {
-  HOME_SERVICES_ITEMS,
+  HOME_SERVICES_MAIN_TEXT,
   HOME_SERVICES_TITLE_LINES,
+  HOME_SERVICES_SUBTEXT,
 } from '@shared/constants';
 
 import { Text } from '@shared/ui';
@@ -23,7 +24,20 @@ export const ServicesSection = () => (
         ))}
       </header>
 
-      <div className="home-services__grid">
+      <Text align="center" font="helvetica" weight="light">
+        {HOME_SERVICES_MAIN_TEXT}
+      </Text>
+
+      <Text
+        className="home-services__subtext"
+        variant="subtitle"
+        align="center"
+        weight="semibold"
+      >
+        {HOME_SERVICES_SUBTEXT}
+      </Text>
+
+      {/* <div className="home-services__grid">
         {HOME_SERVICES_ITEMS.map(({ id, title, text }) => (
           <article key={id} className="home-services__item">
             <Text
@@ -38,7 +52,7 @@ export const ServicesSection = () => (
             </Text>
           </article>
         ))}
-      </div>
+      </div> */}
     </Container>
   </section>
 );
