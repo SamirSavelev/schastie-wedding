@@ -7,7 +7,7 @@ $color-black: #111111;
 $color-surface: rgba(255, 255, 255, 0.8);
 $color-border: #ececec;
 $color-hover: #f6f6f6;
-$color-red: #b91c1c;
+$color-red: #dc2626;
 $color-green: #15803d;
 
 $color-text: #1a1a1a;
@@ -22,8 +22,8 @@ $header-top-padding: 12px;
 $header-nav-height: 56px;
 
 // Шрифты
-$font-body: 'Cormorant Garamond', serif;
-$font-helvetica: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+$font-body: "Cormorant Garamond", serif;
+$font-helvetica: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
 // Breakpoints
 $bp-lg: 1200px;
@@ -42,6 +42,8 @@ $bp-xs: 400px;
   --color-text: #{$color-text};
   --color-text-muted: #{$color-text-muted};
   --color-brand: #{$color-brand};
+  --color-red: #{$color-red};
+  --color-green: #{$color-green};
   --white-color-text: #{$color-white};
   --black-color-text: #{$color-text};
 

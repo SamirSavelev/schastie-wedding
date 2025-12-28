@@ -1,0 +1,17 @@
+.toast-success {
+  background-color: var(--color-bg);
+  color: var(--color-green);
+  font-family: var(--font-helvetica);
+  font-size: 14px;
+  font-weight: 500;
+  --toastify-icon-color-success: var(--color-green);
+}
+
+.toast-error {
+  background-color: var(--color-bg);
+  color: var(--color-red);
+  font-family: var(--font-helvetica);
+  font-size: 14px;
+  font-weight: 500;
+  --toastify-icon-color-error: var(--color-red);
+}

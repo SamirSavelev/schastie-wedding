@@ -37,7 +37,8 @@
       "@entities/*": ["src/entities/*"],
       "@shared": ["src/shared"],
       "@shared/*": ["src/shared/*"],
-      "@assets/*": ["src/assets/*"]
+      "@assets/*": ["src/assets/*"],
+      "@context/*": ["src/context/*"]
     },
     "resolveJsonModule": true,
     "isolatedModules": true

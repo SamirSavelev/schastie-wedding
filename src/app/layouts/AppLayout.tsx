@@ -1,21 +1,21 @@
-import { Outlet } from 'react-router-dom';
-import { Header } from '@widgets/Header/Header';
-import { Footer } from '@widgets/Footer/Footer';
-import { SocialFloating } from '@widgets/SocialFloating/SocialFloating';
-import '@app/layouts/AppLayout.scss';
-import { useEffect } from 'react';
-import { useLocation, useNavigationType } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
+import { Header } from "@widgets/Header/Header";
+import { Footer } from "@widgets/Footer/Footer";
+import { SocialFloating } from "@widgets/SocialFloating/SocialFloating";
+import { useEffect } from "react";
+import { useLocation, useNavigationType } from "react-router-dom";
+import "@app/layouts/AppLayout.scss";
 
 export const ScrollToTop = () => {
   const location = useLocation();
   const navigationType = useNavigationType();
 
   useEffect(() => {
-    if (navigationType === 'PUSH' || navigationType === 'REPLACE') {
+    if (navigationType === "PUSH" || navigationType === "REPLACE") {
       window.scrollTo({
         top: 0,
         left: 0,
-        behavior: 'auto',
+        behavior: "auto",
       });
     }
   }, [location.pathname, navigationType]);

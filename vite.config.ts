@@ -1,24 +1,25 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import path from 'node:path';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "node:path";
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@app': path.resolve(__dirname, 'src/app'),
-      '@pages': path.resolve(__dirname, 'src/pages'),
-      '@widgets': path.resolve(__dirname, 'src/widgets'),
-      '@features': path.resolve(__dirname, 'src/features'),
-      '@entities': path.resolve(__dirname, 'src/entities'),
-      '@shared': path.resolve(__dirname, 'src/shared'),
-      '@assets': path.resolve(__dirname, 'src/assets'),
+      "@app": path.resolve(__dirname, "src/app"),
+      "@pages": path.resolve(__dirname, "src/pages"),
+      "@widgets": path.resolve(__dirname, "src/widgets"),
+      "@features": path.resolve(__dirname, "src/features"),
+      "@entities": path.resolve(__dirname, "src/entities"),
+      "@shared": path.resolve(__dirname, "src/shared"),
+      "@assets": path.resolve(__dirname, "src/assets"),
+      "@context": path.resolve(__dirname, "src/context"),
     },
   },
   css: {
     preprocessorOptions: {
       scss: {
-        loadPaths: ['src'],
+        loadPaths: ["src"],
         additionalData: '@use "app/styles/variables" as *;\n',
       },
     },
