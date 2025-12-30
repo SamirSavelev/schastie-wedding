@@ -256,7 +256,6 @@ export const ContactsPage = () => {
             деталям и любви к празднику,{" "}
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSfZyzb7ZYTBet2-du6HiajqhWywRhXOB-InWCxIMLzgkS4pKg/viewform?usp=publish-editor"
-              target="_blank"
               rel="noreferrer"
               style={{
                 textDecoration: "underline",
