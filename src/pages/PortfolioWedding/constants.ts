@@ -1,4 +1,4 @@
-import emilAlinaHero from "@assets/portfoliO/emil-alina/main.jpg";
+import emilAlinaHero from "@assets/portfolio/emil-alina/main.jpg";
 import emilAlina1 from "@assets/portfolio/emil-alina/G67A0003_resized.jpg";
 import emilAlina2 from "@assets/portfolio/emil-alina/G67A0064_resized.jpg";
 import emilAlina3 from "@assets/portfolio/emil-alina/G67A0285_resized.jpg";
