@@ -6,7 +6,6 @@ import {
   Page404,
   ServicesPage,
   PortfolioPage,
-  BlogPage,
   AboutPage,
   ContactsPage,
   PortfolioWedding,
