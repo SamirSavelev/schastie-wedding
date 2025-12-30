@@ -1,8 +1,4 @@
 import { useCallback, useEffect, useState, type FormEventHandler } from "react";
-import InstagramIcon from "@assets/icons/instagram.svg";
-import TelegramIcon from "@assets/icons/telegram.svg";
-import VkIcon from "@assets/icons/vk.svg";
-import WhatsappIcon from "@assets/icons/whatsapp.svg";
 
 import {
   HOME_BANNER_EMAIL,
