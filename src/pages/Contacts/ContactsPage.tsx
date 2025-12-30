@@ -1,29 +1,126 @@
-import { useState } from 'react';
-import { Container } from '@shared/ui/Container/Container';
-import InstagramIcon from '@assets/icons/instagram.svg';
-import TelegramIcon from '@assets/icons/telegram.svg';
-import VkIcon from '@assets/icons/vk.svg';
-import WhatsappIcon from '@assets/icons/whatsapp.svg';
+import { useCallback, useEffect, useState, type FormEventHandler } from "react";
+import { Container } from "@shared/ui/Container/Container";
 
-import './ContactsPage.scss';
+import "./ContactsPage.scss";
+import { HOME_BANNER_POLICY_TEXT, NETWORKS } from "@shared/constants";
+import { Button, Text, TextField } from "@shared/ui";
+import type { TextFieldProps } from "@shared/ui/TextField/TextField";
+import { useNotify } from "@context/hooks";
+import { sendToTelegram } from "@app/api/telegramApi";
+interface ValidationItemState {
+  error: string;
+  isValid: boolean;
+  isTouched?: boolean;
+}
 
+interface ValidationState {
+  name: ValidationItemState;
+  phone: ValidationItemState;
+}
+
+interface Form {
+  name: string;
+  phone: string;
+}
+
+const initialValidationState: ValidationState = {
+  name: { error: "", isValid: false, isTouched: false },
+  phone: { error: "", isValid: false, isTouched: false },
+};
+
+const initialFormState: Form = {
+  name: "",
+  phone: "",
+};
+
+const PHONE_REGEX = /^(?:\+7|8)\d{10}$/;
+
+const cleanPhoneNumber = (phone: string) => {
+  const cleanedPhone = phone.replace(/[^0-9+]/g, "");
+  if (cleanedPhone.startsWith("+") && cleanedPhone.length > 1) {
+    return cleanedPhone;
+  } else {
+    return cleanedPhone.replace(/^(\+)?(7|8)/, "8");
+  }
+};
+
+const getTextFieldStatus = (
+  item: ValidationItemState
+): TextFieldProps["status"] => {
+  if (!item.isTouched) return "default";
+  return item.isValid ? "success" : "error";
+};
 export const ContactsPage = () => {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
+  const [validation, setValidation] = useState<ValidationState>(
+    initialValidationState
+  );
+  const [form, setForm] = useState<Form>(initialFormState);
+  const { showNotify } = useNotify();
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
+  const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(
+    async (e) => {
+      e.preventDefault();
 
-    const to = 'schastie.kazan@gmail.com';
-    const subject = `Заявка с сайта: ${name || 'без имени'}`;
-    const body =
-      `Имя: ${name}\n` + `Телефон: ${phone}\n\n` + `Сообщение:\n${message}`;
+      const isNameValid = form.name.trim().length > 0;
+      const isPhoneValid = PHONE_REGEX.test(form.phone.trim());
 
-    window.location.href = `mailto:${to}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-  };
+      setValidation(() => ({
+        name: {
+          isValid: isNameValid,
+          error: isNameValid ? "" : "Введите имя",
+          isTouched: true,
+        },
+        phone: {
+          isValid: isPhoneValid,
+          error: isPhoneValid ? "" : "Введите корректный номер телефона",
+          isTouched: true,
+        },
+      }));
+
+      if (!isNameValid || !isPhoneValid) {
+        showNotify("Пожалуйста, заполните форму корректно.", "error");
+        return;
+      }
+
+      try {
+        await sendToTelegram(form.name, form.phone);
+        showNotify("Ваша заявка успешно отправлена!", "success");
+        setForm(initialFormState);
+      } catch {
+        showNotify(
+          "Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.",
+          "error"
+        );
+      }
+    },
+    [form, showNotify]
+  );
+
+  const validate = useCallback(() => {
+    setValidation((prev) => {
+      const nameIsValid = form.name.trim().length > 0;
+      const phoneIsValid = PHONE_REGEX.test(form.phone.trim());
+
+      return {
+        name: {
+          isValid: prev.name.isTouched ? nameIsValid : true,
+          error: nameIsValid || !prev.name.isTouched ? "" : "Введите имя",
+        },
+        phone: {
+          isValid: prev.phone.isTouched ? phoneIsValid : true,
+          error: prev.phone.isTouched
+            ? phoneIsValid
+              ? ""
+              : "Введите корректный номер телефона"
+            : "",
+        },
+      };
+    });
+  }, [form]);
+
+  useEffect(() => {
+    validate();
+  }, [validate]);
 
   return (
     <section className="contacts" aria-labelledby="contacts-title">
@@ -31,68 +128,70 @@ export const ContactsPage = () => {
         <h1 id="contacts-title" className="contacts__title">
           Контакты
         </h1>
+
         <p className="contacts__lead">
           Мы всегда открыты для общения и готовы помочь вам организовать
           праздник вашей мечты.
         </p>
 
         <div className="contacts__grid">
-          {/* Форма */}
           <div className="contacts__card">
-            <h3 className="contacts__subtitle">Напишите нам</h3>
+            <Text weight="bold">Напишите нам</Text>
 
-            <form className="contacts__form" onSubmit={handleSubmit} noValidate>
-              <label className="contacts__field">
-                <span className="contacts__label">Имя</span>
-                <input
-                  className="contacts__input"
-                  type="text"
-                  name="name"
-                  placeholder="Ваше имя"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  autoComplete="name"
-                  required
-                />
-              </label>
+            <form
+              className="home-banner__form"
+              onSubmit={handleSubmit}
+              noValidate
+              style={{ marginTop: "12px" }}
+            >
+              <TextField
+                label="Имя"
+                placeholder="Как вас зовут?"
+                type="text"
+                name="name"
+                value={form.name}
+                onChange={(e) =>
+                  setForm((prev) => ({
+                    ...prev,
+                    name: e.target.value,
+                  }))
+                }
+                autoComplete="name"
+                required
+                status={getTextFieldStatus(validation.name)}
+                statusMessage={validation.name.error}
+              />
 
-              <label className="contacts__field">
-                <span className="contacts__label">Контактный телефон</span>
-                <input
-                  className="contacts__input"
-                  type="tel"
-                  name="phone"
-                  placeholder="+7 (___) ___-__-__"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  autoComplete="tel"
-                  required
-                />
-              </label>
+              <TextField
+                label="Телефон"
+                placeholder="Введите номер телефона"
+                type="tel"
+                name="phone"
+                value={form.phone}
+                onChange={(e) => {
+                  const cleanedPhone = cleanPhoneNumber(e.target.value);
+                  setForm((prev) => ({
+                    ...prev,
+                    phone: cleanedPhone,
+                  }));
+                }}
+                autoComplete="tel"
+                required
+                status={getTextFieldStatus(validation.phone)}
+                statusMessage={validation.phone.error}
+              />
 
-              <label className="contacts__field">
-                <span className="contacts__label">Сообщение</span>
-                <textarea
-                  className="contacts__textarea"
-                  name="message"
-                  placeholder="Кратко опишите задачу"
-                  rows={6}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  required
-                />
-              </label>
+              <Button variant="primary" type="submit" size="lg">
+                ОТПРАВИТЬ
+              </Button>
 
-              <button className="contacts__submit" type="submit">
-                Отправить
-              </button>
+              <Text variant="caption">{HOME_BANNER_POLICY_TEXT}</Text>
             </form>
           </div>
 
           {/* Контакты */}
           <div className="contacts__card contacts__info">
-            <h3 className="contacts__subtitle">Наши контакты</h3>
-
+            <Text weight="bold">Наши контакты</Text>
             <ul className="contacts__list">
               <li>
                 <span className="contacts__item-title">Тел.:</span>
@@ -100,6 +199,7 @@ export const ContactsPage = () => {
                   8 (937) 289-90-55
                 </a>
                 <span className="contacts__dot"> • </span>
+
                 <a href="tel:+79376260255" className="contacts__link">
                   8 (937) 626-02-55
                 </a>
@@ -124,18 +224,22 @@ export const ContactsPage = () => {
             </ul>
 
             <div className="contacts__socials" aria-label="Социальные сети">
-              <a className="contacts__social" href="#" aria-label="Instagram">
-                <img src={InstagramIcon} alt="Instagram" />
-              </a>
-              <a className="contacts__social" href="#" aria-label="Telegram">
-                <img src={TelegramIcon} alt="Telegram" />
-              </a>
-              <a className="contacts__social" href="#" aria-label="VK">
-                <img src={VkIcon} alt="VK" />
-              </a>
-              <a className="contacts__social" href="#" aria-label="WhatsApp">
-                <img src={WhatsappIcon} alt="WhatsApp" />
-              </a>
+              {NETWORKS.map(({ key, label, Icon, onClick }) => (
+                <button
+                  key={key}
+                  type="button"
+                  className={`home-banner__social`}
+                  aria-label={label}
+                  onClick={onClick}
+                >
+                  <span className="socials-floating__item-icon">
+                    <img src={Icon} alt={label} />
+                  </span>
+                  <span className="socials-floating__item-tooltip">
+                    {label}
+                  </span>
+                </button>
+              ))}
             </div>
           </div>
         </div>

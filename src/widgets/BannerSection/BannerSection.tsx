@@ -13,6 +13,7 @@ import {
   HOME_BANNER_POLICY_TEXT,
   HOME_BANNER_TITLE_LINES,
   HOME_BANNER_TYPED_PHRASES,
+  NETWORKS,
 } from "@shared/constants";
 
 import { Button, Container, Text, TextField, TypedLine } from "@shared/ui";
@@ -170,34 +171,22 @@ export const BannerSection = () => {
             </a>
 
             <div className="home-banner__socials" aria-label="Социальные сети">
-              <a
-                className="home-banner__social home-banner__social--instagram"
-                href="#"
-                aria-label="Instagram"
-              >
-                <img src={InstagramIcon} alt="Instagram" />
-              </a>
-              <a
-                className="home-banner__social home-banner__social--telegram"
-                href="#"
-                aria-label="Telegram"
-              >
-                <img src={TelegramIcon} alt="Telegram" />
-              </a>
-              <a
-                className="home-banner__social home-banner__social--vk"
-                href="#"
-                aria-label="VK"
-              >
-                <img src={VkIcon} alt="VK" />
-              </a>
-              <a
-                className="home-banner__social home-banner__social--whatsapp"
-                href="#"
-                aria-label="WhatsApp"
-              >
-                <img src={WhatsappIcon} alt="WhatsApp" />
-              </a>
+              {NETWORKS.map(({ key, label, Icon, onClick }) => (
+                <button
+                  key={key}
+                  type="button"
+                  className={`home-banner__social`}
+                  aria-label={label}
+                  onClick={onClick}
+                >
+                  <span className="socials-floating__item-icon">
+                    <img src={Icon} alt={label} />
+                  </span>
+                  <span className="socials-floating__item-tooltip">
+                    {label}
+                  </span>
+                </button>
+              ))}
             </div>
           </div>
 
