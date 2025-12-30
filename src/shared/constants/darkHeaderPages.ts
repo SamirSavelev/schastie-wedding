@@ -1,1 +1,1 @@
-export const whiteHeaderPages = ['/contacts'];
+export const whiteHeaderPages = ["/contacts"];

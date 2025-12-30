@@ -5,6 +5,7 @@
   font-size: 14px;
   font-weight: 500;
   --toastify-icon-color-success: var(--color-green);
+  z-index: 9999;
 }
 
 .toast-error {
@@ -14,4 +15,5 @@
   font-size: 14px;
   font-weight: 500;
   --toastify-icon-color-error: var(--color-red);
+  z-index: 9999;
 }

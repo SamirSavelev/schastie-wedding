@@ -1,0 +1,65 @@
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(1.5px);
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__container {
+    border-radius: 18px;
+    border: 1.5px solid var(--color-brand);
+    background: var(--color-bg);
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    animation: modal-appear 0.3s ease;
+    padding: 24px;
+    min-width: 300px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+  }
+
+  &__close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    cursor: pointer;
+
+    path {
+      transition: fill 0.2s ease;
+    }
+    &:hover {
+      path {
+        fill: var(--color-brand);
+      }
+    }
+  }
+  &__content {
+  }
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

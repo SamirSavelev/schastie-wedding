@@ -1,19 +1,22 @@
-import { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { Container, Text } from '@shared/ui';
-import logo from '@assets/logo.png';
-import { slide as Menu } from 'react-burger-menu';
-import { whiteHeaderPages } from '@shared/constants/darkHeaderPages';
-import { navigationLinks } from '@shared/constants/navigationLinks';
-import cn from 'classnames';
-import PhoneIcon from '@assets/icons/phone.svg';
-import '@widgets/Header/Header.scss';
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { Container, Text } from "@shared/ui";
+import logo from "@assets/logo.png";
+import { slide as Menu } from "react-burger-menu";
+import { whiteHeaderPages } from "@shared/constants/darkHeaderPages";
+import { navigationLinks } from "@shared/constants/navigationLinks";
+import cn from "classnames";
+import PhoneIcon from "@assets/icons/phone.svg";
+import "@widgets/Header/Header.scss";
 
-export const Header = () => {
+interface HeaderProps {
+  theme?: "light" | "dark";
+}
+export const Header = ({ theme: _theme }: HeaderProps) => {
   const [isOpenBurgerMenu, setIsOpenBurgerMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { pathname } = useLocation();
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,33 +24,37 @@ export const Header = () => {
     };
 
     handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   useEffect(() => {
-    if (!whiteHeaderPages.includes(pathname)) {
-      setTheme('dark');
-    } else {
-      setTheme('light');
+    if (_theme) {
+      setTheme(_theme);
+      return;
     }
-  }, [pathname]);
+    if (!whiteHeaderPages.includes(pathname)) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  }, [pathname, _theme]);
 
   useEffect(() => {
     if (isOpenBurgerMenu) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
   }, [isOpenBurgerMenu]);
 
   return (
     <header
-      className={cn('header', `header--${theme}`, {
-        'header--scrolled': isScrolled,
+      className={cn("header", `header--${theme}`, {
+        "header--scrolled": isScrolled,
       })}
       role="banner"
     >
@@ -72,7 +79,7 @@ export const Header = () => {
                 to={to}
                 end={end}
                 className={({ isActive }) =>
-                  cn('navbar__link', { 'navbar__link--active': isActive })
+                  cn("navbar__link", { "navbar__link--active": isActive })
                 }
               >
                 {label}

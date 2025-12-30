@@ -1,8 +1,7 @@
-import { Outlet } from "react-router-dom";
 import { Header } from "@widgets/Header/Header";
 import { Footer } from "@widgets/Footer/Footer";
 import { SocialFloating } from "@widgets/SocialFloating/SocialFloating";
-import { useEffect } from "react";
+import { useEffect, type FC, type PropsWithChildren } from "react";
 import { useLocation, useNavigationType } from "react-router-dom";
 import "@app/layouts/AppLayout.scss";
 
@@ -23,12 +22,16 @@ export const ScrollToTop = () => {
   return null;
 };
 
-export const AppLayout = () => (
+export const AppLayout: FC<
+  PropsWithChildren & {
+    theme?: "light" | "dark";
+  }
+> = ({ children, theme }) => (
   <div className="app">
     <ScrollToTop />
-    <Header />
+    <Header theme={theme} />
     <main id="main" className="app__content">
-      <Outlet />
+      {children}
       <SocialFloating />
     </main>
     <Footer />

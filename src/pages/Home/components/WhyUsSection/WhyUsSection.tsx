@@ -1,13 +1,13 @@
-import { Container } from '@shared/ui/Container/Container';
+import { Container } from "@shared/ui/Container/Container";
 import {
   HOME_WHY_HERO_IMAGE,
   HOME_WHY_ITEMS,
   HOME_WHY_SUBTITLE,
   HOME_WHY_TITLE,
-} from '@shared/constants';
+} from "@shared/constants";
 
-import './WhyUsSection.scss';
-import { Text } from '@shared/ui';
+import "./WhyUsSection.scss";
+import { Text } from "@shared/ui";
 
 export const WhyUsSection = () => (
   <section className="home-why" aria-labelledby="home-why-title">
@@ -52,7 +52,7 @@ export const WhyUsSection = () => (
               {title}
             </Text>
             <div className="home-why__item-divider" />
-            <Text variant="body2" font="helvetica">
+            <Text variant="body2" font="helvetica" as="div">
               {text}
             </Text>
           </article>

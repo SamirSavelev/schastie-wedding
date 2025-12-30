@@ -1,5 +1,5 @@
-import { createBrowserRouter } from 'react-router-dom';
-import { AppLayout } from '@app/layouts/AppLayout';
+import { createBrowserRouter } from "react-router-dom";
+import { AppLayout } from "@app/layouts/AppLayout";
 import {
   Article,
   HomePage,
@@ -11,23 +11,97 @@ import {
   ContactsPage,
   PortfolioWedding,
   ReviewsPage,
-} from '@pages';
+} from "@pages";
+import { PrivacyPage } from "@pages/Privacy";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-    element: <AppLayout />,
+    path: "/",
     children: [
-      { index: true, element: <HomePage /> },
-      { path: 'services', element: <ServicesPage /> },
-      { path: 'portfolio', element: <PortfolioPage /> },
-      { path: 'blog', element: <BlogPage /> },
-      { path: 'about', element: <AboutPage /> },
-      { path: 'contacts', element: <ContactsPage /> },
-      { path: 'reviews', element: <ReviewsPage /> },
-      { path: 'blog/:id', element: <Article /> },
-      { path: 'portfolio/:id', element: <PortfolioWedding /> },
-      { path: '*', element: <Page404 /> },
+      {
+        index: true,
+        element: (
+          <AppLayout>
+            <HomePage />
+          </AppLayout>
+        ),
+      },
+      {
+        path: "services",
+        element: (
+          <AppLayout>
+            <ServicesPage />
+          </AppLayout>
+        ),
+      },
+      {
+        path: "portfolio",
+        element: (
+          <AppLayout>
+            <PortfolioPage />
+          </AppLayout>
+        ),
+      },
+      {
+        path: "blog",
+        element: (
+          <AppLayout>
+            <BlogPage />
+          </AppLayout>
+        ),
+      },
+      {
+        path: "about",
+        element: (
+          <AppLayout>
+            <AboutPage />
+          </AppLayout>
+        ),
+      },
+      {
+        path: "contacts",
+        element: (
+          <AppLayout>
+            <ContactsPage />
+          </AppLayout>
+        ),
+      },
+      {
+        path: "reviews",
+        element: (
+          <AppLayout>
+            <ReviewsPage />
+          </AppLayout>
+        ),
+      },
+      {
+        path: "blog/:id",
+        element: (
+          <AppLayout>
+            <Article />
+          </AppLayout>
+        ),
+      },
+      {
+        path: "portfolio/:id",
+        element: (
+          <AppLayout>
+            <PortfolioWedding />
+          </AppLayout>
+        ),
+      },
+      {
+        path: "*",
+        element: (
+          <AppLayout theme="light">
+            <Page404 />
+          </AppLayout>
+        ),
+      },
+      {
+        path: "privacy",
+        element: <PrivacyPage />,
+      },
     ],
   },
 ]);

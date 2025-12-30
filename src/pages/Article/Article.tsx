@@ -1,10 +1,11 @@
-import { useParams } from 'react-router-dom';
-import { ArticleHero } from '@widgets/ArticleHero/ArticleHero';
+import { useParams } from "react-router-dom";
+import { ArticleHero } from "@widgets/ArticleHero/ArticleHero";
 
-import { Page404 } from '@pages/Page404/Page404';
+import { Page404 } from "@pages/Page404/Page404";
 
-import { getArticleById } from './constants';
-import './Article.scss';
+import { getArticleById } from "./constants";
+import "./Article.scss";
+import { Helmet } from "react-helmet-async";
 
 export const Article = () => {
   const { id } = useParams<{ id: string }>();
@@ -23,6 +24,9 @@ export const Article = () => {
 
   return (
     <section className={`page page--article page--article-${article.id}`}>
+      <Helmet>
+        <title>Статьи | Счастье — планирование свадеб в Казани</title>
+      </Helmet>
       <ArticleHero
         backgroundImage={heroImage}
         title={title}

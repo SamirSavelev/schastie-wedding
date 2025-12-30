@@ -3,10 +3,10 @@ import {
   HOME_HERO_PHRASES,
   HOME_HERO_TITLE_LINES,
   HOME_HERO_SLIDE_CHANGE_INTERVAL,
-} from '@shared/constants';
+} from "@shared/constants";
 
-import { Container, CtaButton, Slideshow, Text, TypedLine } from '@shared/ui';
-import './HeroSection.scss';
+import { Container, CtaButton, Slideshow, Text, TypedLine } from "@shared/ui";
+import "./HeroSection.scss";
 
 export const HeroSection = () => (
   <section className="home-hero">
@@ -20,7 +20,7 @@ export const HeroSection = () => (
     <div className="home-hero__inner">
       <Container>
         <div className="home-hero__content">
-          <h1 className="home-hero__title">
+          <div className="home-hero__title">
             {HOME_HERO_TITLE_LINES.map((line) => (
               <Text
                 key={line}
@@ -31,7 +31,7 @@ export const HeroSection = () => (
                 {line}
               </Text>
             ))}
-          </h1>
+          </div>
 
           <div className="home-hero__divider" />
 

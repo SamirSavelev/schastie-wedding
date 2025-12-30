@@ -1,12 +1,13 @@
-import { useParams } from 'react-router-dom';
-import { ArticleHero } from '@widgets/ArticleHero/ArticleHero';
-import { Container } from '@shared/ui/Container/Container';
-import { Page404 } from '@pages/Page404/Page404';
-import { ImageGridViewer } from '@shared/ui/ImageGridViewer/ImageGridViewer';
+import { useParams } from "react-router-dom";
+import { ArticleHero } from "@widgets/ArticleHero/ArticleHero";
+import { Container } from "@shared/ui/Container/Container";
+import { Page404 } from "@pages/Page404/Page404";
+import { ImageGridViewer } from "@shared/ui/ImageGridViewer/ImageGridViewer";
 
-import { getWeddingById } from './constants';
-import './PortfolioWedding.scss';
-import { BannerSection } from '@widgets';
+import { getWeddingById } from "./constants";
+import "./PortfolioWedding.scss";
+import { BannerSection } from "@widgets";
+import { Helmet } from "react-helmet-async";
 
 export const PortfolioWedding = () => {
   const { id } = useParams<{ id: string }>();
@@ -25,6 +26,9 @@ export const PortfolioWedding = () => {
 
   return (
     <section className="page page--portfolio-wedding">
+      <Helmet>
+        <title>Портфолио свадеб | Счастье — планирование свадеб в Казани</title>
+      </Helmet>
       <ArticleHero
         backgroundImage={heroImage}
         title={couple}

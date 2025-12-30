@@ -6,7 +6,6 @@ import {
   HOME_BANNER_FORM_TITLE,
   HOME_BANNER_PHONE,
   PHONE_LINK,
-  HOME_BANNER_POLICY_TEXT,
   HOME_BANNER_TITLE_LINES,
   HOME_BANNER_TYPED_PHRASES,
   NETWORKS,
@@ -18,6 +17,7 @@ import "./BannerSection.scss";
 import type { TextFieldProps } from "@shared/ui/TextField/TextField";
 import { useNotify } from "@context/hooks";
 import { sendToTelegram } from "@app/api/telegramApi";
+import { PolicyTitle } from "@shared/ui/PolicyTitle/PolicyTitle";
 
 interface ValidationItemState {
   error: string;
@@ -234,7 +234,7 @@ export const BannerSection = () => {
                 ОТПРАВИТЬ
               </Button>
 
-              <Text variant="caption">{HOME_BANNER_POLICY_TEXT}</Text>
+              <PolicyTitle />
             </form>
           </div>
         </div>

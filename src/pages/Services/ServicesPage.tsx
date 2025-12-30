@@ -1,6 +1,6 @@
-import { BannerSection, PageHeader } from '@widgets';
-import headerImage from '@assets/services/header.jpg';
-import './ServicesPage.scss';
+import { BannerSection, PageHeader } from "@widgets";
+import headerImage from "@assets/services/header.jpg";
+import "./ServicesPage.scss";
 import {
   ServicesIntroSection,
   ServicesChatSection,
@@ -8,10 +8,14 @@ import {
   ServicesGuaranteesSection,
   ImageMarquee,
   ServicesMagicSection,
-} from './components';
+} from "./components";
+import { Helmet } from "react-helmet-async";
 
 export const ServicesPage = () => (
   <>
+    <Helmet>
+      <title>Услуги | Счастье — планирование свадеб свадеб в Казани</title>
+    </Helmet>
     <div className="ServicesPage">
       <PageHeader
         backgroundImage={headerImage}

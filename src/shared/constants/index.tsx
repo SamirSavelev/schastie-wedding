@@ -218,9 +218,6 @@ export const HOME_BANNER_EMAIL_LINK = `mailto:${HOME_BANNER_EMAIL}`;
 export const HOME_BANNER_FORM_TITLE =
   "Оставьте свои контакты и мы свяжемся с вами в ближайшее время, чтобы ответить на все вопросы";
 
-export const HOME_BANNER_POLICY_TEXT =
-  "Нажимая на кнопку, вы соглашаетесь с политикой в отношении обработки персональных данных.";
-
 export interface HomeWorkStep {
   id: string;
   title: string;

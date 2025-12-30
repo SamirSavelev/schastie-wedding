@@ -2,24 +2,23 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "@app/router";
 import { NotifyProvider } from "./context/Notify/NotifyProvider";
 import { useEffect } from "react";
+import { HelmetProvider } from "react-helmet-async";
+import { ModalProvider } from "@context/Modal/ModalProvider";
 
 export default function App() {
   useEffect(() => {
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register("/service-worker.js")
-        .then((registration) => {
-          console.log("Service Worker зарегистрирован", registration);
-        })
-        .catch((error) => {
-          console.error("Ошибка регистрации Service Worker", error);
-        });
+      navigator.serviceWorker.register("/service-worker.js");
     }
   }, []);
 
   return (
-    <NotifyProvider>
-      <RouterProvider router={router} />
-    </NotifyProvider>
+    <HelmetProvider>
+      <NotifyProvider>
+        <ModalProvider>
+          <RouterProvider router={router} />
+        </ModalProvider>
+      </NotifyProvider>
+    </HelmetProvider>
   );
 }

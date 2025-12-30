@@ -1,7 +1,11 @@
-import './CtaButton.scss';
+import { useModal } from "@context/hooks";
+import "./CtaButton.scss";
 
-export const CtaButton = () => (
-  <button type="button" className="cta-button" onClick={() => {}}>
-    Записаться на встречу
-  </button>
-);
+export const CtaButton = () => {
+  const { showModal } = useModal();
+  return (
+    <button type="button" className="cta-button" onClick={showModal}>
+      Записаться на встречу
+    </button>
+  );
+};

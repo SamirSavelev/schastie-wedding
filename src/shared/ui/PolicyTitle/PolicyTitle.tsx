@@ -1,0 +1,20 @@
+import type { FC } from "react";
+import { Text } from "../Text";
+
+export const PolicyTitle: FC = () => {
+  return (
+    <Text variant="caption">
+      Нажимая на кнопку, вы соглашаетесь с{" "}
+      <a
+        href="/privacy"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          textDecoration: "underline",
+        }}
+      >
+        политикой в отношении обработки персональных данных.{" "}
+      </a>
+    </Text>
+  );
+};

@@ -1,8 +1,8 @@
-import elena from '@assets/team/elena.png';
-import lyudmila from '@assets/team/lyudmila.png';
-import './AboutPage.scss';
+import elena from "@assets/team/elena.png";
+import lyudmila from "@assets/team/lyudmila.png";
+import "./AboutPage.scss";
 
-import headerImage from '@assets/we/header.jpg';
+import headerImage from "@assets/we/header.jpg";
 import {
   ABOUT_TITLE,
   ABOUT_LEAD,
@@ -13,12 +13,16 @@ import {
   ABOUT_PERSON_LYUDMILA_NAME,
   ABOUT_PERSON_LYUDMILA_ROLE,
   ABOUT_PERSON_LYUDMILA_QUOTE,
-} from '@shared/constants';
-import { PageHeader } from '@widgets';
-import { Container, Text } from '@shared/ui';
+} from "@shared/constants";
+import { PageHeader } from "@widgets";
+import { Container, Text } from "@shared/ui";
+import { Helmet } from "react-helmet-async";
 
 export const AboutPage = () => (
   <>
+    <Helmet>
+      <title>О нас | Счастье — планирование свадеб в Казани</title>
+    </Helmet>
     <div className="about__header">
       <PageHeader
         backgroundImage={headerImage}

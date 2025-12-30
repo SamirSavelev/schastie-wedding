@@ -2,11 +2,14 @@ import { useCallback, useEffect, useState, type FormEventHandler } from "react";
 import { Container } from "@shared/ui/Container/Container";
 
 import "./ContactsPage.scss";
-import { HOME_BANNER_POLICY_TEXT, NETWORKS } from "@shared/constants";
+import { NETWORKS } from "@shared/constants";
 import { Button, Text, TextField } from "@shared/ui";
 import type { TextFieldProps } from "@shared/ui/TextField/TextField";
 import { useNotify } from "@context/hooks";
 import { sendToTelegram } from "@app/api/telegramApi";
+import { Helmet } from "react-helmet-async";
+import { PolicyTitle } from "@shared/ui/PolicyTitle/PolicyTitle";
+
 interface ValidationItemState {
   error: string;
   isValid: boolean;
@@ -124,6 +127,9 @@ export const ContactsPage = () => {
 
   return (
     <section className="contacts" aria-labelledby="contacts-title">
+      <Helmet>
+        <title>Контакты | Счастье — планирование свадеб в Казани</title>
+      </Helmet>
       <Container>
         <h1 id="contacts-title" className="contacts__title">
           Контакты
@@ -185,7 +191,7 @@ export const ContactsPage = () => {
                 ОТПРАВИТЬ
               </Button>
 
-              <Text variant="caption">{HOME_BANNER_POLICY_TEXT}</Text>
+              <PolicyTitle />
             </form>
           </div>
 
@@ -242,6 +248,25 @@ export const ContactsPage = () => {
               ))}
             </div>
           </div>
+        </div>
+        <div className="contacts__work-with-us">
+          <Text align="center" font="helvetica">
+            Хотите работать с нами? Мы всегда открыты для талантливых и надёжных
+            профессионалов. Если вы разделяете наш подход к качеству, вниманию к
+            деталям и любви к празднику,{" "}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfZyzb7ZYTBet2-du6HiajqhWywRhXOB-InWCxIMLzgkS4pKg/viewform?usp=publish-editor"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                textDecoration: "underline",
+              }}
+            >
+              {" "}
+              заполните форму
+            </a>{" "}
+            — мы свяжемся с вами и обсудим возможное сотрудничество.
+          </Text>
         </div>
       </Container>
     </section>

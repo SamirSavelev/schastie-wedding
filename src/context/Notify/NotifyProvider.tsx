@@ -9,7 +9,7 @@ export const NotifyProvider: FC<PropsWithChildren> = ({ children }) => {
   const showNotify = (message: string, type: NotifyType) => {
     const options: ToastOptions = {
       position: "bottom-right",
-      autoClose: 25000,
+      autoClose: 2000,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: false,

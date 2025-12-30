@@ -1,19 +1,23 @@
-import { Container } from '@shared/ui/Container/Container';
-import { WeddingPreview } from '@widgets/WeddingPreview/WeddingPreview';
+import { Container } from "@shared/ui/Container/Container";
+import { WeddingPreview } from "@widgets/WeddingPreview/WeddingPreview";
 
-import headerImage from '@assets/portfolio/header.jpg';
+import headerImage from "@assets/portfolio/header.jpg";
 
-import { BannerSection, PageHeader } from '@widgets';
+import { BannerSection, PageHeader } from "@widgets";
 import {
   HOME_PORTFOLIO_TITLE,
   PORTFOLIO_DETAILS,
   PORTFOLIO_WEDDINGS_PREVIEWS,
-} from '@shared/constants';
-import './PortfolioPage.scss';
-import { Text } from '@shared/ui';
+} from "@shared/constants";
+import "./PortfolioPage.scss";
+import { Text } from "@shared/ui";
+import { Helmet } from "react-helmet-async";
 
 export const PortfolioPage = () => (
   <>
+    <Helmet>
+      <title>Портфолио | Счастье — планирование свадеб в Казани</title>
+    </Helmet>
     <div className="portfolio-header">
       <PageHeader
         backgroundImage={headerImage}
