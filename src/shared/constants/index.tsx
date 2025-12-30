@@ -1,5 +1,6 @@
 //Финальные фото для Hero:
 import hero1 from "@assets/hero/1.jpg";
+
 import hero3 from "@assets/hero/3.jpg";
 import hero4 from "@assets/hero/4.jpg";
 import hero5 from "@assets/hero/5.jpg";
@@ -61,16 +62,12 @@ import TelegramIcon from "@assets/icons/telegram.svg";
 import VkIcon from "@assets/icons/vk.svg";
 import WhatsappIcon from "@assets/icons/whatsapp.svg";
 import PhoneIcon from "@assets/icons/phone.svg";
-import coupleMV from "@assets/portfolio/-269.jpg.webp";
-import coupleAS from "@assets/portfolio/0209.jpg.webp";
-import coupleDN from "@assets/portfolio/123A5147.jpg.webp";
 import articleImage1 from "@assets/blog/articles/article-1.webp";
 import articleImage2 from "@assets/blog/articles/article-2.webp";
 import articleImage3 from "@assets/blog/articles/article-3.webp";
 import articleImage4 from "@assets/blog/articles/article-4.webp";
 import articleImage5 from "@assets/blog/articles/article-5.webp";
 import articleImage6 from "@assets/blog/articles/article-6.webp";
-import type { WeddingId } from "@pages/PortfolioWedding/constants";
 
 import type { ReactNode } from "react";
 
@@ -183,21 +180,21 @@ export const HOME_PORTFOLIO_ITEMS: HomePortfolioItem[] = [
     id: 2,
     title: "Алия и Ильнур",
     tagline: "«Любовь в большом городе»",
-    linkId: "2",
+    linkId: "ilnur-i-aliya",
     image: portfolioHome2,
   },
   {
     id: 1,
     title: "Марат и Мария",
     tagline: "«Магия любви – начало легенды»",
-    linkId: "1",
+    linkId: "marat-i-maria",
     image: portfolioHome1,
   },
   {
     id: 3,
     title: "Иван и Этерика",
     tagline: "«Timeless Ceremony»",
-    linkId: "3",
+    linkId: "",
     image: portfolioHome3,
   },
 ];
@@ -217,6 +214,9 @@ export const HOME_BANNER_EMAIL_LINK = `mailto:${HOME_BANNER_EMAIL}`;
 
 export const HOME_BANNER_FORM_TITLE =
   "Оставьте свои контакты и мы свяжемся с вами в ближайшее время, чтобы ответить на все вопросы";
+
+export const HOME_BANNER_POLICY_TEXT =
+  "Нажимая на кнопку, вы соглашаетесь с политикой в отношении обработки персональных данных.";
 
 export interface HomeWorkStep {
   id: string;
@@ -887,53 +887,6 @@ export const MARQUEE_IMAGES = [
   { id: "18", src: heroImage2, alt: "Свадьба 18" },
   { id: "19", src: heroImage3, alt: "Свадьба 19" },
   { id: "20", src: heroImage4, alt: "Свадьба 20" },
-];
-
-export interface PortfolioWedding {
-  id: WeddingId;
-  imageUrl: string;
-  coupleName: string;
-  concept: string;
-  placeTitle: string;
-  placeSubtitle: string;
-  guests: string;
-  team: string;
-  budget: string;
-}
-export const PORTFOLIO_WEDDINGS_PREVIEWS: Array<PortfolioWedding> = [
-  {
-    id: "mihail-i-vera",
-    imageUrl: coupleMV,
-    coupleName: "Михаил и Вера",
-    concept: "Концепция «Я тебя найду везде»",
-    placeTitle: "Загородная площадка",
-    placeSubtitle: "Hide",
-    guests: "101 человек",
-    team: "63 специалиста",
-    budget: "> 4 млн. руб.",
-  },
-  {
-    id: "aleksandr-i-elizaveta",
-    imageUrl: coupleAS,
-    coupleName: "Алексей и Софья",
-    concept: "Концепция «Город в огнях»",
-    placeTitle: "Панорамный ресторан",
-    placeSubtitle: "Терраса на крыше",
-    guests: "80 человек",
-    team: "48 специалистов",
-    budget: "≈ 3 млн. руб.",
-  },
-  {
-    id: "yan-i-natalya",
-    imageUrl: coupleDN,
-    coupleName: "Дмитрий и Наталья",
-    concept: "Концепция «Сад мечты»",
-    placeTitle: "Усадьба за городом",
-    placeSubtitle: "Теплая оранжерея",
-    guests: "65 человек",
-    team: "37 специалистов",
-    budget: "≈ 2,5 млн. руб.",
-  },
 ];
 
 export const PORTFOLIO_DETAILS =

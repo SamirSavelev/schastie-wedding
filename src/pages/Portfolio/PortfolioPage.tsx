@@ -4,14 +4,11 @@ import { WeddingPreview } from "@widgets/WeddingPreview/WeddingPreview";
 import headerImage from "@assets/portfolio/header.jpg";
 
 import { BannerSection, PageHeader } from "@widgets";
-import {
-  HOME_PORTFOLIO_TITLE,
-  PORTFOLIO_DETAILS,
-  PORTFOLIO_WEDDINGS_PREVIEWS,
-} from "@shared/constants";
+import { HOME_PORTFOLIO_TITLE, PORTFOLIO_DETAILS } from "@shared/constants";
 import "./PortfolioPage.scss";
 import { Text } from "@shared/ui";
 import { Helmet } from "react-helmet-async";
+import { WEDDINGS } from "@pages/PortfolioWedding/constants";
 
 export const PortfolioPage = () => (
   <>
@@ -37,7 +34,7 @@ export const PortfolioPage = () => (
       </div>
 
       <div className="portfolio-list">
-        {PORTFOLIO_WEDDINGS_PREVIEWS.map((wedding) => (
+        {WEDDINGS.map((wedding) => (
           <WeddingPreview key={wedding.id} {...wedding} />
         ))}
       </div>

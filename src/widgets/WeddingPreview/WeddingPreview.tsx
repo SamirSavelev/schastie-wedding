@@ -1,12 +1,12 @@
-import type { FC } from 'react';
-import type { PortfolioWedding } from '@shared/constants';
-import { Button, Text } from '@shared/ui';
-import './WeddingPreview.scss';
+import type { FC } from "react";
+import { Button, Text } from "@shared/ui";
+import "./WeddingPreview.scss";
+import type { WeddingConfig } from "@pages/PortfolioWedding/constants";
 
-export const WeddingPreview: FC<PortfolioWedding> = ({
+export const WeddingPreview: FC<WeddingConfig> = ({
   id,
-  imageUrl,
-  coupleName,
+  heroImage,
+  couple,
   concept,
   placeTitle,
   placeSubtitle,
@@ -17,28 +17,32 @@ export const WeddingPreview: FC<PortfolioWedding> = ({
   const INFO = [
     {
       id: 1,
-      label: 'Место проведения',
+      label: "Место проведения",
       value: (
         <>
           {placeTitle}
-          <br />
-          {placeSubtitle}
+          {!!placeSubtitle && (
+            <>
+              <br />
+              {placeSubtitle}
+            </>
+          )}
         </>
       ),
     },
     {
       id: 2,
-      label: 'Количество гостей',
+      label: "Количество гостей",
       value: <>{guests}</>,
     },
     {
       id: 3,
-      label: 'Команда',
+      label: "Команда",
       value: <>{team}</>,
     },
     {
       id: 4,
-      label: 'Бюджет',
+      label: "Бюджет",
       value: <>{budget}</>,
     },
   ];
@@ -47,8 +51,8 @@ export const WeddingPreview: FC<PortfolioWedding> = ({
     <section className="wedding-preview">
       <div className="wedding-preview__image-wrapper">
         <img
-          src={imageUrl}
-          alt={coupleName}
+          src={heroImage}
+          alt={`Свадьба ${couple}`}
           className="wedding-preview__image"
         />
       </div>
@@ -59,7 +63,7 @@ export const WeddingPreview: FC<PortfolioWedding> = ({
           textTransform="uppercase"
           className="wedding-preview__title"
         >
-          {coupleName}
+          {couple}
         </Text>
         <Text variant="subtitle" className="wedding-preview__concept">
           {concept}

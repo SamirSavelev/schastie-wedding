@@ -42,14 +42,14 @@ export const router = createBrowserRouter([
           </AppLayout>
         ),
       },
-      {
-        path: "blog",
-        element: (
-          <AppLayout>
-            <BlogPage />
-          </AppLayout>
-        ),
-      },
+      // {
+      //   path: "blog",
+      //   element: (
+      //     <AppLayout>
+      //       <BlogPage />
+      //     </AppLayout>
+      //   ),
+      // },
       {
         path: "about",
         element: (

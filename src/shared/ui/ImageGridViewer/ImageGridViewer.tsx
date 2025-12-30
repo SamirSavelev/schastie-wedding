@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from "react";
 
 import {
   IMAGE_MARQUEE_VIEWER_ARIA_LABEL,
   IMAGE_MARQUEE_VIEWER_CLOSE_LABEL,
   IMAGE_MARQUEE_VIEWER_NEXT_LABEL,
   IMAGE_MARQUEE_VIEWER_PREV_LABEL,
-} from '@shared/constants';
+} from "@shared/constants";
 
-import './ImageGridViewer.scss';
+import "./ImageGridViewer.scss";
 
 export interface ImageGridViewerItem {
   id: string;
@@ -50,15 +50,15 @@ export const ImageGridViewer = ({ images }: ImageGridViewerProps) => {
     (event: KeyboardEvent) => {
       if (activeIndex === null) return;
 
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         event.preventDefault();
         handleClose();
       }
-      if (event.key === 'ArrowRight') {
+      if (event.key === "ArrowRight") {
         event.preventDefault();
         handleNext();
       }
-      if (event.key === 'ArrowLeft') {
+      if (event.key === "ArrowLeft") {
         event.preventDefault();
         handlePrev();
       }
@@ -69,8 +69,14 @@ export const ImageGridViewer = ({ images }: ImageGridViewerProps) => {
   useEffect(() => {
     if (activeIndex === null) return;
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    // Отключение прокрутки страницы
+    document.body.style.overflow = "hidden";
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "auto"; // Восстановление прокрутки после закрытия
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [activeIndex, handleKeyDown]);
 
   if (!hasImages) return null;
@@ -90,7 +96,7 @@ export const ImageGridViewer = ({ images }: ImageGridViewerProps) => {
               <div className="image-grid-viewer__image-wrapper">
                 <img
                   src={image.src}
-                  alt={image.alt ?? ''}
+                  alt={image.alt ?? ""}
                   className="image-grid-viewer__image"
                 />
               </div>
@@ -133,13 +139,11 @@ export const ImageGridViewer = ({ images }: ImageGridViewerProps) => {
             onClick={(event) => event.stopPropagation()}
           >
             <div className="image-grid-viewer__viewer-content">
-              <div className="image-grid-viewer__viewer-image-wrapper">
-                <img
-                  src={images[activeIndex].src}
-                  alt={images[activeIndex].alt ?? ''}
-                  className="image-grid-viewer__viewer-image"
-                />
-              </div>
+              <img
+                src={images[activeIndex].src}
+                alt={images[activeIndex].alt ?? ""}
+                className="image-grid-viewer__viewer-image"
+              />
             </div>
           </div>
 
