@@ -7,7 +7,6 @@ export const PolicyTitle: FC = () => {
       Нажимая на кнопку, вы соглашаетесь с{" "}
       <a
         href="/privacy"
-        target="_blank"
         rel="noopener noreferrer"
         style={{
           textDecoration: "underline",
