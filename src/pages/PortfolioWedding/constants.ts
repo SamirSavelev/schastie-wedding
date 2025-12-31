@@ -55,7 +55,7 @@ import rinatAdelya15 from "@assets/portfolio/rinat-adelya/150A6240_(1).jpg";
 import rinatAdelya16 from "@assets/portfolio/rinat-adelya/150A6427.jpg";
 import rinatAdelya17 from "@assets/portfolio/rinat-adelya/150A7013.jpg";
 import rinatAdelya18 from "@assets/portfolio/rinat-adelya/150A7025.jpg";
-import aidarSabinaHero from "@assets/portfolio/aidar-sabina/hero.jpg";
+import aidarSabinaHero from "@assets/portfolio/aidar-sabina/heroo.jpg";
 import aidarSabina1 from "@assets/portfolio/aidar-sabina/1.jpg";
 import aidarSabina2 from "@assets/portfolio/aidar-sabina/2.jpg";
 import aidarSabina3 from "@assets/portfolio/aidar-sabina/3.jpg";
