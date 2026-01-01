@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import type { FC } from 'react';
-import type { ArticlePreview as Props } from '@shared/constants';
-import './ArticlePreview.scss';
-import { Text } from '@shared/ui';
+import { Link } from "react-router-dom";
+import type { FC } from "react";
+import type { ArticlePreview as Props } from "@shared/constants";
+import "./ArticlePreview.scss";
+import { Text } from "@shared/ui";
 
 export const ArticlePreview: FC<Props> = ({ imageUrl, title, to }) => (
   <article className="article-preview">

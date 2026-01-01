@@ -8,6 +8,7 @@ export const PolicyTitle: FC = () => {
       <a
         href="/privacy"
         rel="noopener noreferrer"
+        target="_blank"
         style={{
           textDecoration: "underline",
         }}
