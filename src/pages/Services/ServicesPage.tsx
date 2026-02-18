@@ -4,7 +4,7 @@ import "./ServicesPage.scss";
 import {
   ServicesIntroSection,
   ServicesChatSection,
-  ServicesPricesSection,
+  // ServicesPricesSection,
   ServicesGuaranteesSection,
   ImageMarquee,
   ServicesMagicSection,
@@ -26,7 +26,7 @@ export const ServicesPage = () => (
 
     <ServicesIntroSection />
     <ServicesChatSection />
-    <ServicesPricesSection />
+    {/* <ServicesPricesSection /> */}
     <ServicesGuaranteesSection />
     <ServicesMagicSection />
     <ImageMarquee />

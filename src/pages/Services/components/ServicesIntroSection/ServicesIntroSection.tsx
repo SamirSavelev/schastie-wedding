@@ -1,16 +1,16 @@
-import { Container, Text } from '@shared/ui';
+import { Container, Text } from "@shared/ui";
 import {
   SERVICES_INTRO_TITLE,
   SERVICES_INTRO_MAIN_TEXT,
-  SERVICES_INTRO_BUDGET_PREFIX,
-  SERVICES_INTRO_BUDGET_VALUE,
-  SERVICES_INTRO_BADGE_CAPTION,
-  SERVICES_INTRO_BADGE_PERCENT,
-  SERVICES_INTRO_BADGE_SUB,
-  SERVICES_INTRO_NOTE,
-} from '@shared/constants';
+  // SERVICES_INTRO_BUDGET_PREFIX,
+  // SERVICES_INTRO_BUDGET_VALUE,
+  // SERVICES_INTRO_BADGE_CAPTION,
+  // SERVICES_INTRO_BADGE_PERCENT,
+  // SERVICES_INTRO_BADGE_SUB,
+  // SERVICES_INTRO_NOTE,
+} from "@shared/constants";
 
-import './ServicesIntroSection.scss';
+import "./ServicesIntroSection.scss";
 
 export const ServicesIntroSection = () => (
   <section className="services-intro" aria-labelledby="services-intro-title">
@@ -24,7 +24,7 @@ export const ServicesIntroSection = () => (
             {SERVICES_INTRO_MAIN_TEXT}
           </Text>
 
-          <Text
+          {/* <Text
             variant="body1"
             font="helvetica"
             weight="regular"
@@ -32,10 +32,10 @@ export const ServicesIntroSection = () => (
           >
             {SERVICES_INTRO_BUDGET_PREFIX}
             <strong>{SERVICES_INTRO_BUDGET_VALUE}</strong>.
-          </Text>
+          </Text> */}
         </div>
 
-        <aside
+        {/* <aside
           className="services-intro__aside"
           aria-label="Агентское вознаграждение"
         >
@@ -71,7 +71,7 @@ export const ServicesIntroSection = () => (
           >
             {SERVICES_INTRO_NOTE}
           </Text>
-        </aside>
+        </aside> */}
       </div>
     </Container>
   </section>
