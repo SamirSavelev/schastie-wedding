@@ -51,23 +51,23 @@ const cleanPhoneNumber = (phone: string) => {
   const cleanedPhone = phone.replace(/[^0-9+]/g, "");
   if (cleanedPhone.startsWith("+") && cleanedPhone.length > 1) {
     return cleanedPhone;
-  } else {
-    return cleanedPhone.replace(/^(\+)?(7|8)/, "8");
   }
+  return cleanedPhone.replace(/^(\+)?(7|8)/, "8");
 };
 
 const getTextFieldStatus = (
-  item: ValidationItemState
+  item: ValidationItemState,
 ): TextFieldProps["status"] => {
   if (!item.isTouched) return "default";
   return item.isValid ? "success" : "error";
 };
+
 export const Modal: FC<ModalProps> = ({ isVisible, hideModal }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const bodyOverflowRef = useRef<string>("");
 
   const [validation, setValidation] = useState<ValidationState>(
-    initialValidationState
+    initialValidationState,
   );
   const [form, setForm] = useState<Form>(initialFormState);
   const { showNotify } = useNotify();
@@ -105,11 +105,11 @@ export const Modal: FC<ModalProps> = ({ isVisible, hideModal }) => {
       } catch {
         showNotify(
           "Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.",
-          "error"
+          "error",
         );
       }
     },
-    [form, showNotify, hideModal]
+    [form, showNotify, hideModal],
   );
 
   const validate = useCallback(() => {
@@ -140,9 +140,7 @@ export const Modal: FC<ModalProps> = ({ isVisible, hideModal }) => {
 
   useEffect(() => {
     const handleEscKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        hideModal();
-      }
+      if (event.key === "Escape") hideModal();
     };
 
     const body = document.body;
@@ -151,10 +149,9 @@ export const Modal: FC<ModalProps> = ({ isVisible, hideModal }) => {
       bodyOverflowRef.current = body.style.overflow;
       const scrollBarWidth =
         window.innerWidth - document.documentElement.clientWidth;
+
       body.style.overflow = "hidden";
-      if (scrollBarWidth > 0) {
-        body.style.paddingRight = `${scrollBarWidth}px`;
-      }
+      if (scrollBarWidth > 0) body.style.paddingRight = `${scrollBarWidth}px`;
 
       document.addEventListener("keydown", handleEscKey);
     } else {
@@ -170,7 +167,7 @@ export const Modal: FC<ModalProps> = ({ isVisible, hideModal }) => {
   }, [isVisible, hideModal]);
 
   useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
+    const handleOutsideClick = (event: PointerEvent) => {
       if (
         modalRef.current &&
         !modalRef.current.contains(event.target as Node)
@@ -180,11 +177,11 @@ export const Modal: FC<ModalProps> = ({ isVisible, hideModal }) => {
     };
 
     if (isVisible) {
-      document.addEventListener("mousedown", handleOutsideClick);
+      document.addEventListener("pointerdown", handleOutsideClick);
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("pointerdown", handleOutsideClick);
     };
   }, [isVisible, hideModal]);
 
@@ -199,29 +196,34 @@ export const Modal: FC<ModalProps> = ({ isVisible, hideModal }) => {
     <div className={cn("Modal", isVisible && "Modal--visible")}>
       <div
         ref={modalRef}
-        className={cn("Modal__container")}
+        className="Modal__container"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="Modal__title"
+        aria-label="Записаться на консультацию"
       >
-        <div className="Modal__close">
-          <div onClick={hideModal}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M18.5558 18.5628C17.9899 19.1287 17.0744 19.1287 16.5168 18.5711L11.9896 14.0439L7.47063 18.5628C6.90472 19.1287 5.98928 19.1287 5.4317 18.5711C4.87411 18.0135 4.87411 17.0981 5.44002 16.5322L9.96728 12.0049L5.42338 7.46102C4.85747 6.89511 4.86579 5.98799 5.4317 5.42208C5.99761 4.85617 6.91305 4.85617 7.47063 5.41376L11.9979 9.94102L16.5252 5.41376C17.0911 4.84785 18.0065 4.84785 18.5641 5.40544C19.1217 5.96302 19.1217 6.87846 18.5558 7.44437L14.0285 11.9716L18.5558 16.4989C19.1217 17.0648 19.1134 17.9719 18.5475 18.5378L18.5558 18.5628Z"
-                fill="black"
-              />
-            </svg>
-          </div>
-        </div>
+        <button
+          type="button"
+          className="Modal__close"
+          onClick={hideModal}
+          aria-label="Закрыть"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M18.5558 18.5628C17.9899 19.1287 17.0744 19.1287 16.5168 18.5711L11.9896 14.0439L7.47063 18.5628C6.90472 19.1287 5.98928 19.1287 5.4317 18.5711C4.87411 18.0135 4.87411 17.0981 5.44002 16.5322L9.96728 12.0049L5.42338 7.46102C4.85747 6.89511 4.86579 5.98799 5.4317 5.42208C5.99761 4.85617 6.91305 4.85617 7.47063 5.41376L11.9979 9.94102L16.5252 5.41376C17.0911 4.84785 18.0065 4.84785 18.5641 5.40544C19.1217 5.96302 19.1217 6.87846 18.5558 7.44437L14.0285 11.9716L18.5558 16.4989C19.1217 17.0648 19.1134 17.9719 18.5475 18.5378L18.5558 18.5628Z"
+              fill="black"
+            />
+          </svg>
+        </button>
+
         <div className="Modal__content">
           <Text
             variant="subtitle"
@@ -231,14 +233,8 @@ export const Modal: FC<ModalProps> = ({ isVisible, hideModal }) => {
           >
             Записаться на консультацию
           </Text>
-          <form
-            className="home-banner__form"
-            onSubmit={handleSubmit}
-            noValidate
-            style={{
-              marginTop: "12px",
-            }}
-          >
+
+          <form className="Modal__form" onSubmit={handleSubmit} noValidate>
             <TextField
               label="Имя"
               placeholder="Как вас зовут?"
@@ -246,10 +242,7 @@ export const Modal: FC<ModalProps> = ({ isVisible, hideModal }) => {
               name="name"
               value={form.name}
               onChange={(e) =>
-                setForm((prev) => ({
-                  ...prev,
-                  name: e.target.value,
-                }))
+                setForm((prev) => ({ ...prev, name: e.target.value }))
               }
               autoComplete="name"
               required
@@ -265,10 +258,7 @@ export const Modal: FC<ModalProps> = ({ isVisible, hideModal }) => {
               value={form.phone}
               onChange={(e) => {
                 const cleanedPhone = cleanPhoneNumber(e.target.value);
-                setForm((prev) => ({
-                  ...prev,
-                  phone: cleanedPhone,
-                }));
+                setForm((prev) => ({ ...prev, phone: cleanedPhone }));
               }}
               autoComplete="tel"
               required

@@ -1,16 +1,23 @@
 .Modal {
+  --modal-padding: clamp(12px, 4vw, 24px);
+
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   z-index: 9998;
+
+  padding: var(--modal-padding);
+
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(1.5px);
 
@@ -20,46 +27,100 @@
   }
 
   &__container {
-    border-radius: 18px;
+    position: relative;
+
+    width: min(600px, 100%);
+    max-height: calc(100dvh - (var(--modal-padding) * 2));
+
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+
+    border-radius: clamp(14px, 3vw, 18px);
     border: 1.5px solid var(--color-brand);
     background: var(--color-bg);
+
     display: flex;
-    width: 100%;
-    box-sizing: border-box;
     flex-direction: column;
-    animation: modal-appear 0.3s ease;
-    padding: 24px;
-    min-width: 300px;
-    width: 100%;
-    max-width: 600px;
-    position: relative;
+
+    --modal-inner-pad: clamp(16px, 4vw, 24px);
+    padding: var(--modal-inner-pad);
+    padding-top: calc(var(--modal-inner-pad) + 6px);
+
+    animation: modal-appear 0.25s ease;
+    box-sizing: border-box;
   }
 
   &__close {
     position: absolute;
-    top: 12px;
-    right: 16px;
+
+    top: calc(var(--modal-inner-pad) - 12px);
+    right: calc(var(--modal-inner-pad) - 12px);
+
+    width: 40px;
+    height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background: transparent;
     cursor: pointer;
+
+    border-radius: 10px;
 
     path {
       transition: fill 0.2s ease;
     }
-    &:hover {
-      path {
-        fill: var(--color-brand);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        path {
+          fill: var(--color-brand);
+        }
       }
     }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(209, 159, 174, 0.35);
+    }
   }
+
   &__content {
+    padding-top: 6px;
+  }
+
+  &__form {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  @media (max-width: 420px) {
+    &__close {
+      width: 36px;
+      height: 36px;
+
+      top: calc(var(--modal-inner-pad) - 16px);
+      right: calc(var(--modal-inner-pad) - 16px);
+    }
   }
 }
 
 @keyframes modal-appear {
   from {
     opacity: 0;
+    transform: translateY(6px);
   }
-
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }

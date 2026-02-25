@@ -135,11 +135,11 @@
     will-change: transform;
   }
 
-  @media (max-height: 1000px) {
+  @media (max-height: 1000px) and (max-width: 720px) {
     --page-header-bg-scale: 1.5;
   }
 
-  @media (max-height: 700px) {
+  @media (max-height: 700px) and (max-width: 720px) {
     --page-header-bg-scale: 1.8;
   }
 }
