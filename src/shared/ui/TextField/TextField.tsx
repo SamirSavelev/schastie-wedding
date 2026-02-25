@@ -4,8 +4,10 @@ import classNames from "classnames";
 import "./TextField.scss";
 import { Text } from "../Text/Text";
 
-export interface TextFieldProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "className"> {
+export interface TextFieldProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "className"
+> {
   label?: ReactNode;
   wrapperClassName?: string;
   inputClassName?: string;
@@ -17,6 +19,7 @@ export const TextField = ({
   label,
   wrapperClassName,
   inputClassName,
+  status = "default",
   statusMessage,
   ...inputProps
 }: TextFieldProps) => (
@@ -26,10 +29,11 @@ export const TextField = ({
     <input
       {...inputProps}
       className={classNames("text-field__input", inputClassName, {
-        "text-field__input--error": inputProps.status === "error",
-        "text-field__input--success": inputProps.status === "success",
+        "text-field__input--error": status === "error",
+        "text-field__input--success": status === "success",
       })}
     />
+
     {!!statusMessage && (
       <Text variant="body3" color="red" font="helvetica">
         {statusMessage}

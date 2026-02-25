@@ -23,13 +23,8 @@ $header-nav-height: 56px;
 
 // Шрифты
 $font-body: "Cormorant Garamond", serif;
-$font-helvetica: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-
-// Breakpoints
-$bp-lg: 1200px;
-$bp-md: 960px;
-$bp-sm: 600px;
-$bp-xs: 400px;
+$font-helvetica:
+  "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
 :root {
   --container-max: #{$container-max};
@@ -56,17 +51,4 @@ $bp-xs: 400px;
 
   --font-body: #{$font-body};
   --font-helvetica: #{$font-helvetica};
-
-  @media (max-width: 900px) {
-    --container-max: 100%;
-    --header-height: 60px;
-    --footer-height: 60px;
-  }
-
-  @media (max-width: 700px) {
-  }
-
-  /* Самые маленькие (360–400px) */
-  @media (max-width: $bp-xs) {
-  }
 }

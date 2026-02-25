@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 import {
   DELETING_SPEED,
   PAUSE_BEFORE_DELETE,
   PAUSE_BEFORE_NEXT,
   TYPING_SPEED,
-} from './constants';
+} from "./constants";
 
-import './TypedLine.scss';
-import { Text } from '../Text';
-import type { TextColor } from '../Text/Text';
+import "./TypedLine.scss";
+import { Text } from "../Text";
+import type { TextColor } from "../Text/Text";
 
 interface Props {
   phrases: string[];
@@ -28,10 +28,10 @@ export const TypedLine = ({
   pauseBeforeDelete = PAUSE_BEFORE_DELETE,
   pauseBeforeNext = PAUSE_BEFORE_NEXT,
   className,
-  color = 'black',
+  color = "black",
 }: Props) => {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
@@ -75,17 +75,21 @@ export const TypedLine = ({
     pauseBeforeNext,
   ]);
 
-  if (!phrases.length) {
-    return null;
-  }
+  if (!phrases.length) return null;
 
   return (
     <div
-      className={`typed-line${className ? ` ${className}` : ''}`}
+      className={`typed-line${className ? ` ${className}` : ""}`}
       aria-live="polite"
     >
       <span className="typed-line__text">
-        <Text variant="subtitle" color={color} font="helvetica" weight="light">
+        <Text
+          as="span"
+          variant="subtitle"
+          color={color}
+          font="helvetica"
+          weight="light"
+        >
           {displayedText}
         </Text>
       </span>

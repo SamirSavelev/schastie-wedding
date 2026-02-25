@@ -1,3 +1,16 @@
+@use "sass:math";
+
+@function fluid($minSize, $maxSize, $minViewport: 360, $maxViewport: 1200) {
+  $slope: math.div(($maxSize - $minSize), ($maxViewport - $minViewport));
+  $yAxisIntersection: $minSize - ($slope * $minViewport);
+
+  @return clamp(
+    #{$minSize}px,
+    calc(#{$yAxisIntersection}px + #{$slope * 100}vw),
+    #{$maxSize}px
+  );
+}
+
 .text {
   margin: 0;
 
@@ -13,41 +26,43 @@
 
   &--variant {
     &-h1 {
-      font-size: 80px;
+      font-size: fluid(34, 80);
       line-height: 1.4;
     }
 
     &-h2 {
-      font-size: 70px;
+      font-size: fluid(30, 70);
       line-height: 1.4;
     }
 
     &-h3 {
-      font-size: 42px;
+      font-size: fluid(22, 42);
       line-height: 1.4;
     }
 
     &-subtitle {
-      font-size: 24px;
+      font-size: fluid(18, 24);
       line-height: 1.4;
     }
 
     &-body1 {
-      font-size: 20px;
+      font-size: fluid(16, 20);
       line-height: 1.4;
     }
 
     &-body2 {
-      font-size: 16px;
+      font-size: fluid(14, 16);
       line-height: 1.4;
     }
 
     &-body3 {
-      font-size: 14px;
+      font-size: fluid(13, 14);
+      line-height: 1.4;
     }
 
     &-caption {
-      font-size: 12px;
+      font-size: fluid(11, 12);
+      line-height: 1.4;
     }
   }
 
@@ -63,9 +78,11 @@
     &-pink {
       color: $color-brand;
     }
+
     &-red {
       color: $color-red;
     }
+
     &-green {
       color: $color-green;
     }

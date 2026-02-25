@@ -1,8 +1,11 @@
-@use '../../../app/styles/variables' as *;
+@use "../../../app/styles/variables" as *;
 
 .container {
   width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: 16px;
+  box-sizing: border-box;
+
+  padding-left: calc(clamp(16px, 4vw, 24px) + env(safe-area-inset-left));
+  padding-right: calc(clamp(16px, 4vw, 24px) + env(safe-area-inset-right));
 }
