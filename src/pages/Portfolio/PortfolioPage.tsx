@@ -22,6 +22,7 @@ export const PortfolioPage = () => (
         backgroundAlt="Портфолио свадеб"
         title="Портфолио"
         bottomText="Полезные статьи о свадьбах и подготовке"
+        noScale
       />
     </div>
 

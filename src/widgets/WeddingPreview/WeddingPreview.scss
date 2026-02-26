@@ -1,20 +1,25 @@
 .wedding-preview {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: 60px;
+  grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 60px);
   align-items: center;
-  padding: 80px 0;
+
+  padding: clamp(40px, 6vw, 80px) 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 
-  @media (max-width: 980px) {
+  @media (max-width: 1024px) {
+    grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+  }
+
+  @media (max-width: 900px) {
     grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-    padding: 56px 0;
+    gap: 22px;
+    padding: 48px 0;
   }
 
   @media (max-width: 720px) {
     padding: 40px 0;
-    gap: 22px;
+    gap: 18px;
   }
 
   @media (max-width: 520px) {
@@ -22,26 +27,31 @@
   }
 
   &__image-wrapper {
+    width: 100%;
+    aspect-ratio: 2 / 3;
     border-radius: 24px;
     overflow: hidden;
     background: #f5f1e8;
 
-    aspect-ratio: 2 / 3;
-
-    @media (max-width: 980px) {
-      aspect-ratio: 16 / 10;
+    @media (max-width: 1024px) {
       border-radius: 20px;
     }
 
-    @media (max-width: 520px) {
-      border-radius: 16px;
+    @media (max-width: 900px) {
+      width: min(420px, 100%);
+      margin: 0 auto;
     }
 
-    picture {
-      display: block;
-      width: 100%;
-      height: 100%;
+    @media (max-width: 520px) {
+      width: min(360px, 100%);
+      border-radius: 16px;
     }
+  }
+
+  &__picture {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   &__image {
@@ -52,33 +62,42 @@
   }
 
   &__content {
-    @media (max-width: 980px) {
-      text-align: center;
-    }
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
   }
 
   &__title {
-    margin: 0 0 16px;
+    margin: 0 0 14px;
+
+    @media (max-width: 720px) {
+      margin-bottom: 12px;
+    }
   }
 
   &__concept {
-    margin: 0 0 32px;
+    margin: 0 0 28px;
 
     @media (max-width: 720px) {
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
   }
 
   &__info-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px 40px;
-    margin-bottom: 40px;
+    gap: 18px 28px;
+    margin-bottom: 32px;
 
-    @media (max-width: 720px) {
+    @media (max-width: 900px) {
+      gap: 16px 22px;
+      margin-bottom: 26px;
+    }
+
+    @media (max-width: 600px) {
       grid-template-columns: minmax(0, 1fr);
-      gap: 16px;
-      margin-bottom: 28px;
+      gap: 14px;
+      margin-bottom: 22px;
     }
   }
 
@@ -86,11 +105,7 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
-
-    @media (max-width: 980px) {
-      justify-content: center;
-      text-align: left;
-    }
+    min-width: 0;
   }
 
   &__icon {
@@ -119,13 +134,16 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+    min-width: 0;
   }
 
   &__actions {
-    margin-top: 12px;
+    margin-top: 6px;
+  }
 
-    @media (max-width: 980px) {
-      display: flex;
+  &__cta {
+    @media (max-width: 520px) {
+      width: 100%;
       justify-content: center;
     }
   }

@@ -1,22 +1,21 @@
-import { Link } from 'react-router-dom';
-import { Container } from '@shared/ui/Container/Container';
+import { Link } from "react-router-dom";
+import { Container } from "@shared/ui/Container/Container";
 import {
   HOME_PORTFOLIO_ITEMS,
   HOME_PORTFOLIO_SUBTITLE,
-  HOME_PORTFOLIO_TITLE,
-} from '@shared/constants';
+} from "@shared/constants";
 
-import './PortfolioSection.scss';
-import { Button } from '@shared/ui/Button/Button';
-import { Text } from '@shared/ui';
-import classNames from 'classnames';
+import "./PortfolioSection.scss";
+import { Button } from "@shared/ui/Button/Button";
+import { Text } from "@shared/ui";
+import classNames from "classnames";
 
 export const PortfolioSection = () => (
   <section className="home-portfolio">
     <Container>
       <header className="home-portfolio__header">
         <Text variant="h3" textTransform="uppercase" align="center">
-          {HOME_PORTFOLIO_TITLE}
+          Портфолио
         </Text>
         <Text variant="body1" font="helvetica" weight="light" align="center">
           {HOME_PORTFOLIO_SUBTITLE}
@@ -33,15 +32,15 @@ export const PortfolioSection = () => (
               <img
                 src={image}
                 alt={title}
-                className={classNames('home-portfolio__image', {
-                  'home-portfolio__image--dark': id === 3,
+                className={classNames("home-portfolio__image", {
+                  "home-portfolio__image--dark": id === 3,
                 })}
                 loading="lazy"
               />
 
               <div
-                className={classNames('home-portfolio__image-overlay', {
-                  'home-portfolio__image-overlay--active': id === 3,
+                className={classNames("home-portfolio__image-overlay", {
+                  "home-portfolio__image-overlay--active": id === 3,
                 })}
                 aria-hidden="true"
               />

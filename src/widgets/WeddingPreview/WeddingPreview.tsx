@@ -40,7 +40,7 @@ export const WeddingPreview: FC<WeddingConfig> = ({
   return (
     <section className="wedding-preview">
       <div className="wedding-preview__image-wrapper">
-        <picture>
+        <picture className="wedding-preview__picture">
           {heroImageWebp && (
             <source
               type="image/webp"
@@ -84,7 +84,12 @@ export const WeddingPreview: FC<WeddingConfig> = ({
         </div>
 
         <div className="wedding-preview__actions">
-          <Button as="link" to={`/portfolio/${id}`} variant="black">
+          <Button
+            as="link"
+            to={`/portfolio/${id}`}
+            variant="black"
+            className="wedding-preview__cta"
+          >
             Смотреть свадьбу
           </Button>
         </div>

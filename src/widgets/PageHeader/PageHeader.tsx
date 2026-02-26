@@ -8,6 +8,7 @@ interface Props {
   backgroundDesktop: string;
   backgroundMobile?: string;
   backgroundAlt?: string;
+  noScale?: boolean;
 }
 
 export const PageHeader: FC<Props> = ({
@@ -16,8 +17,12 @@ export const PageHeader: FC<Props> = ({
   backgroundDesktop,
   backgroundMobile,
   backgroundAlt = "",
+  noScale = false,
 }) => (
-  <div className="page-header" role="banner">
+  <div
+    className={`page-header ${noScale ? "page-header--no-scale" : ""}`}
+    role="banner"
+  >
     <picture className="page-header__bg" aria-hidden="true">
       {backgroundMobile && (
         <source media="(max-width: 720px)" srcSet={backgroundMobile} />
