@@ -21,14 +21,11 @@ export interface WeddingConfig {
   id: string;
   couple: string;
   date: string;
-  heroImage: string;
-
-  heroImageWebp?: {
+  heroImageWebp: {
     src: string;
     srcSet: string;
     sizes?: string;
   };
-
   images: WeddingImageResponsive[];
   concept: string;
   placeSubtitle?: string;
@@ -104,7 +101,6 @@ export const WEDDINGS: WeddingConfig[] = [
     guests: "50 человек",
     team: "18 специалистов",
     budget: "> 2 млн. руб.",
-    heroImage: asset("emil-alina/main.jpg"),
     heroImageWebp: {
       src: asset("emil-alina/main-1600.webp"),
       srcSet: `${asset("emil-alina/main-720.webp")} 720w, ${asset(
@@ -127,7 +123,6 @@ export const WEDDINGS: WeddingConfig[] = [
     guests: "20 гостей",
     team: "14 специалистов",
     budget: "> 2 млн.",
-    heroImage: asset("marat-maria/Nur_002.jpg"),
     heroImageWebp: {
       src: asset("marat-maria/1-1600.webp"),
       srcSet: `${asset("marat-maria/1-360.webp")} 360w, ${asset(
@@ -150,7 +145,6 @@ export const WEDDINGS: WeddingConfig[] = [
     guests: "50 гостей",
     team: "21 специалист",
     budget: "> 3 млн.",
-    heroImage: asset("rinat-adelya/hero.jpg"),
     heroImageWebp: {
       src: asset("rinat-adelya/hero-2400.webp"),
       srcSet: `${asset("rinat-adelya/hero-1280.webp")} 1280w, ${asset(
@@ -173,7 +167,6 @@ export const WEDDINGS: WeddingConfig[] = [
     guests: "60 гостей",
     team: "15 специалистов",
     budget: "> 1 млн.",
-    heroImage: asset("aidar-sabina/hero.jpg"),
     heroImageWebp: {
       src: asset("aidar-sabina/hero-2400.webp"),
       srcSet: `${asset("aidar-sabina/hero-1280.webp")} 1280w, ${asset(
@@ -196,7 +189,6 @@ export const WEDDINGS: WeddingConfig[] = [
     guests: "40 гостей",
     team: "15 специалистов",
     budget: "> 2 млн.",
-    heroImage: asset("artur-i-dasha/hero.jpg"),
     heroImageWebp: {
       src: asset("artur-i-dasha/hero-2400.webp"),
       srcSet: `${asset("artur-i-dasha/hero-1280.webp")} 1280w, ${asset(
@@ -219,7 +211,6 @@ export const WEDDINGS: WeddingConfig[] = [
     guests: "40 гостей",
     team: "10 специалистов",
     budget: "> 1 млн.",
-    heroImage: asset("polina-i-arslan/hero.jpg"),
     heroImageWebp: {
       src: asset("polina-i-arslan/hero-2400.webp"),
       srcSet: `${asset("polina-i-arslan/hero-1280.webp")} 1280w, ${asset(
@@ -242,7 +233,6 @@ export const WEDDINGS: WeddingConfig[] = [
     guests: "50 гостей",
     team: "12 специалистов",
     budget: "> 1 млн.",
-    heroImage: asset("roma-i-mariya/hero.jpg"),
     heroImageWebp: {
       src: asset("roma-i-mariya/hero-2400.webp"),
       srcSet: `${asset("roma-i-mariya/hero-1280.webp")} 1280w, ${asset(
@@ -265,7 +255,6 @@ export const WEDDINGS: WeddingConfig[] = [
     guests: "25 гостей",
     team: "13 специалистов",
     budget: "> 1 млн.",
-    heroImage: asset("ilnur-i-aliya/hero.jpg"),
     heroImageWebp: {
       src: asset("ilnur-i-aliya/hero-2400.webp"),
       srcSet: `${asset("ilnur-i-aliya/hero-1280.webp")} 1280w, ${asset(

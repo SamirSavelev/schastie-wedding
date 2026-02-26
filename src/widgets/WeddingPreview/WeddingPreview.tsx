@@ -6,7 +6,6 @@ import "./WeddingPreview.scss";
 
 export const WeddingPreview: FC<WeddingConfig> = ({
   id,
-  heroImage,
   heroImageWebp,
   couple,
   concept,
@@ -41,15 +40,13 @@ export const WeddingPreview: FC<WeddingConfig> = ({
     <section className="wedding-preview">
       <div className="wedding-preview__image-wrapper">
         <picture className="wedding-preview__picture">
-          {heroImageWebp && (
-            <source
-              type="image/webp"
-              srcSet={heroImageWebp.srcSet}
-              sizes={heroImageWebp.sizes}
-            />
-          )}
+          <source
+            type="image/webp"
+            srcSet={heroImageWebp.srcSet}
+            sizes={heroImageWebp.sizes}
+          />
           <img
-            src={heroImageWebp?.src ?? heroImage}
+            src={heroImageWebp.src}
             alt={`Свадьба ${couple}`}
             className="wedding-preview__image"
             loading="lazy"

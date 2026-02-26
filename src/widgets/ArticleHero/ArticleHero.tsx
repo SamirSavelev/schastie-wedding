@@ -2,7 +2,6 @@ import { useRef } from "react";
 import "./ArticleHero.scss";
 
 interface ArticleHeroProps {
-  backgroundImage: string;
   backgroundImageWebp?: {
     src: string;
     srcSet: string;
@@ -13,7 +12,6 @@ interface ArticleHeroProps {
 }
 
 export const ArticleHero = ({
-  backgroundImage,
   backgroundImageWebp,
   title,
   description,
@@ -42,7 +40,7 @@ export const ArticleHero = ({
         )}
         <img
           className="article-hero__image"
-          src={backgroundImageWebp?.src ?? backgroundImage}
+          src={backgroundImageWebp?.src}
           alt=""
           loading="eager"
           decoding="async"

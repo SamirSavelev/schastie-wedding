@@ -23,7 +23,7 @@ export const PortfolioWedding = () => {
     return <Page404 />;
   }
 
-  const { couple, date, heroImage, heroImageWebp, images } = wedding;
+  const { couple, date, heroImageWebp, images } = wedding;
 
   return (
     <section className="page page--portfolio-wedding">
@@ -32,10 +32,7 @@ export const PortfolioWedding = () => {
       </Helmet>
 
       <ArticleHero
-        backgroundImage={heroImage}
-        backgroundImageWebp={
-          heroImageWebp ? { ...heroImageWebp, sizes: "100vw" } : undefined
-        }
+        backgroundImageWebp={{ ...heroImageWebp, sizes: "100vw" }}
         title={couple}
         description={date}
       />

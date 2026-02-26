@@ -19,9 +19,9 @@ import hero17 from "@assets/hero/17.jpg";
 import hero18 from "@assets/hero/18.jpg";
 
 // Портфолио для главной страницы:
-import portfolioHome1 from "@assets/portfolio/home/1.jpg";
-import portfolioHome2 from "@assets/portfolio/home/2.jpg";
-import portfolioHome3 from "@assets/portfolio/home/3.jpg";
+import portfolioHome1 from "@assets/portfolio/home/1-1600.webp";
+import portfolioHome2 from "@assets/portfolio/home/2-1600.webp";
+import portfolioHome3 from "@assets/portfolio/home/3-1600.webp";
 
 //нейтральные фоны
 import bg1 from "@assets/backgrounds/1.jpg";
