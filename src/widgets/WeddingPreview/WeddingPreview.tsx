@@ -1,11 +1,13 @@
 import type { FC } from "react";
 import { Button, Text } from "@shared/ui";
-import "./WeddingPreview.scss";
 import type { WeddingConfig } from "@pages/PortfolioWedding/constants";
+
+import "./WeddingPreview.scss";
 
 export const WeddingPreview: FC<WeddingConfig> = ({
   id,
   heroImage,
+  heroImageWebp,
   couple,
   concept,
   placeTitle,
@@ -30,31 +32,30 @@ export const WeddingPreview: FC<WeddingConfig> = ({
         </>
       ),
     },
-    {
-      id: 2,
-      label: "Количество гостей",
-      value: <>{guests}</>,
-    },
-    {
-      id: 3,
-      label: "Команда",
-      value: <>{team}</>,
-    },
-    {
-      id: 4,
-      label: "Бюджет",
-      value: <>{budget}</>,
-    },
+    { id: 2, label: "Количество гостей", value: <>{guests}</> },
+    { id: 3, label: "Команда", value: <>{team}</> },
+    { id: 4, label: "Бюджет", value: <>{budget}</> },
   ];
 
   return (
     <section className="wedding-preview">
       <div className="wedding-preview__image-wrapper">
-        <img
-          src={heroImage}
-          alt={`Свадьба ${couple}`}
-          className="wedding-preview__image"
-        />
+        <picture>
+          {heroImageWebp && (
+            <source
+              type="image/webp"
+              srcSet={heroImageWebp.srcSet}
+              sizes={heroImageWebp.sizes}
+            />
+          )}
+          <img
+            src={heroImageWebp?.src ?? heroImage}
+            alt={`Свадьба ${couple}`}
+            className="wedding-preview__image"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
       </div>
 
       <div className="wedding-preview__content">
@@ -65,13 +66,14 @@ export const WeddingPreview: FC<WeddingConfig> = ({
         >
           {couple}
         </Text>
+
         <Text variant="subtitle" className="wedding-preview__concept">
           {concept}
         </Text>
 
         <div className="wedding-preview__info-grid">
-          {INFO.map(({ label, value, id }) => (
-            <div key={id} className="wedding-preview__info-item">
+          {INFO.map(({ label, value, id: infoId }) => (
+            <div key={infoId} className="wedding-preview__info-item">
               <div className="wedding-preview__icon" aria-hidden="true" />
               <div className="wedding-preview__info-text">
                 <Text>{label}</Text>

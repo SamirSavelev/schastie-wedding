@@ -1,24 +1,26 @@
 import { Container } from "@shared/ui/Container/Container";
 import { WeddingPreview } from "@widgets/WeddingPreview/WeddingPreview";
-
-import headerImage from "@assets/portfolio/header.jpg";
-
+import headerDesktop from "@assets/portfolio/header-2400.webp";
+import headerMobile from "@assets/portfolio/header-1280.webp";
 import { BannerSection, PageHeader } from "@widgets";
-import { HOME_PORTFOLIO_TITLE, PORTFOLIO_DETAILS } from "@shared/constants";
-import "./PortfolioPage.scss";
 import { Text } from "@shared/ui";
 import { Helmet } from "react-helmet-async";
 import { WEDDINGS } from "@pages/PortfolioWedding/constants";
+
+import "./PortfolioPage.scss";
 
 export const PortfolioPage = () => (
   <>
     <Helmet>
       <title>Портфолио | Счастье — планирование свадеб в Казани</title>
     </Helmet>
+
     <div className="portfolio-header">
       <PageHeader
-        backgroundImage={headerImage}
-        title={HOME_PORTFOLIO_TITLE}
+        backgroundDesktop={headerDesktop}
+        backgroundMobile={headerMobile}
+        backgroundAlt="Портфолио свадеб"
+        title="Портфолио"
         bottomText="Полезные статьи о свадьбах и подготовке"
       />
     </div>
@@ -26,10 +28,14 @@ export const PortfolioPage = () => (
     <Container>
       <div className="portfolio-head">
         <Text variant="h3" align="center">
-          {HOME_PORTFOLIO_TITLE}
+          Портфолио
         </Text>
         <Text variant="subtitle" align="center">
-          {PORTFOLIO_DETAILS}
+          Наше портфолио — не просто статичная галерея. Мы рассказываем о наших
+          свадьбах в виде подробных кейсов: увлекательные истории любви,
+          уникальные концепции, эскизы декора, комментарии от свадебных
+          специалистов, фото и видео-экстейджи и многое другое. Приятного
+          просмотра!
         </Text>
       </div>
 
@@ -39,6 +45,7 @@ export const PortfolioPage = () => (
         ))}
       </div>
     </Container>
+
     <BannerSection />
   </>
 );

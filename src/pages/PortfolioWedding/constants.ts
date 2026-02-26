@@ -55,7 +55,7 @@ import rinatAdelya15 from "@assets/portfolio/rinat-adelya/150A6240_(1).jpg";
 import rinatAdelya16 from "@assets/portfolio/rinat-adelya/150A6427.jpg";
 import rinatAdelya17 from "@assets/portfolio/rinat-adelya/150A7013.jpg";
 import rinatAdelya18 from "@assets/portfolio/rinat-adelya/150A7025.jpg";
-import aidarSabinaHero from "@assets/portfolio/aidar-sabina/heroo.jpg";
+import aidarSabinaHero from "@assets/portfolio/aidar-sabina/hero.jpg";
 import aidarSabina1 from "@assets/portfolio/aidar-sabina/1.jpg";
 import aidarSabina2 from "@assets/portfolio/aidar-sabina/2.jpg";
 import aidarSabina3 from "@assets/portfolio/aidar-sabina/3.jpg";
@@ -149,6 +149,36 @@ import ilnurAliya14 from "@assets/portfolio/ilnur-i-aliya/wedding-5.jpg";
 import ilnurAliya15 from "@assets/portfolio/ilnur-i-aliya/wedding-53.jpg";
 import ilnurAliya16 from "@assets/portfolio/ilnur-i-aliya/wedding-530.jpg";
 import ilnurAliya17 from "@assets/portfolio/ilnur-i-aliya/wedding-70.jpg";
+
+// emil-alina (main)
+import emilAlinaMain720 from "@assets/portfolio/emil-alina/main-720.webp";
+import emilAlinaMain1600 from "@assets/portfolio/emil-alina/main-1600.webp";
+
+// marat-maria (у тебя hero = Nur_002.jpg => это index 1)
+import maratMariaHero360 from "@assets/portfolio/marat-maria/1-360.webp";
+import maratMariaHero720 from "@assets/portfolio/marat-maria/1-720.webp";
+import maratMariaHero1600 from "@assets/portfolio/marat-maria/1-1600.webp";
+
+// hero-1280/2400 для папок с hero.jpg
+import rinatAdelyaHero1280 from "@assets/portfolio/rinat-adelya/hero-1280.webp";
+import rinatAdelyaHero2400 from "@assets/portfolio/rinat-adelya/hero-2400.webp";
+
+import aidarSabinaHero1280 from "@assets/portfolio/aidar-sabina/hero-1280.webp";
+import aidarSabinaHero2400 from "@assets/portfolio/aidar-sabina/hero-2400.webp";
+
+import arturDashaHero1280 from "@assets/portfolio/artur-i-dasha/hero-1280.webp";
+import arturDashaHero2400 from "@assets/portfolio/artur-i-dasha/hero-2400.webp";
+
+import polinaArslanHero1280 from "@assets/portfolio/polina-i-arslan/hero-1280.webp";
+import polinaArslanHero2400 from "@assets/portfolio/polina-i-arslan/hero-2400.webp";
+
+import romaMariiaHero1280 from "@assets/portfolio/roma-i-mariya/hero-1280.webp";
+import romaMariiaHero2400 from "@assets/portfolio/roma-i-mariya/hero-2400.webp";
+
+import ilnurAliyaHero1280 from "@assets/portfolio/ilnur-i-aliya/hero-1280.webp";
+import ilnurAliyaHero2400 from "@assets/portfolio/ilnur-i-aliya/hero-2400.webp";
+
+const HERO_SIZES_PREVIEW = "(max-width: 980px) 100vw, 55vw";
 export interface WeddingImage {
   id: string;
   src: string;
@@ -160,6 +190,13 @@ export interface WeddingConfig {
   couple: string;
   date: string;
   heroImage: string;
+
+  heroImageWebp?: {
+    src: string;
+    srcSet: string;
+    sizes?: string;
+  };
+
   images: WeddingImage[];
   concept: string;
   placeSubtitle?: string;
@@ -180,6 +217,11 @@ export const WEDDINGS: WeddingConfig[] = [
     team: "18 специалистов",
     budget: "> 2 млн. руб.",
     heroImage: emilAlinaHero,
+    heroImageWebp: {
+      src: emilAlinaMain1600,
+      srcSet: `${emilAlinaMain720} 720w, ${emilAlinaMain1600} 1600w`,
+      sizes: HERO_SIZES_PREVIEW,
+    },
     images: [
       { id: "ea-4", src: emilAlina4, alt: "4" },
       { id: "ea-5", src: emilAlina5, alt: "5" },
@@ -211,6 +253,11 @@ export const WEDDINGS: WeddingConfig[] = [
     team: "14 специалистов",
     budget: "> 2 млн.",
     heroImage: maratMariaHero,
+    heroImageWebp: {
+      src: maratMariaHero1600,
+      srcSet: `${maratMariaHero360} 360w, ${maratMariaHero720} 720w, ${maratMariaHero1600} 1600w`,
+      sizes: HERO_SIZES_PREVIEW,
+    },
     images: [
       { id: "mm-1", src: maratMaria1, alt: "1" },
       { id: "mm-2", src: maratMaria2, alt: "2" },
@@ -242,6 +289,11 @@ export const WEDDINGS: WeddingConfig[] = [
     team: "21 специалист",
     budget: "> 3 млн.",
     heroImage: rinatAdelyaHero,
+    heroImageWebp: {
+      src: rinatAdelyaHero2400,
+      srcSet: `${rinatAdelyaHero1280} 1280w, ${rinatAdelyaHero2400} 2400w`,
+      sizes: HERO_SIZES_PREVIEW,
+    },
     images: [
       { id: "ra-1", src: rinatAdelya1, alt: "1" },
       { id: "ra-2", src: rinatAdelya2, alt: "2" },
@@ -273,6 +325,11 @@ export const WEDDINGS: WeddingConfig[] = [
     team: "15 специалистов",
     budget: "> 1 млн.",
     heroImage: aidarSabinaHero,
+    heroImageWebp: {
+      src: aidarSabinaHero2400,
+      srcSet: `${aidarSabinaHero1280} 1280w, ${aidarSabinaHero2400} 2400w`,
+      sizes: HERO_SIZES_PREVIEW,
+    },
     images: [
       { id: "as-1", src: aidarSabina1, alt: "1" },
       { id: "as-2", src: aidarSabina2, alt: "2" },
@@ -304,6 +361,11 @@ export const WEDDINGS: WeddingConfig[] = [
     team: "15 специалистов",
     budget: "> 2 млн.",
     heroImage: arturDashaHero,
+    heroImageWebp: {
+      src: arturDashaHero2400,
+      srcSet: `${arturDashaHero1280} 1280w, ${arturDashaHero2400} 2400w`,
+      sizes: HERO_SIZES_PREVIEW,
+    },
     images: [
       { id: "ad-1", src: arturDasha1, alt: "1" },
       { id: "ad-2", src: arturDasha2, alt: "2" },
@@ -335,6 +397,11 @@ export const WEDDINGS: WeddingConfig[] = [
     team: "10 специалистов",
     budget: "> 1 млн.",
     heroImage: polinaArslanHero,
+    heroImageWebp: {
+      src: polinaArslanHero2400,
+      srcSet: `${polinaArslanHero1280} 1280w, ${polinaArslanHero2400} 2400w`,
+      sizes: HERO_SIZES_PREVIEW,
+    },
     images: [
       { id: "pa-1", src: polinaArslan1, alt: "1" },
       { id: "pa-2", src: polinaArslan2, alt: "2" },
@@ -366,6 +433,11 @@ export const WEDDINGS: WeddingConfig[] = [
     team: "12 специалистов",
     budget: "> 1 млн.",
     heroImage: romaMariiaHero, // Указываем heroImage
+    heroImageWebp: {
+      src: romaMariiaHero2400,
+      srcSet: `${romaMariiaHero1280} 1280w, ${romaMariiaHero2400} 2400w`,
+      sizes: HERO_SIZES_PREVIEW,
+    },
     images: [
       { id: "rm-1", src: romaMariia1, alt: "1" },
       { id: "rm-2", src: romaMariia2, alt: "2" },
@@ -421,7 +493,12 @@ export const WEDDINGS: WeddingConfig[] = [
     guests: "25 гостей",
     team: "13 специалистов",
     budget: "> 1 млн.",
-    heroImage: ilnurAliyaHero, // Указываем heroImage
+    heroImage: ilnurAliyaHero,
+    heroImageWebp: {
+      src: ilnurAliyaHero2400,
+      srcSet: `${ilnurAliyaHero1280} 1280w, ${ilnurAliyaHero2400} 2400w`,
+      sizes: HERO_SIZES_PREVIEW,
+    },
     images: [
       { id: "ia-1", src: ilnurAliya1, alt: "1" },
       { id: "ia-2", src: ilnurAliya2, alt: "2" },
@@ -461,7 +538,7 @@ const weddingsMap: Record<string, WeddingConfig> = WEDDINGS.reduce(
     acc[wedding.id] = wedding;
     return acc;
   },
-  {} as Record<string, WeddingConfig>
+  {} as Record<string, WeddingConfig>,
 );
 
 export function getWeddingById(id: string): WeddingConfig | undefined {

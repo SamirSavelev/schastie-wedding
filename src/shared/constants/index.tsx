@@ -142,8 +142,6 @@ export const HOME_SERVICES_ITEMS: HomeServiceItem[] = [
 
 export const HOME_VIDEO_URL = "https://player.vimeo.com/video/208475678"; // Видео на главной странице
 
-export const HOME_PORTFOLIO_TITLE = "Портфолио";
-
 export const HOME_PORTFOLIO_SUBTITLE =
   "Рассказы о наших свадьбах в виде подробных кейсов";
 
@@ -868,9 +866,6 @@ export const MARQUEE_IMAGES = [
   { id: "19", src: heroImage3, alt: "Свадьба 19" },
   { id: "20", src: heroImage4, alt: "Свадьба 20" },
 ];
-
-export const PORTFOLIO_DETAILS =
-  "Наше портфолио — не просто статичная галерея. Мы рассказываем о наших свадьбах в виде подробных кейсов: увлекательные истории любви, уникальные концепции, эскизы декора, комментарии от свадебных специалистов, фото и видео-экстейджи и многое другое. Приятного просмотра!";
 
 export interface ArticlePreview {
   id: number;
