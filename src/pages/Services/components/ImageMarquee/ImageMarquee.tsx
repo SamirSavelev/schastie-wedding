@@ -1,15 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import classNames from 'classnames';
+import { useCallback, useEffect, useMemo, useState } from "react";
+import classNames from "classnames";
 
-import {
-  IMAGE_MARQUEE_VIEWER_ARIA_LABEL,
-  IMAGE_MARQUEE_VIEWER_CLOSE_LABEL,
-  IMAGE_MARQUEE_VIEWER_NEXT_LABEL,
-  IMAGE_MARQUEE_VIEWER_PREV_LABEL,
-  MARQUEE_IMAGES,
-} from '@shared/constants';
-
-import './ImageMarquee.scss';
+import "./ImageMarquee.scss";
+import { MARQUEE_IMAGES } from "./constants";
 
 export const ImageMarquee = () => {
   const [isPaused, setIsPaused] = useState(false);
@@ -19,7 +12,7 @@ export const ImageMarquee = () => {
 
   const loopImages = useMemo(
     () => (hasImages ? [...MARQUEE_IMAGES, ...MARQUEE_IMAGES] : []),
-    [hasImages]
+    [hasImages],
   );
 
   const handleMouseEnter = useCallback(() => {
@@ -47,33 +40,33 @@ export const ImageMarquee = () => {
     setActiveIndex((prev) =>
       prev === null
         ? null
-        : (prev - 1 + MARQUEE_IMAGES.length) % MARQUEE_IMAGES.length
+        : (prev - 1 + MARQUEE_IMAGES.length) % MARQUEE_IMAGES.length,
     );
   }, [activeIndex]);
 
   const handleNext = useCallback(() => {
     if (activeIndex === null) return;
     setActiveIndex((prev) =>
-      prev === null ? null : (prev + 1) % MARQUEE_IMAGES.length
+      prev === null ? null : (prev + 1) % MARQUEE_IMAGES.length,
     );
   }, [activeIndex]);
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         setActiveIndex(null);
         setIsPaused(false);
       }
-      if (event.key === 'ArrowRight') {
+      if (event.key === "ArrowRight") {
         event.preventDefault();
         handleNext();
       }
-      if (event.key === 'ArrowLeft') {
+      if (event.key === "ArrowLeft") {
         event.preventDefault();
         handlePrev();
       }
     },
-    [handleNext, handlePrev]
+    [handleNext, handlePrev],
   );
 
   useEffect(() => {
@@ -81,8 +74,8 @@ export const ImageMarquee = () => {
       return;
     }
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeIndex, handleKeyDown]);
 
   if (!hasImages) {
@@ -90,19 +83,19 @@ export const ImageMarquee = () => {
   }
 
   const marqueeStyle: React.CSSProperties = {
-    '--image-marquee-duration': `10s`,
+    "--image-marquee-duration": `10s`,
   } as React.CSSProperties;
 
   return (
     <>
-      <section className={classNames('image-marquee')}>
+      <section className={classNames("image-marquee")}>
         <div
-          className={classNames('image-marquee__viewport')}
+          className={classNames("image-marquee__viewport")}
           onMouseLeave={handleMouseLeave}
         >
           <div
-            className={classNames('image-marquee__track', {
-              'image-marquee__track--paused': isPaused,
+            className={classNames("image-marquee__track", {
+              "image-marquee__track--paused": isPaused,
             })}
             style={marqueeStyle}
           >
@@ -118,7 +111,7 @@ export const ImageMarquee = () => {
                 <div className="image-marquee__image-wrapper">
                   <img
                     src={image.src}
-                    alt={image.alt ?? ''}
+                    alt={image.alt ?? ""}
                     className="image-marquee__image"
                   />
                 </div>
@@ -132,14 +125,14 @@ export const ImageMarquee = () => {
         <div
           className="image-marquee__viewer-backdrop"
           role="dialog"
-          aria-label={IMAGE_MARQUEE_VIEWER_ARIA_LABEL}
+          aria-label="Просмотр фотографий в полноэкранном режиме"
           aria-modal="true"
         >
           <button
             type="button"
             className="image-marquee__viewer-close"
             onClick={handleCloseViewer}
-            aria-label={IMAGE_MARQUEE_VIEWER_CLOSE_LABEL}
+            aria-label="Закрыть просмотр"
           >
             ×
           </button>
@@ -148,7 +141,7 @@ export const ImageMarquee = () => {
             type="button"
             className="image-marquee__viewer-arrow image-marquee__viewer-arrow--left"
             onClick={handlePrev}
-            aria-label={IMAGE_MARQUEE_VIEWER_PREV_LABEL}
+            aria-label="Предыдущее фото"
           >
             ‹
           </button>
@@ -160,7 +153,7 @@ export const ImageMarquee = () => {
               <div className="image-marquee__viewer-image-wrapper">
                 <img
                   src={MARQUEE_IMAGES[activeIndex].src}
-                  alt={MARQUEE_IMAGES[activeIndex].alt ?? ''}
+                  alt={MARQUEE_IMAGES[activeIndex].alt ?? ""}
                   className="image-marquee__viewer-image"
                 />
               </div>
@@ -170,7 +163,7 @@ export const ImageMarquee = () => {
             type="button"
             className="image-marquee__viewer-arrow image-marquee__viewer-arrow--right"
             onClick={handleNext}
-            aria-label={IMAGE_MARQUEE_VIEWER_NEXT_LABEL}
+            aria-label="Следующее фото"
           >
             ›
           </button>

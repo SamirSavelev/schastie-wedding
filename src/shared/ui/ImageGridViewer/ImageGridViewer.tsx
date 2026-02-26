@@ -1,6 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
 
-import { IMAGE_MARQUEE_VIEWER_ARIA_LABEL } from "@shared/constants";
 import { ImageViewer, type ViewerImage } from "@shared/ui/ImageViewer";
 
 import "./ImageGridViewer.scss";
@@ -65,7 +64,7 @@ export const ImageGridViewer = ({ images }: ImageGridViewerProps) => {
             const ariaLabel =
               (isResponsiveItem(item) ? item.alt : item.alt) ??
               preview.alt ??
-              IMAGE_MARQUEE_VIEWER_ARIA_LABEL;
+              "Просмотр фотографий в полноэкранном режиме";
 
             return (
               <button
@@ -98,7 +97,7 @@ export const ImageGridViewer = ({ images }: ImageGridViewerProps) => {
         index={activeIndex ?? 0}
         onIndexChange={(next) => setActiveIndex(next)}
         onClose={handleClose}
-        ariaLabel={IMAGE_MARQUEE_VIEWER_ARIA_LABEL}
+        ariaLabel="Просмотр фотографий в полноэкранном режиме"
       />
     </>
   );

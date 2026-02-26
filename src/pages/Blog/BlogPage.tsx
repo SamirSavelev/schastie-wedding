@@ -1,9 +1,9 @@
 import { PageHeader, ArticlePreview, BannerSection } from "@widgets";
 import { Container } from "@shared/ui";
-import { ARTICLES_PREVIEWS } from "@shared/constants";
 import headerImage from "@assets/blog/header.jpg";
 import "./BlogPage.scss";
 import { Helmet } from "react-helmet-async";
+import { ARTICLES_PREVIEWS } from "./constants";
 
 export const BlogPage = () => (
   <>
@@ -11,7 +11,8 @@ export const BlogPage = () => (
       <title>Блог | Счастье — планирование свадеб в Казани</title>
     </Helmet>
     <PageHeader
-      backgroundImage={headerImage}
+      backgroundDesktop={headerImage}
+      backgroundMobile={headerImage}
       title="Блог"
       bottomText="Полезные статьи о свадьбах и подготовке"
     />

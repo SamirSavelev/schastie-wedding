@@ -4,7 +4,6 @@ import "./ServicesPage.scss";
 import {
   ServicesIntroSection,
   ServicesChatSection,
-  // ServicesPricesSection,
   ServicesGuaranteesSection,
   ImageMarquee,
   ServicesMagicSection,
@@ -18,7 +17,8 @@ export const ServicesPage = () => (
     </Helmet>
     <div className="ServicesPage">
       <PageHeader
-        backgroundImage={headerImage}
+        backgroundDesktop={headerImage}
+        backgroundMobile={headerImage}
         title="Услуги"
         bottomText="Бюджеты"
       />
@@ -26,7 +26,6 @@ export const ServicesPage = () => (
 
     <ServicesIntroSection />
     <ServicesChatSection />
-    {/* <ServicesPricesSection /> */}
     <ServicesGuaranteesSection />
     <ServicesMagicSection />
     <ImageMarquee />
