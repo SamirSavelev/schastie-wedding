@@ -1,6 +1,5 @@
 import { Container } from "@shared/ui/Container/Container";
 import {
-  HOME_WHY_HERO_IMAGE,
   HOME_WHY_ITEMS,
   HOME_WHY_SUBTITLE,
   HOME_WHY_TITLE,
@@ -14,7 +13,7 @@ export const WhyUsSection = () => (
     <Container>
       <div
         className="home-why__hero"
-        style={{ backgroundImage: `url(${HOME_WHY_HERO_IMAGE})` }}
+        // style={{ backgroundImage: `url(${HOME_WHY_HERO_IMAGE})` }}
       >
         <div className="home-why__hero-overlay" aria-hidden="true" />
         <div className="home-why__hero-inner">

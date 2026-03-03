@@ -1,8 +1,7 @@
 import { Container } from "@shared/ui/Container/Container";
 import { Text } from "@shared/ui/Text/Text";
-
-import "./ServicesGuaranteesSection.scss";
 import { SERVICES_GUARANTEES_ITEMS } from "./constants";
+import "./ServicesGuaranteesSection.scss";
 
 export const ServicesGuaranteesSection = () => (
   <section className="services-guarantees">

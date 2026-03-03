@@ -1,55 +1,26 @@
 .home-services {
   width: 100%;
-  padding: 120px 0 60px;
+  padding: clamp(72px, 10vw, 120px) 0 clamp(36px, 6vw, 60px);
 
   &__header {
     text-align: center;
-    margin-bottom: 56px;
+    margin-bottom: clamp(28px, 6vw, 56px);
   }
 
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 32px 56px;
+  &__text {
+    max-width: 920px;
+    margin-inline: auto;
   }
 
   &__subtext {
-    margin-top: 32px;
+    margin-top: clamp(18px, 4vw, 32px);
   }
 
-  &__item {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    position: relative;
-    padding: 18px 8px 18px 32px;
-    cursor: pointer;
-    transition: background-color 0.25s ease, box-shadow 0.25s ease,
-      border-radius 0.25s ease, transform 0.25s ease;
+  @media (max-width: 720px) {
+    padding: 64px 0 44px;
+  }
 
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 24px;
-      bottom: 24px;
-      width: 2px;
-      border-radius: 999px;
-      background: var(--color-brand);
-      opacity: 0.9;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.55);
-      border-radius: 24px;
-      transform: translateY(-3px);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.06);
-
-      &::before {
-        transform: translateX(1px);
-        opacity: 1;
-      }
-    }
+  @media (max-width: 520px) {
+    padding: 52px 0 40px;
   }
 }

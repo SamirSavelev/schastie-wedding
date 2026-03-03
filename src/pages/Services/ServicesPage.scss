@@ -1,5 +1,17 @@
 .ServicesPage {
-  .page-header {
-    background-position: center top !important;
+  .page-header__bg-img {
+    object-position: center top;
+  }
+
+  @media (max-width: 520px) {
+    .page-header__bg-img {
+      object-position: center 20%;
+    }
+  }
+
+  @media (max-height: 1000px) {
+    .page-header__bg-img {
+      object-position: center top;
+    }
   }
 }

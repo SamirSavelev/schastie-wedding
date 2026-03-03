@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { AppLayout } from "@app/layouts/AppLayout";
 import {
-  Article,
   HomePage,
   Page404,
   ServicesPage,
@@ -70,14 +69,6 @@ export const router = createBrowserRouter([
         element: (
           <AppLayout>
             <ReviewsPage />
-          </AppLayout>
-        ),
-      },
-      {
-        path: "blog/:id",
-        element: (
-          <AppLayout>
-            <Article />
           </AppLayout>
         ),
       },

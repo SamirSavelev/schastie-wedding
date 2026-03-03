@@ -1,16 +1,22 @@
 .services-chat {
   width: 100%;
-  padding: 80px 0 96px;
-  background-image: url('../../../../assets/services/chat.webp');
+  padding: clamp(48px, 7vw, 80px) 0 clamp(56px, 8vw, 96px);
+
+  background-image: url("../../../../assets/backgrounds/44-1600.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
   font-family: var(--font-body);
   color: #2f2f2f;
 
   &__inner {
     max-width: 900px;
     margin: 0 auto;
+
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: clamp(16px, 3vw, 24px);
   }
 
   &__row {
@@ -26,9 +32,10 @@
   }
 
   &__bubble {
-    max-width: 640px;
+    width: min(640px, 100%);
     padding: 20px 22px 22px;
     border-radius: 22px;
+
     background: #f7f4ec;
     border: 1px solid rgba(0, 0, 0, 0.04);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
@@ -36,6 +43,8 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    overflow-wrap: anywhere;
 
     &--left {
       border-top-left-radius: 6px;
@@ -64,5 +73,49 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+
+    li {
+      overflow-wrap: anywhere;
+    }
+  }
+
+  @media (max-width: 720px) {
+    padding: 56px 0 72px;
+
+    background-image: url("../../../../assets/backgrounds/44-720.webp");
+
+    &__bubble {
+      padding: 18px 18px 18px;
+      border-radius: 18px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    padding: 48px 0 64px;
+
+    &__inner {
+      gap: 14px;
+    }
+
+    &__bubble {
+      padding: 16px 16px 16px;
+      border-radius: 16px;
+    }
+
+    &__list {
+      padding-left: 16px;
+      gap: 6px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    padding: 40px 0 56px;
+
+    background-image: url("../../../../assets/backgrounds/44-360.webp");
+
+    &__bubble {
+      padding: 14px;
+      border-radius: 14px;
+    }
   }
 }

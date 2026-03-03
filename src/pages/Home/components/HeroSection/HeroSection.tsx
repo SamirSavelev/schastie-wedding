@@ -1,12 +1,11 @@
+import { Container, CtaButton, Slideshow, Text, TypedLine } from "@shared/ui";
+import "./HeroSection.scss";
 import {
   HOME_HERO_IMAGES,
   HOME_HERO_PHRASES,
-  HOME_HERO_TITLE_LINES,
   HOME_HERO_SLIDE_CHANGE_INTERVAL,
-} from "@shared/constants";
-
-import { Container, CtaButton, Slideshow, Text, TypedLine } from "@shared/ui";
-import "./HeroSection.scss";
+  HOME_HERO_TITLE_LINES,
+} from "./constants";
 
 export const HeroSection = () => (
   <section className="home-hero">

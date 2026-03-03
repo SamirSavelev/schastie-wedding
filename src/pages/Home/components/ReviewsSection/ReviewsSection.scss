@@ -1,10 +1,13 @@
 .home-reviews {
   width: 100%;
-  padding: 60px 0 60px;
+  padding: clamp(44px, 7vw, 60px) 0 clamp(44px, 7vw, 60px);
 
   &__header {
     text-align: center;
-    margin-bottom: 56px;
+    margin-bottom: clamp(28px, 6vw, 56px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
   &__slider {
@@ -26,23 +29,32 @@
     font-size: 40px;
     line-height: 1;
     padding-bottom: 8px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.18s ease, color 0.18s ease,
-      border-color 0.18s ease, transform 0.12s ease;
 
-    &:hover {
-      background: #222222;
-      color: #ffffff;
-      border-color: #222222;
-      transform: translateY(-1px);
+    cursor: pointer;
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease,
+      transform 0.12s ease;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background: #222222;
+        color: #ffffff;
+        border-color: #222222;
+        transform: translateY(-1px);
+      }
     }
 
     &:active {
       transform: translateY(0);
       background: #000000;
+      color: #ffffff;
+      border-color: #000000;
     }
   }
 
@@ -60,20 +72,23 @@
 
     border-radius: 16px;
     overflow: hidden;
+    display: block;
   }
 
   &__photo {
+    width: 100%;
+    height: 100%;
     display: block;
-    width: 240px;
-    height: 240px;
     object-fit: cover;
   }
 
   &__content {
     max-width: 700px;
     height: 100%;
+
     display: flex;
     flex-direction: column;
+    gap: 18px;
     justify-content: space-between;
   }
 
@@ -92,7 +107,9 @@
     padding: 0;
     background: rgba(0, 0, 0, 0.18);
     cursor: pointer;
-    transition: transform 0.15s ease, background-color 0.15s ease;
+    transition:
+      transform 0.15s ease,
+      background-color 0.15s ease;
 
     &--active {
       background: #222222;
@@ -103,5 +120,43 @@
   &__buttons {
     display: flex;
     justify-content: center;
+  }
+
+  @media (max-width: 720px) {
+    &__slider {
+      grid-template-columns: 36px minmax(0, 1fr) 36px;
+      gap: 12px;
+    }
+
+    &__arrow {
+      width: 36px;
+      height: 36px;
+      font-size: 36px;
+      padding-bottom: 6px;
+    }
+
+    &__slide {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    &__photo-wrap {
+      width: min(240px, 72vw);
+      height: min(240px, 72vw);
+      border-radius: 14px;
+    }
+
+    &__content {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 420px) {
+    &__slider {
+      grid-template-columns: 34px minmax(0, 1fr) 34px;
+    }
   }
 }

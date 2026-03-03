@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { Container } from '@shared/ui/Container/Container';
+import { useState } from "react";
+import { Container } from "@shared/ui/Container/Container";
 import {
   HOME_REVIEWS_ITEMS,
   HOME_REVIEWS_SUBTITLE,
   HOME_REVIEWS_TITLE,
-} from '@shared/constants';
+} from "@shared/constants";
 
-import './ReviewsSection.scss';
-import { Text } from '@shared/ui';
-import { Button } from '@shared/ui/Button/Button';
+import "./ReviewsSection.scss";
+import { Text } from "@shared/ui";
+import { Button } from "@shared/ui/Button/Button";
 
 export const ReviewsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -17,10 +17,9 @@ export const ReviewsSection = () => {
   const { image, couple, quote } = HOME_REVIEWS_ITEMS[activeIndex];
 
   const handlePrev = () => setActiveIndex((prev) => (prev - 1 + total) % total);
-
   const handleNext = () => setActiveIndex((prev) => (prev + 1) % total);
-
   const handleDotClick = (index: number) => setActiveIndex(index);
+
   return (
     <section className="home-reviews" aria-labelledby="home-reviews-title">
       <Container>
@@ -47,10 +46,22 @@ export const ReviewsSection = () => {
           >
             ‹
           </button>
+
           <article className="home-reviews__slide">
-            <div className="home-reviews__photo-wrap">
-              <img className="home-reviews__photo" src={image} alt={couple} />
-            </div>
+            <picture className="home-reviews__photo-wrap">
+              <source
+                type="image/webp"
+                srcSet={image.srcSet}
+                sizes={image.sizes}
+              />
+              <img
+                className="home-reviews__photo"
+                src={image.src}
+                alt={image.alt ?? couple}
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
 
             <div className="home-reviews__content">
               <Text variant="body1" font="helvetica" weight="light">
@@ -71,14 +82,15 @@ export const ReviewsSection = () => {
             ›
           </button>
         </div>
+
         <div className="home-reviews__dots" aria-hidden="true">
           {HOME_REVIEWS_ITEMS.map((item, index) => (
             <button
               key={item.id}
               type="button"
               className={
-                'home-reviews__dot' +
-                (index === activeIndex ? ' home-reviews__dot--active' : '')
+                "home-reviews__dot" +
+                (index === activeIndex ? " home-reviews__dot--active" : "")
               }
               onClick={() => handleDotClick(index)}
             />

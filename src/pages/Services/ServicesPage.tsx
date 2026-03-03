@@ -1,5 +1,7 @@
 import { BannerSection, PageHeader } from "@widgets";
-import headerImage from "@assets/services/header.jpg";
+import headerImageMobile from "@assets/services/header-1280.webp";
+import headerImageDesktop from "@assets/services/header-2400.webp";
+
 import "./ServicesPage.scss";
 import {
   ServicesIntroSection,
@@ -17,10 +19,11 @@ export const ServicesPage = () => (
     </Helmet>
     <div className="ServicesPage">
       <PageHeader
-        backgroundDesktop={headerImage}
-        backgroundMobile={headerImage}
+        backgroundDesktop={headerImageDesktop}
+        backgroundMobile={headerImageMobile}
         title="Услуги"
         bottomText="Бюджеты"
+        noScale
       />
     </div>
 
@@ -28,6 +31,7 @@ export const ServicesPage = () => (
     <ServicesChatSection />
     <ServicesGuaranteesSection />
     <ServicesMagicSection />
+
     <ImageMarquee />
     <BannerSection />
   </>

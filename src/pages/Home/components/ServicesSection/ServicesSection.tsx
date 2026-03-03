@@ -1,12 +1,9 @@
-import { Container } from '@shared/ui/Container/Container';
-import {
-  HOME_SERVICES_MAIN_TEXT,
-  HOME_SERVICES_TITLE_LINES,
-  HOME_SERVICES_SUBTEXT,
-} from '@shared/constants';
+import { Container } from "@shared/ui/Container/Container";
 
-import { Text } from '@shared/ui';
-import './ServicesSection.scss';
+import { Text } from "@shared/ui";
+import "./ServicesSection.scss";
+
+const HOME_SERVICES_TITLE_LINES = ["Мы создаём свадьбы", "для счастливых пар"];
 
 export const ServicesSection = () => (
   <section className="home-services">
@@ -24,8 +21,20 @@ export const ServicesSection = () => (
         ))}
       </header>
 
-      <Text align="center" font="helvetica" weight="light">
-        {HOME_SERVICES_MAIN_TEXT}
+      <Text
+        align="center"
+        font="helvetica"
+        weight="light"
+        className="home-services__text"
+      >
+        Мы создаём атмосферные свадьбы для счастливых пар — и делаем это с
+        любовью уже с 2016 года. Наше агентство выросло из простой мечты: чтобы
+        каждая пара прожила свой день легко, спокойно и красиво. Мы внимательны
+        к вашим желаниям, умеем услышать самое важное и превращаем идеи в живую
+        историю, наполненную эмоциями и эстетикой. Для нас свадьба — не проект,
+        а уникальная вселенная двух людей, которую мы бережно собираем по
+        деталям. Вы мечтаете — мы организуем. Просто, качественно и
+        по-настоящему.
       </Text>
 
       <Text
@@ -34,25 +43,8 @@ export const ServicesSection = () => (
         align="center"
         weight="semibold"
       >
-        {HOME_SERVICES_SUBTEXT}
+        Счастье — агентство атмосферных свадеб.
       </Text>
-
-      {/* <div className="home-services__grid">
-        {HOME_SERVICES_ITEMS.map(({ id, title, text }) => (
-          <article key={id} className="home-services__item">
-            <Text
-              variant="subtitle"
-              textTransform="uppercase"
-              weight="semibold"
-            >
-              {title}
-            </Text>
-            <Text variant="body2" font="helvetica">
-              {text}
-            </Text>
-          </article>
-        ))}
-      </div> */}
     </Container>
   </section>
 );

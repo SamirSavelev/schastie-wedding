@@ -1,37 +1,37 @@
-//Финальные фото для Hero:
-import hero1 from "@assets/hero/1.jpg";
+import portfolioHome1_360 from "@assets/portfolio/home/1-360.webp";
+import portfolioHome1_720 from "@assets/portfolio/home/1-720.webp";
+import portfolioHome1_1600 from "@assets/portfolio/home/1-1600.webp";
 
-import hero3 from "@assets/hero/3.jpg";
-import hero4 from "@assets/hero/4.jpg";
-import hero5 from "@assets/hero/5.jpg";
-import hero6 from "@assets/hero/6.jpg";
-import hero7 from "@assets/hero/7.jpg";
-import hero8 from "@assets/hero/8.jpg";
-import hero9 from "@assets/hero/9.jpg";
-import hero10 from "@assets/hero/10.jpg";
-import hero11 from "@assets/hero/11.jpg";
-import hero12 from "@assets/hero/12.jpg";
-import hero13 from "@assets/hero/13.jpg";
-import hero14 from "@assets/hero/14.jpg";
-import hero15 from "@assets/hero/15.jpg";
-import hero16 from "@assets/hero/16.jpg";
-import hero17 from "@assets/hero/17.jpg";
-import hero18 from "@assets/hero/18.jpg";
+import portfolioHome2_360 from "@assets/portfolio/home/2-360.webp";
+import portfolioHome2_720 from "@assets/portfolio/home/2-720.webp";
+import portfolioHome2_1600 from "@assets/portfolio/home/2-1600.webp";
 
-// Портфолио для главной страницы:
-import portfolioHome1 from "@assets/portfolio/home/1-1600.webp";
-import portfolioHome2 from "@assets/portfolio/home/2-1600.webp";
-import portfolioHome3 from "@assets/portfolio/home/3-1600.webp";
+import portfolioHome3_360 from "@assets/portfolio/home/3-360.webp";
+import portfolioHome3_720 from "@assets/portfolio/home/3-720.webp";
+import portfolioHome3_1600 from "@assets/portfolio/home/3-1600.webp";
 
 //нейтральные фоны
-import bg1 from "@assets/backgrounds/1.jpg";
+import bg1 from "@assets/backgrounds/1-360.webp";
 
-// Отзывы для главной страницы:
-import review1 from "@assets/reviews/home/1.jpeg";
-import review2 from "@assets/reviews/home/2.jpeg";
-import review3 from "@assets/reviews/home/3.jpeg";
-import review4 from "@assets/reviews/home/4.jpeg";
-import review5 from "@assets/reviews/home/5.jpeg";
+import review1_360 from "@assets/reviews/home/1-360.webp";
+import review1_720 from "@assets/reviews/home/1-720.webp";
+import review1_1600 from "@assets/reviews/home/1-1600.webp";
+
+import review2_360 from "@assets/reviews/home/2-360.webp";
+import review2_720 from "@assets/reviews/home/2-720.webp";
+import review2_1600 from "@assets/reviews/home/2-1600.webp";
+
+import review3_360 from "@assets/reviews/home/3-360.webp";
+import review3_720 from "@assets/reviews/home/3-720.webp";
+import review3_1600 from "@assets/reviews/home/3-1600.webp";
+
+import review4_360 from "@assets/reviews/home/4-360.webp";
+import review4_720 from "@assets/reviews/home/4-720.webp";
+import review4_1600 from "@assets/reviews/home/4-1600.webp";
+
+import review5_360 from "@assets/reviews/home/5-360.webp";
+import review5_720 from "@assets/reviews/home/5-720.webp";
+import review5_1600 from "@assets/reviews/home/5-1600.webp";
 
 import InstagramIcon from "@assets/icons/instagram.svg";
 import TelegramIcon from "@assets/icons/telegram.svg";
@@ -40,46 +40,21 @@ import WhatsappIcon from "@assets/icons/whatsapp.svg";
 import PhoneIcon from "@assets/icons/phone.svg";
 
 import type { ReactNode } from "react";
+export type ResponsiveImage = {
+  src: string;
+  srcSet: string;
+  sizes: string;
+  alt?: string;
+};
 
+const toSrcSet = (sources: Array<{ src: string; w: number }>) =>
+  sources.map((s) => `${s.src} ${s.w}w`).join(", ");
 // ССЫЛКИ НА СВЯЗЬ
 export const PHONE_LINK = "tel:+79372899055"; // телефонный номер для звонка
 export const WHATSAPP_LINK = "https://wa.me/89376260255"; // ссылка для WhatsApp
 export const TELEGRAM_LINK = "https://t.me/Lyudmila_vs"; // ссылка для Telegram
 export const VK_LINK = "https://vk.com/schastie_kazan"; // ссылка для ВКонтакте
 export const INSTAGRAM_LINK = "https://instagram.com/schastie_wedding"; // ссылка для Instagram
-
-// ГЛАВНАЯ СТРАНИЦА
-
-export const HOME_HERO_IMAGES: string[] = [
-  hero7,
-  hero14,
-  hero1,
-  hero9,
-  hero4,
-  hero12,
-  hero18,
-  hero5,
-  hero11,
-  hero3,
-  hero16,
-  hero8,
-  hero15,
-  hero6,
-  hero10,
-  hero13,
-  hero17,
-]; // Изображения для слайдшоу в начале главной страницы
-
-export const HOME_HERO_SLIDE_CHANGE_INTERVAL = 8000; // Интервал смены слайдов в миллисекундах
-
-export const HOME_HERO_TITLE_LINES: string[] = ["Свадьбы", "нового поколения"]; // Заголовок в начале главной страницы
-
-export const HOME_HERO_PHRASES: string[] = [
-  "Девять лет опыта, знаний и заботы",
-  "Свадьба под ключ с полным сопровождением",
-  "Каждая деталь продумана до мелочей",
-  "Сценарий, отражающий вашу историю любви",
-]; // Фразы для эффекта печатающейся строки в начале главной страницы
 
 export const HOME_SERVICES_TITLE_LINES: string[] = [
   "Мы создаём свадьбы",
@@ -89,7 +64,6 @@ export const HOME_SERVICES_TITLE_LINES: string[] = [
 export const HOME_SERVICES_MAIN_TEXT =
   "Мы создаём атмосферные свадьбы для счастливых пар — и делаем это с любовью уже с 2016 года. Наше агентство выросло из простой мечты: чтобы каждая пара прожила свой день легко, спокойно и красиво. Мы внимательны к вашим желаниям, умеем услышать самое важное и превращаем идеи в живую историю, наполненную эмоциями и эстетикой. Для нас свадьба — не проект, а уникальная вселенная двух людей, которую мы бережно собираем по деталям. Вы мечтаете — мы организуем. Просто, качественно и по-настоящему.";
 
-export const HOME_SERVICES_SUBTEXT = "Счастье — агентство атмосферных свадеб.";
 export interface HomeServiceItem {
   id: string;
   title: string;
@@ -140,8 +114,11 @@ export type HomePortfolioItem = {
   title: string;
   tagline: string;
   linkId: string;
-  image: string;
+  image: ResponsiveImage;
 };
+
+const PORTFOLIO_CARD_SIZES =
+  "(max-width: 600px) 92vw, (max-width: 1024px) 44vw, 30vw";
 
 export const HOME_PORTFOLIO_ITEMS: HomePortfolioItem[] = [
   {
@@ -149,21 +126,48 @@ export const HOME_PORTFOLIO_ITEMS: HomePortfolioItem[] = [
     title: "Алия и Ильнур",
     tagline: "«Любовь в большом городе»",
     linkId: "ilnur-i-aliya",
-    image: portfolioHome2,
+    image: {
+      src: portfolioHome2_720,
+      srcSet: toSrcSet([
+        { src: portfolioHome2_360, w: 360 },
+        { src: portfolioHome2_720, w: 720 },
+        { src: portfolioHome2_1600, w: 1600 },
+      ]),
+      sizes: PORTFOLIO_CARD_SIZES,
+      alt: "Алия и Ильнур",
+    },
   },
   {
     id: 1,
     title: "Марат и Мария",
     tagline: "«Магия любви – начало легенды»",
     linkId: "marat-i-maria",
-    image: portfolioHome1,
+    image: {
+      src: portfolioHome1_720,
+      srcSet: toSrcSet([
+        { src: portfolioHome1_360, w: 360 },
+        { src: portfolioHome1_720, w: 720 },
+        { src: portfolioHome1_1600, w: 1600 },
+      ]),
+      sizes: PORTFOLIO_CARD_SIZES,
+      alt: "Марат и Мария",
+    },
   },
   {
     id: 3,
     title: "Иван и Этерика",
     tagline: "«Timeless Ceremony»",
     linkId: "",
-    image: portfolioHome3,
+    image: {
+      src: portfolioHome3_720,
+      srcSet: toSrcSet([
+        { src: portfolioHome3_360, w: 360 },
+        { src: portfolioHome3_720, w: 720 },
+        { src: portfolioHome3_1600, w: 1600 },
+      ]),
+      sizes: PORTFOLIO_CARD_SIZES,
+      alt: "Иван и Этерика",
+    },
   },
 ];
 export const BG_1 = bg1;
@@ -273,51 +277,97 @@ export const HOME_WORK_STEPS: HomeWorkStep[] = [
   },
 ];
 
-export interface HomeReviewItem {
+export type HomeReviewItem = {
   id: string;
   couple: string;
   quote: string;
-  image: string;
-}
+  image: ResponsiveImage;
+};
 
 export const HOME_REVIEWS_TITLE = "Отзывы о нас";
 
 export const HOME_REVIEWS_SUBTITLE =
   "Истории наших пар, слова благодарности, подробности свадеб";
+const REVIEW_SIZES = "(max-width: 720px) 72vw, 240px";
 
 export const HOME_REVIEWS_ITEMS: HomeReviewItem[] = [
   {
     id: "rinat-adelya",
     couple: "Ринат и Аделя",
-    image: review1,
+    image: {
+      src: review1_720,
+      srcSet: toSrcSet([
+        { src: review1_360, w: 360 },
+        { src: review1_720, w: 720 },
+        { src: review1_1600, w: 1600 },
+      ]),
+      sizes: REVIEW_SIZES,
+      alt: "Отзыв — Пара 1",
+    },
     quote:
       "Благодарим вас от всей души ❤️ Самое важное для нас — это то, что мы забыли о регистрации брака и прожили все эмоции от начала и до конца с трепетом и мурашками! Все было на высшем уровне, лучше, чем в самых красивых мечтах. мы будем вспоминать всю жизнь свадьбу и вас, наших прекрасных и самых лучших организаторов 🫶🏼 никто не сделал бы такую сказку, которую сотворили вы",
   },
   {
     id: "vyacheslav-marina",
     couple: "Вячеслав и Марина",
-    image: review2,
+    image: {
+      src: review2_720,
+      srcSet: toSrcSet([
+        { src: review2_360, w: 360 },
+        { src: review2_720, w: 720 },
+        { src: review2_1600, w: 1600 },
+      ]),
+      sizes: REVIEW_SIZES,
+      alt: "Отзыв — Пара 2",
+    },
     quote:
       "Наши дорогие Люда и Лена! Возвращаемся к вам с огромной благодарностью! ❤️ Самый правильный шаг в подготовке к свадьбе - было обратиться к вам! Если бы я вернулась обратно в прошлый год, я также выбрала бы вас. Спасибо вам за ваш опыт, терпение, тактичность и организацию. Все было на высшем уровне! Мне было очень комфортно и легко на свадьбе, спасибо за это вам!!! Обнимаем и любим 😘",
   },
   {
     id: "pavel-liana",
     couple: "Павел и Лиана",
-    image: review3,
+    image: {
+      src: review3_720,
+      srcSet: toSrcSet([
+        { src: review3_360, w: 360 },
+        { src: review3_720, w: 720 },
+        { src: review3_1600, w: 1600 },
+      ]),
+      sizes: REVIEW_SIZES,
+      alt: "Отзыв — Пара 3",
+    },
     quote:
       "Хотим от всей души поблагодарить наше свадебное агентство «Счастье» за безупречную организацию нашего праздника! Вы сделали наш день по-настоящему волшебным. Каждая деталь была продумана, и мы смогли полностью расслабиться и наслаждаться каждым моментом, зная, что всё в надежных руках. Вы — профессионал высочайшего уровня! Огромное спасибо!",
   },
   {
     id: "roman-maria",
     couple: "Роман и Мария",
-    image: review4,
+    image: {
+      src: review4_720,
+      srcSet: toSrcSet([
+        { src: review4_360, w: 360 },
+        { src: review4_720, w: 720 },
+        { src: review4_1600, w: 1600 },
+      ]),
+      sizes: REVIEW_SIZES,
+      alt: "Отзыв — Пара 4",
+    },
     quote:
       "Когда мы начали готовиться к свадьбе, я и представить не могла, насколько все может быть легко и безоблачно. Всё благодаря нашим потрясающим организаторам — Елене и Людмиле! Девушки, вы — гении своего дела! Ваш профессионализм восхищает. Вы не просто исполнители, вы — настоящие стратеги и психологи. Вы слышали все наши, порой смутные, пожелания и воплотили их в жизнь так, что получилось даже лучше, чем в мечтах. От выбора площадки и до последнего танца — всё было выверено и гармонично. Отдельный восторг — это работа вашей команды! Ребята, которые работали в день свадьбы, — это золото! Настолько тактичные, внимательные и быстрые. Благодаря вам и вашей команде мы в свой день не решали никаких проблем, не бегали, не нервничали. Мы просто были счастливыми женихом и невестой, которые живут в самой доброй сказке.",
   },
   {
     id: "timur-liliya",
     couple: "Тимур и Лилия",
-    image: review5,
+    image: {
+      src: review5_720,
+      srcSet: toSrcSet([
+        { src: review5_360, w: 360 },
+        { src: review5_720, w: 720 },
+        { src: review5_1600, w: 1600 },
+      ]),
+      sizes: REVIEW_SIZES,
+      alt: "Отзыв — Пара 5",
+    },
     quote:
       "Огромное спасибо нашим организаторам Елене и Людмиле за идеальную свадьбу! Всё прошло безупречно, без единой суеты. Вы — профессионалы высочайшего уровня, а ваша команда работала слаженно и четко. Мы смогли полностью расслабиться и наслаждаться каждым моментом нашего праздника. Спасибо за ваше спокойствие и поддержку! Будем рекомендовать вас от всей души!",
   },
@@ -333,8 +383,6 @@ export const HOME_WHY_TITLE = "Почему нас выбирают?";
 
 export const HOME_WHY_SUBTITLE =
   "6 главных преимуществ агентства Счастье Wedding";
-
-export const HOME_WHY_HERO_IMAGE = hero15;
 
 export const HOME_WHY_ITEMS: HomeWhyItem[] = [
   {
@@ -413,47 +461,6 @@ export const HOME_NUMBERS_ITEMS: HomeNumberItem[] = [
     value: "140+",
     label: "счастливых пар",
   },
-];
-
-export const SERVICES_INTRO_TITLE = "Организация свадеб «под ключ»";
-
-export const SERVICES_INTRO_MAIN_TEXT =
-  "Основной услугой свадебного агентства «Счастье Wedding» является организация свадеб «под ключ». Только в этом случае мы можем гарантировать безупречную организацию и нести ответственность за реализацию концепции.";
-
-export const SERVICES_INTRO_BUDGET_PREFIX =
-  "Минимальный бюджет для организации свадьбы с нашим агентством составляет ";
-export const SERVICES_INTRO_BUDGET_VALUE = "3\u00a0млн\u00a0рублей";
-
-export const SERVICES_INTRO_BADGE_CAPTION = "Агентское вознаграждение";
-export const SERVICES_INTRO_BADGE_PERCENT = "От 70 000 рублей";
-export const SERVICES_INTRO_BADGE_SUB =
-  "с каждой пары на встрече мы рассчитываем стоимость индивидуально под ваши потребности";
-
-export const SERVICES_INTRO_NOTE =
-  "С каждой парой мы заключаем договор на оказание услуг, где прописан весь перечень предоставляемых услуг и зона ответственности агентства.";
-
-export const SERVICES_CHAT_BRIDE_NAME = "Невеста";
-
-export const SERVICES_CHAT_BRIDE_MESSAGE =
-  "Где можно посмотреть более полный список того, что входит в услугу организация свадьбы «под ключ»?";
-
-export const SERVICES_CHAT_ORGANIZER_NAME =
-  "Свадебное агентство Счастье Wedding";
-
-export const SERVICES_CHAT_ORGANIZER_INTRO =
-  "Вы не поверите, но полный перечень обязанностей свадебного организатора в нашем агентстве состоит из 135 пунктов. Если описать их общими словами, то получается вот такой список:";
-
-export const SERVICES_CHAT_ORGANIZER_LIST: string[] = [
-  "Проведение первой встречи. Заключение договора.",
-  "Детальная разработка концепции свадьбы. Интервью.",
-  "Подбор места проведения свадьбы: отель для утра невесты и жениха, площадки для церемонии и свадебного ужина.",
-  "Поиск и подбор всех необходимых специалистов: декоратор, ведущий, фотограф, видеограф, регистратор, стилист, артисты, технический продакшн, кондитер, хореограф-постановщик, трансфер и др.",
-  "Составление меню для свадебного ужина.",
-  "Дегустация начинок свадебного торта.",
-  "Написание авторского сценария.",
-  "Составление рабочей документации: тайминги, инструкции, технические задания, чек-листы, списки на монтаж и демонтаж, схемы расстановки мебели и др.",
-  "Делаем расчёт алкогольных напитков.",
-  "Координация на весь период свадебного дня, а также при необходимости в течение всего свадебного уикенда.",
 ];
 
 export const SERVICES_PRICES_TITLE = "Сколько стоит свадьба?";
@@ -712,37 +719,6 @@ export const SERVICES_PRICES_ITEMS: ServicesPriceItem[] = [
 
 export const SERVICE_TABLE_POST_NOTE =
   "Все указанные суммы являются ориентировочными и помогают сформировать общее представление о бюджете. Точные стоимости рассчитываются индивидуально после первой встречи и согласования концепции свадьбы.";
-
-export const SERVICES_MAGIC_TITLE =
-  "Работа организатора — это магия и немного чисел";
-
-export const SERVICES_MAGIC_SUBTITLE =
-  "наведите на точку, чтобы создать идеальную свадьбу";
-
-export const SERVICES_MAGIC_ORGANIZER_TITLE = "Свадебный организатор";
-export const SERVICES_MAGIC_SPECIALISTS_TITLE = "Свадебные специалисты";
-export const SERVICES_MAGIC_COUPLE_TITLE = "Жених и невеста";
-
-export const SERVICES_MAGIC_ORGANIZER_STATS: string[] = [
-  "8 лет опыта",
-  "165 площадок",
-  "83 ведущих",
-  "128 фотографов",
-];
-
-export const SERVICES_MAGIC_SPECIALISTS_STATS: string[] = [
-  "15 договоров",
-  "17 встреч",
-  "3 чата",
-  "8 технических заданий",
-];
-
-export const SERVICES_MAGIC_COUPLE_STATS: string[] = [
-  "8-часовой сон",
-  "до −15% экономии бюджета",
-  "24 часа с любимыми",
-  "79% сохранённых нервных клеток",
-];
 
 export const NETWORKS = [
   {

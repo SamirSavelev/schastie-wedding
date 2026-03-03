@@ -1,97 +1,133 @@
+import type { CSSProperties } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import classNames from "classnames";
 
 import "./ImageMarquee.scss";
 import { MARQUEE_IMAGES } from "./constants";
+import { ImageViewer } from "@shared/ui/ImageViewer/ImageViewer";
 
-export const ImageMarquee = () => {
-  const [isPaused, setIsPaused] = useState(false);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  const hasImages = MARQUEE_IMAGES && MARQUEE_IMAGES.length > 0;
-
-  const loopImages = useMemo(
-    () => (hasImages ? [...MARQUEE_IMAGES, ...MARQUEE_IMAGES] : []),
-    [hasImages],
-  );
-
-  const handleMouseEnter = useCallback(() => {
-    setIsPaused(true);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    if (activeIndex === null) {
-      setIsPaused(false);
-    }
-  }, [activeIndex]);
-
-  const handleImageClick = useCallback((indexInOriginal: number) => {
-    setActiveIndex(indexInOriginal);
-    setIsPaused(true);
-  }, []);
-
-  const handleCloseViewer = useCallback(() => {
-    setActiveIndex(null);
-    setIsPaused(false);
-  }, []);
-
-  const handlePrev = useCallback(() => {
-    if (activeIndex === null) return;
-    setActiveIndex((prev) =>
-      prev === null
-        ? null
-        : (prev - 1 + MARQUEE_IMAGES.length) % MARQUEE_IMAGES.length,
-    );
-  }, [activeIndex]);
-
-  const handleNext = useCallback(() => {
-    if (activeIndex === null) return;
-    setActiveIndex((prev) =>
-      prev === null ? null : (prev + 1) % MARQUEE_IMAGES.length,
-    );
-  }, [activeIndex]);
-
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setActiveIndex(null);
-        setIsPaused(false);
-      }
-      if (event.key === "ArrowRight") {
-        event.preventDefault();
-        handleNext();
-      }
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        handlePrev();
-      }
-    },
-    [handleNext, handlePrev],
-  );
+const useIsHoverCapable = (): boolean => {
+  const [isHoverCapable, setIsHoverCapable] = useState(true);
 
   useEffect(() => {
-    if (activeIndex === null) {
+    if (typeof window === "undefined" || !("matchMedia" in window)) {
+      setIsHoverCapable(true);
       return;
     }
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeIndex, handleKeyDown]);
+    const mqHoverFine = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const mqHoverNone = window.matchMedia("(hover: none)");
+    const mqPointerCoarse = window.matchMedia("(pointer: coarse)");
 
-  if (!hasImages) {
-    return null;
-  }
+    const compute = () => {
+      const hasTouch =
+        (typeof navigator !== "undefined" && navigator.maxTouchPoints > 0) ||
+        "ontouchstart" in window;
 
-  const marqueeStyle: React.CSSProperties = {
-    "--image-marquee-duration": `10s`,
-  } as React.CSSProperties;
+      const isTouchMode =
+        hasTouch || mqHoverNone.matches || mqPointerCoarse.matches;
 
+      return mqHoverFine.matches && !isTouchMode;
+    };
+
+    const update = () => setIsHoverCapable(compute());
+    update();
+
+    const subscribe = (mql: MediaQueryList) => {
+      if ("addEventListener" in mql) {
+        mql.addEventListener("change", update);
+      }
+      if ("addListener" in mql) {
+        mql?.addListener(update);
+      }
+
+      return () => {
+        mql.removeEventListener("change", update);
+        mql?.removeListener(update);
+      };
+    };
+
+    const unsubs = [
+      subscribe(mqHoverFine),
+      subscribe(mqHoverNone),
+      subscribe(mqPointerCoarse),
+    ];
+
+    return () => unsubs.forEach((unsub) => unsub());
+  }, []);
+
+  return isHoverCapable;
+};
+
+export const ImageMarquee = () => {
+  const isHoverCapable = useIsHoverCapable();
+  const [isPaused, setIsPaused] = useState(false);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const hasImages = MARQUEE_IMAGES.length > 0;
+
+  // viewerImages — ровно ViewerImage[], без лишних полей
+  const viewerImages = useMemo(
+    () => MARQUEE_IMAGES.map(({ ...viewerImage }) => viewerImage),
+    [],
+  );
+
+  // Делаем длительность “естественной”: больше фоток → медленнее.
+  // 46 * 1.6 = 73.6s — выглядит плавно и не “ускоренно”.
+  const durationSeconds = useMemo(
+    () => Math.max(40, MARQUEE_IMAGES.length * 4),
+    [],
+  );
+
+  const marqueeStyle: CSSProperties = useMemo(
+    () =>
+      ({
+        ["--image-marquee-duration"]: `${durationSeconds}s`,
+      }) as CSSProperties,
+    [durationSeconds],
+  );
+
+  const handleMouseEnter = useCallback(() => {
+    if (isHoverCapable) setIsPaused(true);
+  }, [isHoverCapable]);
+
+  const handleMouseLeave = useCallback(() => {
+    if (isHoverCapable && activeIndex === null) {
+      setIsPaused(false);
+    }
+  }, [activeIndex, isHoverCapable]);
+
+  const handleFocusCapture = useCallback(() => {
+    setIsPaused(true);
+  }, []);
+
+  const handleBlurCapture = useCallback(() => {
+    if (activeIndex === null) setIsPaused(false);
+  }, [activeIndex]);
+
+  const handleOpen = useCallback((index: number) => {
+    setActiveIndex(index);
+    setIsPaused(true);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setActiveIndex(null);
+    setIsPaused(false);
+    setTimeout(() => {
+      setIsPaused(false);
+    }, 1);
+  }, []);
+
+  const safeViewerIndex = activeIndex ?? 0;
+  if (!hasImages) return null;
   return (
     <>
-      <section className={classNames("image-marquee")}>
+      <section className="image-marquee" aria-label="Фотографии свадеб">
         <div
-          className={classNames("image-marquee__viewport")}
+          className="image-marquee__viewport"
           onMouseLeave={handleMouseLeave}
+          onFocusCapture={handleFocusCapture}
+          onBlurCapture={handleBlurCapture}
         >
           <div
             className={classNames("image-marquee__track", {
@@ -99,76 +135,74 @@ export const ImageMarquee = () => {
             })}
             style={marqueeStyle}
           >
-            {loopImages.map((image, index) => (
-              <button
-                key={`${image.id}-${index}`}
-                type="button"
-                className="image-marquee__item"
-                onMouseEnter={handleMouseEnter}
-                onClick={() => handleImageClick(index % MARQUEE_IMAGES.length)}
-                aria-label={image.alt}
-              >
-                <div className="image-marquee__image-wrapper">
-                  <img
-                    src={image.src}
-                    alt={image.alt ?? ""}
-                    className="image-marquee__image"
-                  />
-                </div>
-              </button>
-            ))}
+            {/* Группа 1 */}
+            <div className="image-marquee__group">
+              {MARQUEE_IMAGES.map((image, index) => (
+                <button
+                  key={`marquee-a-${image.id}`}
+                  type="button"
+                  className="image-marquee__item"
+                  onMouseEnter={handleMouseEnter}
+                  onClick={() => handleOpen(index)}
+                  aria-label={image.alt}
+                >
+                  <div className="image-marquee__image-wrapper">
+                    <img
+                      src={image.src}
+                      srcSet={image.srcSet}
+                      sizes={image.previewSizes}
+                      alt={image.alt ?? ""}
+                      className="image-marquee__image"
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                      draggable={false}
+                    />
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Группа 2 (дубль) */}
+            <div className="image-marquee__group" aria-hidden="true">
+              {MARQUEE_IMAGES.map((image, index) => (
+                <button
+                  key={`marquee-b-${image.id}`}
+                  type="button"
+                  className="image-marquee__item"
+                  onMouseEnter={handleMouseEnter}
+                  onClick={() => handleOpen(index)}
+                  tabIndex={-1}
+                  aria-label={image.alt}
+                >
+                  <div className="image-marquee__image-wrapper">
+                    <img
+                      src={image.src}
+                      srcSet={image.srcSet}
+                      sizes={image.previewSizes}
+                      alt=""
+                      className="image-marquee__image"
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                      draggable={false}
+                    />
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {activeIndex !== null && (
-        <div
-          className="image-marquee__viewer-backdrop"
-          role="dialog"
-          aria-label="Просмотр фотографий в полноэкранном режиме"
-          aria-modal="true"
-        >
-          <button
-            type="button"
-            className="image-marquee__viewer-close"
-            onClick={handleCloseViewer}
-            aria-label="Закрыть просмотр"
-          >
-            ×
-          </button>
-
-          <button
-            type="button"
-            className="image-marquee__viewer-arrow image-marquee__viewer-arrow--left"
-            onClick={handlePrev}
-            aria-label="Предыдущее фото"
-          >
-            ‹
-          </button>
-          <div
-            className="image-marquee__viewer-inner"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="image-marquee__viewer-content">
-              <div className="image-marquee__viewer-image-wrapper">
-                <img
-                  src={MARQUEE_IMAGES[activeIndex].src}
-                  alt={MARQUEE_IMAGES[activeIndex].alt ?? ""}
-                  className="image-marquee__viewer-image"
-                />
-              </div>
-            </div>
-          </div>
-          <button
-            type="button"
-            className="image-marquee__viewer-arrow image-marquee__viewer-arrow--right"
-            onClick={handleNext}
-            aria-label="Следующее фото"
-          >
-            ›
-          </button>
-        </div>
-      )}
+      <ImageViewer
+        isOpen={activeIndex !== null}
+        images={viewerImages}
+        index={safeViewerIndex}
+        onIndexChange={setActiveIndex}
+        onClose={handleClose}
+        ariaLabel="Просмотр фотографий"
+      />
     </>
   );
 };
